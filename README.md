@@ -1,10 +1,8 @@
-<<<<<<< HEAD
 # knupi-web-v1
 [크누피 1차 프로젝트] 동아리 피아노 예약관리 시스템, 홈페이지 구축.
 
 ## Contribute
 조연호, 박건하
-=======
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -75,4 +73,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
->>>>>>> 1534333 (Initialize project using Create React App)
