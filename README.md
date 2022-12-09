@@ -3,6 +3,13 @@
 
 ## Contribute
 조연호, 박건하
+
+Used Services 
+### Firebase
+### Figma
+### React
+- react-sass, react redux toolkit, react-router-dom
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
