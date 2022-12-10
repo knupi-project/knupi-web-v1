@@ -28,7 +28,7 @@ function App() {
       {init ? (
         <AppRouter auth={auth} isLoggedIn={isLoggedIn} setInit={setInit} />
       ) : (
-        (console.log('initializing...'), 'Initializing...', (<Loader />))
+        (console.log('initializing...'), (<Loader />))
       )}
     </>
   );

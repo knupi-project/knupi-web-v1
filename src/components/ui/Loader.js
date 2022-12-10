@@ -1,6 +1,6 @@
 import React from 'react';
 import 'stylesheet/Loader.scss';
-const Loader1 = () => {
+const Loader = () => {
   return (
     <>
       <div className="loader-body">
@@ -26,4 +26,4 @@ const Loader1 = () => {
   );
 };
 
-export default Loader1;
+export default Loader;
