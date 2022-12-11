@@ -1,4 +1,5 @@
 $blue: #228be6; // 주석 선언
+$lightgrey: #f4f4f7; //
 
 .Button {
   display: inline-flex;
@@ -22,4 +23,64 @@ $blue: #228be6; // 주석 선언
   &:active {
     background: darken($blue, 10%); // 색상 10% 어둡게
   }
+}
+
+.login-btn {
+  display: flex;
+  flex-flow: row;
+
+  justify-content: space-between;
+  align-items: center;
+
+  width: 320px;
+  height: 46px;
+
+  text-align: center;
+  font-weight: 400;
+  font-size: 0.9rem;
+
+  outline: none;
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+
+  background: $lightgrey; // 주석 사용
+  &:hover {
+    background: lighten($lightgrey, 5%); // 색상 10% 밝게
+  }
+
+  &:active {
+    background: darken($lightgrey, 5%); // 색상 10% 어둡게
+  }
+}
+
+.login-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  margin: auto 10px;
+}
+
+.login-icon-size {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+}
+
+.btn-si-mj-320 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 320px;
+  height: 46px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #525266;
+  margin-bottom: 16px;
 }

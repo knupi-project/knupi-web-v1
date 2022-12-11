@@ -1,4 +1,4 @@
-import Button from 'components/ui/Button';
+import Button from 'components/ui/Button/Button';
 import React from 'react';
 import {signOut} from 'firebase/auth';
 import {Link, useNavigate} from 'react-router-dom';
@@ -23,7 +23,7 @@ const Home = ({auth, setInit}) => {
       <div>
         로그인 프로필 사진 : <img src={loginUser.photoURL} alt="유저사진"></img>
       </div>
-      <Button onClick={logOutHandler}>로그아웃</Button>)<Footer></Footer>
+      <Button onClick={logOutHandler}>로그아웃</Button>)
     </>
   ) : (
     <Link to="/auth">

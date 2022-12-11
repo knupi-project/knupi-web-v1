@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Auth from '../routes/Auth';
+import Auth from '../routes/SingIn';
 import Home from '../routes/Home';
 import {
   createBrowserRouter,
