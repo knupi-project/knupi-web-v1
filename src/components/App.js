@@ -32,8 +32,8 @@ function App() {
     console.log('App.js useEffect 실행');
     auth.onAuthStateChanged((user) => {
       console.log('App.js auth.onAuthStateChanged 실행');
-      user ? setIsLoggedIn(true) : setIsLoggedIn(false);
-      setInit(true); // init 완료. 로딩 상태 표시 해제
+      // user ? setIsLoggedIn(true) : setIsLoggedIn(false);
+      // setInit(true); // init 완료. 로딩 상태 표시 해제
     });
 
     return () => {};
@@ -41,8 +41,12 @@ function App() {
 
   useEffect(() => {
     console.log('App.js useEffect isLoggedIn 실행');
-    return () => {};
+    setInit(true);
+    return () => {
+      setInit(false);
+    };
   }, [isLoggedIn]);
+  
   return (
     <>
       {init ? (

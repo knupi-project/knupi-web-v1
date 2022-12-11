@@ -1,18 +1,20 @@
-import Button from 'components/ui/Button/Button';
 import React from 'react';
 import {signOut} from 'firebase/auth';
+import {auth} from 'util/firebaseConfig';
+// import {useAuthState} from 'react-firebase-hooks/auth';
 import {Link, useNavigate} from 'react-router-dom';
-import 'stylesheet/Home.scss';
+import Button from 'components/ui/Button/Button';
 import Navigation from 'components/ui/Navigation';
 import Footer from 'components/ui/Footer';
+import 'stylesheet/Home.scss';
 
-const Home = ({auth, setInit}) => {
+const Home = ({setIsLoggedIn}) => {
   const loginUser = auth.currentUser;
   const navigate = useNavigate();
 
   const logOutHandler = async () => {
-    await setInit(false);
-    signOut(auth);
+    await signOut(auth);
+    setIsLoggedIn(false);
     navigate('/home');
   };
 
@@ -26,7 +28,7 @@ const Home = ({auth, setInit}) => {
       <Button onClick={logOutHandler}>로그아웃</Button>)
     </>
   ) : (
-    <Link to="/auth">
+    <Link to="/signin">
       <button className="home__button"> 로그인 페이지로 이동 button</button>
     </Link>
   );
