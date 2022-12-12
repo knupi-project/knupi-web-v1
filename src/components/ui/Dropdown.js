@@ -1,7 +1,7 @@
 import React from 'react';
 
-const s = () => {
-  return <div>s</div>;
+const Dropdown = () => {
+  return <div>Dropdown</div>;
 };
 
-export default s
+export default Dropdown;
