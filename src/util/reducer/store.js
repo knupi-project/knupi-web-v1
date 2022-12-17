@@ -1,9 +1,8 @@
-import {configureStore} from '@reduxjs/toolkit';
-
-import sampleReducer from 'util/reducer/sampleReducer';
+import { configureStore } from '@reduxjs/toolkit';
+import loginSlice from 'util/reducer/loginSlice';
 
 export default configureStore({
   reducer: {
-    sample: sampleReducer,
+    login: loginSlice,
   },
 });

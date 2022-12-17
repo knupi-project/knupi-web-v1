@@ -1,46 +1,40 @@
-$hover-color: #ddd;
+$hover-color: rgb(233, 233, 233);
 $dropdown-width: 136px;
+$dropbtn-size: 28px;
+//  min-width: $dropdown-width;
+// padding: $dropdown-width/10;
 
 .dropdown {
   position: relative;
   display: inline-block;
-  min-width: 136px;
 }
-
-$dropbtn-size: 28px;
 
 .dropdown-group {
   display: flex;
   flex-flow: row wrap;
-  height: 59px;
+
+  padding: 7px;
+
   color: black;
   align-items: center;
   justify-content: center;
+
+  border: none;
+  border-radius: 1rem;
 
   cursor: pointer;
 
   .dropbtn {
     color: black;
 
-    margin-left: 16px;
-
     width: $dropbtn-size;
     height: $dropbtn-size;
-
-    border: none;
-    border-radius: 3px;
 
     cursor: pointer;
 
     background-repeat: no-repeat;
     background-image: url('../../public/img/dropdown.png');
     background-size: $dropbtn-size;
-
-    transition: background-color 0.3s ease-in-out;
-  }
-  &:hover,
-  :focus {
-    background-color: $hover-color;
   }
 }
 
@@ -48,10 +42,7 @@ $dropbtn-size: 28px;
   display: none;
   position: absolute;
   right: 0;
-
-  min-width: $dropdown-width;
-  padding: $dropdown-width/10;
-
+  width: $dropdown-width;
   background-color: white;
   overflow: auto;
 

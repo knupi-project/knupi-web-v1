@@ -1,6 +1,6 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   signInWithPopup,
   GoogleAuthProvider,
@@ -8,8 +8,10 @@ import {
   browserSessionPersistence,
   signOut,
 } from 'firebase/auth';
-import {doc, getDoc, setDoc, serverTimestamp} from 'firebase/firestore';
-import {db, auth} from 'util/firebaseConfig';
+import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { db, auth } from 'util/firebaseConfig';
+import { useDispatch } from 'react-redux';
+import { setLogIn } from 'util/reducer/loginSlice';
 import SignUpButton from 'components/ui/Button/SignUpButton';
 import UserInfoForm from 'components/ui/Form/UserInfoForm';
 import FormBtn from 'components/ui/Button/FormBtn';
@@ -19,23 +21,24 @@ import 'stylesheet/SignIn.scss';
 setPersistence(auth, browserSessionPersistence); // 세션 유지 시 로그인 유지
 const provider = new GoogleAuthProvider(); // 구글 로그인 공급자 생성
 
-const SignUp = ({setIsLoggedIn}) => {
+const SignUp = () => {
   const [isSignUpSuccess, setIsSignUpSuccess] = useState(false);
   const [docData, setDocData] = useState('');
   const [docRef, setDocRef] = useState('');
   const [authError, setAuthError] = useState(null);
   const [nickName, setNickName] = useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const nickChangeHandler = ({target: {value}}) => setNickName(value);
+  const nickChangeHandler = ({ target: { value } }) => setNickName(value);
 
   const formSubmitHandler = async (event) => {
     try {
       event.preventDefault();
       console.log('nickName: ', nickName);
-      await setDoc(docRef, docData, {merge: true});
-      console.log(setIsLoggedIn);
-      setIsLoggedIn(true);
+      await setDoc(docRef, docData, { merge: true });
+      dispatch(setLogIn());
+
       navigate('/home');
     } catch (error) {
       setAuthError(error.message);
@@ -85,7 +88,7 @@ const SignUp = ({setIsLoggedIn}) => {
             width="236"
             height="82"
             alt="logo-signsin-title"
-            style={{marginBottom: '83px'}}
+            style={{ marginBottom: '83px' }}
           />
         </Link>
         {!isSignUpSuccess ? (
@@ -97,9 +100,13 @@ const SignUp = ({setIsLoggedIn}) => {
               onClick={authHandler}
             />
             <div className="rq-msg">
-              <span style={{marginRight: '3px'}}>이미 계정이 있으신가요 ?</span>
+              <span style={{ marginRight: '3px' }}>
+                이미 계정이 있으신가요 ?
+              </span>
               <Link to="/signin">
-                <span style={{color: 'black', fontWeight: 'bold'}}>로그인</span>
+                <span style={{ color: 'black', fontWeight: 'bold' }}>
+                  로그인
+                </span>
               </Link>
             </div>
           </>

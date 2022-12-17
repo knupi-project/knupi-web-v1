@@ -1,7 +1,7 @@
 import React from 'react';
 import 'stylesheet/Form.scss';
 
-const UserInfoForm = ({children, onSubmit, platform}) => {
+const UserInfoForm = ({ children, onSubmit, platform }) => {
   return (
     <form className="user-info-form" onSubmit={onSubmit}>
       <div className="form-title">

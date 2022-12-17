@@ -10,16 +10,19 @@ import {
 import {doc, getDoc} from 'firebase/firestore';
 import {db, auth} from 'util/firebaseConfig';
 import {Link, useNavigate} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import {setLogIn} from 'util/reducer/loginSlice';
 import SignInButton from 'components/ui/Button/SignInButton';
 import 'stylesheet/SignIn.scss';
 
 setPersistence(auth, browserSessionPersistence); // 세션 유지 시 로그인 유지
 const provider = new GoogleAuthProvider(); // 구글 로그인 공급자 생성
 
-const SignIn = ({setIsLoggedIn}) => {
+const SignIn = () => {
   const [authError, setAuthError] = useState(false);
   const navigate = useNavigate();
-  
+  const dispatch = useDispatch();
+
   const authHandler = async () => {
     try {
       //인증정보 가지고오기
@@ -32,7 +35,7 @@ const SignIn = ({setIsLoggedIn}) => {
         throw new Error('회원 정보가 없습니다. 회원가입 후 이용해주세요.');
       }
       setAuthError(false);
-      setIsLoggedIn(true);
+      dispatch(setLogIn());
       navigate('/home');
     } catch (error) {
       setAuthError(error.message);

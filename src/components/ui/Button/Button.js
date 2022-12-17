@@ -1,7 +1,7 @@
 import React from 'react';
 import 'stylesheet/Button.scss';
 
-function Button({children, onClick}) {
+function Button({ children, onClick }) {
   return (
     <button className="Button" onClick={onClick}>
       {children}

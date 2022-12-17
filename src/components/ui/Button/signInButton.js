@@ -1,7 +1,7 @@
 import React from 'react';
 import 'stylesheet/Button.scss';
 
-const SignInButton = ({platform, imgSrc, onClick}) => {
+const SignInButton = ({ platform, imgSrc, onClick }) => {
   return (
     <button className="login-btn" onClick={onClick}>
       <div id="login-icon-size">
