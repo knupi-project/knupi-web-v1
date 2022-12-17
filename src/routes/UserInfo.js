@@ -1,9 +1,7 @@
-import React from 'react'
-
+import React from 'react';
+import 'stylesheet/UserInfo.scss';
 const UserInfo = () => {
-  return (
-    <div>UserInfo</div>
-  )
-}
+  return <div className="userinfo">UserInfo</div>;
+};
 
-export default UserInfo
+export default UserInfo;

@@ -12,12 +12,10 @@ const loginSlice = createSlice({
 
     setLogout: (state) => {
       state.isLoggedIn = false;
-      console.log(state.isLoggedIn);
     },
 
     setLogIn: (state) => {
       state.isLoggedIn = true;
-      console.log(state.isLoggedIn);
     },
   },
 });
