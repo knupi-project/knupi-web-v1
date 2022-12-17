@@ -48,7 +48,6 @@ const SignUp = ({setIsLoggedIn}) => {
     try {
       //인증정보 가지고오기
       const userCredential = await signInWithPopup(auth, provider); // 팝업창으로 구글 로그인
-      console.log(userCredential.user);
 
       //인증정보 바탕으로 DB 회원정보 쿼리
       const tempDocRef = doc(db, 'users', userCredential.user.uid);

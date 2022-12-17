@@ -1,7 +1,12 @@
 import React from 'react';
-
-const Navigation = () => {
-  return <div>Navigation</div>;
+import 'stylesheet/Navigation.scss';
+const Navigation = ({children}) => {
+  return (
+    <div className="nav">
+      Navigation
+      {children}
+    </div>
+  );
 };
 
 export default Navigation;

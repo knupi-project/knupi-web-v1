@@ -1,0 +1,39 @@
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 0px 30px;
+  height: 80px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  .nav__logo {
+    float: left;
+    height: 50px;
+    margin-left: 20px;
+    margin-top: 10px;
+    width: 50px;
+  }
+  .nav__menu {
+    float: right;
+    margin-right: 20px;
+    margin-top: 10px;
+    .nav__menu__item {
+      display: inline-block;
+      margin-left: 20px;
+      &:first-child {
+        margin-left: 0;
+      }
+      a {
+        color: #000;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+    }
+  }
+}
