@@ -24,7 +24,7 @@ const Dropdown = () => {
       !event.target.matches('.dropdown-group') &&
       !event.target.matches('.dropbtn') &&
       !event.target.matches('.user-img') &&
-      !event.target.matches('.nav__usermeu')
+      !event.target.matches('.nav__usermenu')
     ) {
       const dropdowns = document.getElementsByClassName('dropdown-content');
       for (let i = 0; i < dropdowns.length; i++) {
