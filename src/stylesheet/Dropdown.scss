@@ -43,6 +43,9 @@ $dropbtn-size: 28px;
   position: absolute;
   right: 0;
   width: $dropdown-width;
+
+  padding: $dropdown-width/10;
+
   background-color: white;
   overflow: auto;
 

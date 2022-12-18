@@ -38,8 +38,7 @@ const SignUp = () => {
       console.log('nickName: ', nickName);
       await setDoc(docRef, docData, { merge: true });
       dispatch(setLogIn());
-
-      navigate('/home');
+      navigate('/');
     } catch (error) {
       setAuthError(error.message);
       console.log(error.message);
@@ -76,7 +75,11 @@ const SignUp = () => {
 
   useEffect(() => {
     setAuthError(null);
-    return () => {};
+    signOut(auth);
+    return () => {
+      setAuthError(null);
+      signOut(auth);
+    };
   }, [isSignUpSuccess]);
 
   return (

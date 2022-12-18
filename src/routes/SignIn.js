@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState} from 'react';
+import { useState } from 'react';
 import {
   signInWithPopup,
   GoogleAuthProvider,
@@ -7,11 +7,11 @@ import {
   browserSessionPersistence,
   signOut,
 } from 'firebase/auth';
-import {doc, getDoc} from 'firebase/firestore';
-import {db, auth} from 'util/firebaseConfig';
-import {Link, useNavigate} from 'react-router-dom';
-import {useDispatch} from 'react-redux';
-import {setLogIn} from 'util/reducer/loginSlice';
+import { doc, getDoc } from 'firebase/firestore';
+import { db, auth } from 'util/firebaseConfig';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setLogIn } from 'util/reducer/loginSlice';
 import SignInButton from 'components/ui/Button/SignInButton';
 import 'stylesheet/SignIn.scss';
 
@@ -34,9 +34,9 @@ const SignIn = () => {
       if (!docSnap.exists()) {
         throw new Error('회원 정보가 없습니다. 회원가입 후 이용해주세요.');
       }
-      setAuthError(false);
+      setAuthError(null);
       dispatch(setLogIn());
-      navigate('/home');
+      navigate('/');
     } catch (error) {
       setAuthError(error.message);
       console.log(error.message);
@@ -53,7 +53,7 @@ const SignIn = () => {
             width="236"
             height="82"
             alt="logo-signsin-title"
-            style={{marginBottom: '83px'}}
+            style={{ marginBottom: '83px' }}
           />
         </Link>
         <div className="signin-loginbox-title">로그인</div>
@@ -63,9 +63,9 @@ const SignIn = () => {
           onClick={authHandler}
         />
         <div className="rq-msg">
-          <span style={{marginRight: '3px'}}>아직 계정이 없으신가요 ?</span>
+          <span style={{ marginRight: '3px' }}>아직 계정이 없으신가요 ?</span>
           <Link to="/signup">
-            <span style={{color: 'black', fontWeight: 'bold'}}>회원가입</span>
+            <span style={{ color: 'black', fontWeight: 'bold' }}>회원가입</span>
           </Link>
         </div>
         {authError && (

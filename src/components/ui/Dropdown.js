@@ -15,7 +15,7 @@ const Dropdown = () => {
     console.log('setLogout');
     dispatch(setLogout());
     await signOut(auth);
-    navigate('/home');
+    navigate('/');
   };
 
   // Close the dropdown if the user clicks outside of it
@@ -23,7 +23,8 @@ const Dropdown = () => {
     if (
       !event.target.matches('.dropdown-group') &&
       !event.target.matches('.dropbtn') &&
-      !event.target.matches('.user-img')
+      !event.target.matches('.user-img') &&
+      !event.target.matches('.nav__usermeu')
     ) {
       const dropdowns = document.getElementsByClassName('dropdown-content');
       for (let i = 0; i < dropdowns.length; i++) {
