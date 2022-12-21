@@ -16,7 +16,6 @@ import SignUpButton from 'components/ui/Button/SignUpButton';
 import UserInfoForm from 'components/ui/Form/UserInfoForm';
 import FormBtn from 'components/ui/Button/FormBtn';
 import FormInput from 'components/ui/Input/FormInput';
-import 'stylesheet/SignIn.scss';
 
 setPersistence(auth, browserSessionPersistence); // 세션 유지 시 로그인 유지
 const provider = new GoogleAuthProvider(); // 구글 로그인 공급자 생성
@@ -83,8 +82,8 @@ const SignUp = () => {
   }, [isSignUpSuccess]);
 
   return (
-    <div className="signin">
-      <div className="signin-loginbox">
+    <div className="sign">
+      <div className="sign-loginbox">
         <Link to="/home">
           <img
             src={process.env.PUBLIC_URL + '/img/logo1.png'}
@@ -96,7 +95,7 @@ const SignUp = () => {
         </Link>
         {!isSignUpSuccess ? (
           <>
-            <div className="signin-loginbox-title">회원가입</div>
+            <div className="sign-loginbox-title">회원가입</div>
             <SignUpButton
               platform="구글"
               imgSrc={process.env.PUBLIC_URL + '/img/google24.png'}
@@ -106,7 +105,7 @@ const SignUp = () => {
               <span style={{ marginRight: '3px' }}>
                 이미 계정이 있으신가요 ?
               </span>
-              <Link to="/signin">
+              <Link to="/sign">
                 <span style={{ color: 'black', fontWeight: 'bold' }}>
                   로그인
                 </span>

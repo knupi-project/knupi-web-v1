@@ -4,7 +4,6 @@ import { auth } from 'util/firebaseConfig';
 import AppRouter from 'components/Router';
 import Loader from 'components/ui/Loader';
 import { useSelector } from 'react-redux';
-import 'stylesheet/App.scss';
 
 const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 

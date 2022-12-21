@@ -13,7 +13,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setLogIn } from 'util/reducer/loginSlice';
 import SignInButton from 'components/ui/Button/SignInButton';
-import 'stylesheet/SignIn.scss';
 
 setPersistence(auth, browserSessionPersistence); // 세션 유지 시 로그인 유지
 const provider = new GoogleAuthProvider(); // 구글 로그인 공급자 생성
@@ -45,8 +44,8 @@ const SignIn = () => {
   };
 
   return (
-    <div className="signin">
-      <div className="signin-loginbox">
+    <div className="sign">
+      <div className="sign-loginbox">
         <Link to="/home">
           <img
             src={process.env.PUBLIC_URL + '/img/logo1.png'}
@@ -56,7 +55,7 @@ const SignIn = () => {
             style={{ marginBottom: '83px' }}
           />
         </Link>
-        <div className="signin-loginbox-title">로그인</div>
+        <div className="sign-loginbox-title">로그인</div>
         <SignInButton
           platform="구글"
           imgSrc={process.env.PUBLIC_URL + '/img/google24.png'}

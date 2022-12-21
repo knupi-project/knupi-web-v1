@@ -2,7 +2,7 @@ $blue: #228be6; // 주석 선언
 $lightgrey: #f4f4f7;
 $darkgrey: #525266;
 
-.Button {
+.button {
   display: inline-flex;
   color: white;
   font-weight: bold;
@@ -26,7 +26,7 @@ $darkgrey: #525266;
   }
 }
 
-.login-btn {
+.signin-btn {
   display: flex;
   flex-flow: row;
 
@@ -53,23 +53,23 @@ $darkgrey: #525266;
   &:active {
     background: darken($lightgrey, 5%); // 색상 10% 어둡게
   }
-}
 
-.login-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 24px;
-  height: 24px;
-  margin: auto 10px;
-}
+  .signin-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    margin: auto 10px;
+  }
 
-.login-icon-size {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
+  .signin-icon-size {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+  }
 }
 
 .btn-si-mj-320 {
