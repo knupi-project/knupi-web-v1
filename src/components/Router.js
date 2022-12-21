@@ -20,21 +20,23 @@ import Contact from 'routes/Contact';
 const AppRouter = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<Layout />}>
-        <Route path="/home" element={<Home />}></Route>
-        <Route path="/reserve" element={<Reserve />}></Route>
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
+      <>
+        <Route path="/" element={<Layout />}>
+          <Route path="/home" element={<Home />}></Route>
+          <Route path="/reserve" element={<Reserve />}></Route>
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+
+          <Route path="/profile" element={<Profile />}>
+            <Route path="/profile/info" element={<UserInfo />} />
+            <Route path="/profile/reserve" element={<UserReserve />} />
+          </Route>
+          <Route path="/" element={<Navigate to="/home" />}></Route>
+          <Route path="/*" element={<Navigate to="/home" />}></Route>
+        </Route>
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
-
-        <Route path="/profile" element={<Profile />}>
-          <Route path="/profile/info" element={<UserInfo />} />
-          <Route path="/profile/reserve" element={<UserReserve />} />
-        </Route>
-        <Route path="/" element={<Navigate to="/home" />}></Route>
-        <Route path="/*" element={<Navigate to="/home" />}></Route>
-      </Route>
+      </>
     )
   );
   return <RouterProvider router={router} />;

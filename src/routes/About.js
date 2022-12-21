@@ -1,7 +1,8 @@
 import React from 'react';
+import 'stylesheet/Pages.scss';
 
 const About = () => {
-  return <div>About</div>;
+  return <div className="home">About</div>;
 };
 
 export default About;

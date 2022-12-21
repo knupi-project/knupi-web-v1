@@ -1,6 +1,6 @@
 import React from 'react';
 import { auth } from 'util/firebaseConfig';
-import 'stylesheet/Home.scss';
+import 'stylesheet/Pages.scss';
 
 const Home = () => {
   const loginUser = auth.currentUser;
