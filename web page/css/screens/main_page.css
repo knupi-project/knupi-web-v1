@@ -1,6 +1,6 @@
 body {
   width: 1920px;
-  font-family: "Noto Serif", serif;
+  font-family: 'Noto Serif', serif;
 }
 
 .home__main {
@@ -53,7 +53,7 @@ body {
 }
 
 footer {
-  font-family: "Noto Sans KR";
+  font-family: 'Noto Sans KR';
   text-align: center;
   font-size: 19px;
   color: rgba(0, 0, 0, 0.678);

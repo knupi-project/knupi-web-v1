@@ -1,9 +1,35 @@
-import React from 'react'
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const UserReserve = () => {
-  return (
-    <div>UserReserve</div>
-  )
-}
+  const [currentTime, setCurrentTime] = useState(new Date().toLocaleString());
+  const [reserveList, setReserveList] = useState([]);
 
-export default UserReserve
+  useEffect(() => {
+    setTimeout(() => {
+      setCurrentTime(new Date().toLocaleString());
+    }, 1000);
+    return () => {};
+  }, [currentTime]);
+
+  return (
+    <div className="info">
+      <div className="info__title">예약관리</div>
+      <div className="info__title__msg">내 예약 일정을 확인, 취소합니다.</div>
+      <div className="info__title__msg">현재시각 : {currentTime}</div>
+      <div className="info__menu__title">예약현황</div>
+      {reserveList.length === 0 && (
+        <div className="info__content none">
+          <div className="msg">현재 예약 현황이 없습니다.</div>
+          <Link to="/reserve">예약하기</Link>
+        </div>
+      )}
+      {reserveList.length !== 0 && (
+        <div className="info__content exists">TODO//표그리기</div>
+      )}
+    </div>
+  );
+};
+
+export default UserReserve;

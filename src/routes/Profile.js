@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { auth } from 'util/firebaseConfig';
 
 import 'stylesheet/Profile.scss';
@@ -18,7 +18,14 @@ const Profile = () => {
           />
           <div className="profile__user__name">{loginUser.displayName}</div>
         </div>
-        <div className="profile__menu"> menu</div>
+        <div className="profile__menu">
+          <Link to="/profile/info" className="profile__menu__item">
+            My Account
+          </Link>
+          <Link to="/profile/reserve" className="profile__menu__item">
+            My Reservation
+          </Link>
+        </div>
       </div>
       <Outlet />
     </div>
