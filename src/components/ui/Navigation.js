@@ -14,18 +14,42 @@ const Navigation = () => {
   return (
     <div className="nav">
       <div className="nav__row">
-        <Link to="/home" className="nav__link">
+        <Link
+          to="/home"
+          className="nav__link"
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+        >
           Home
         </Link>
-        <Link to="/about" className="nav__link">
+        <Link
+          to="/about"
+          className="nav__link"
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+        >
           About
         </Link>
-        <Link to="/contact" className="nav__link">
+        <Link
+          to="/contact"
+          className="nav__link"
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+        >
           Contact
         </Link>
         <div className="nav__link" />
       </div>
-      <Link to="/home" className="nav__logo">
+      <Link
+        to="#"
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        className="nav__logo"
+      >
         <img
           src={process.env.PUBLIC_URL + '/img/logo1.png'}
           width="236"
@@ -36,7 +60,13 @@ const Navigation = () => {
 
       <div className="nav__row">
         <div className="nav__link" />
-        <Link to="/reserve#" className="nav__link">
+        <Link
+          to="/reserve#"
+          className="nav__link"
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+        >
           Reservation
         </Link>
         {!loginUser ? (
