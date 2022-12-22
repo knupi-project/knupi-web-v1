@@ -38,16 +38,19 @@
 
 .reservation_main_top-button span {
   margin: 40px 6px;
+  padding: 10px 0px;
   font-size: 20px;
   color: rgb(0, 0, 0, 0.4);
 }
 
-.reservation_main_top-button span:hover {
+.reservation_main_top-button span:first-child {
   color: black;
+  font-weight: 700;
+  border-bottom: 2px solid black;
 }
 
-.reservation_main_top-button span:focus {
-  color: black;
+.reservation_main_top-button span:hover {
+  color:rgb(70, 70, 124);
 }
 
 .reservation_main_explanation {
@@ -76,7 +79,7 @@
 
 .reservation_main_piano-1 {
   width: 40%;
-  height: 600px;
+  height: 550px;
   border: 3px solid rgb(0, 0, 0, 0.5);
   border-top: 40px solid rgb(0, 0, 0, 0.5);
   padding: 100px 40px;
@@ -93,16 +96,20 @@
 .reservation_main_piano-1_time {
   font-size: 20px;
   color: rgb(0, 0, 0, 0.7);
-  margin: 20px 0px;
+  margin: 30px 0px;
 }
 
 .reservation_main_piano-1_subtitle {
   font-weight: 700;
 }
 
-.reservation_main_piano-1_btn {
-  margin-top: 270px;
+.reservation_main_piano-1_bar {
+  margin-top: 150px;
   font-size: 25px;
   font-weight: 700;
-  border-top: 1;
+  border-top: 4px solid rgb(0, 0, 0);
+}
+
+.reservation_main_piano-1_btn {
+  margin: 40px 0px;
 }
