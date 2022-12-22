@@ -33,9 +33,7 @@ function App() {
     };
   }, [isLoggedIn]);
 
-  return (
-    <>{init ? <AppRouter /> : (console.log('initializing...'), (<Loader />))}</>
-  );
+  return <>{init ? <AppRouter /> : <Loader />}</>;
 }
 
 export default App;

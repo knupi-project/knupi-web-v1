@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { auth } from 'util/firebaseConfig';
+// import { useParams } from 'react-router-dom';
 
 const Profile = () => {
   const loginUser = auth.currentUser;
+  // const { id } = useParams();
+  // console.log(id);
 
   return (
     <div className="profile">
@@ -18,10 +21,16 @@ const Profile = () => {
           <div className="user__name">{loginUser.displayName}</div>
         </div>
         <div className="menu">
-          <Link to="/profile/info" className="profile__menu__item">
+          <Link
+            to={`/profile:${auth.currentUser.email}/info`}
+            className="profile__menu__item"
+          >
             My Account
           </Link>
-          <Link to="/profile/reserve" className="profile__menu__item">
+          <Link
+            to={`/profile:${auth.currentUser.email}/reserve`}
+            className="profile__menu__item"
+          >
             My Reservation
           </Link>
         </div>
