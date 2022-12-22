@@ -23,6 +23,86 @@
 .reservation_mid-subtitle {
   margin-top: 30px;
   font-size: 25px;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   color: #000000;
+}
+
+.reservation_main {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.reservation_main_top-button {
+  display: flex;
+  justify-content: center;
+}
+
+.reservation_main_top-button span {
+  margin: 40px 6px;
+  font-size: 20px;
+  color: rgb(0, 0, 0, 0.4);
+}
+
+.reservation_main_top-button span:hover {
+  color: black;
+}
+
+.reservation_main_top-button span:focus {
+  color: black;
+}
+
+.reservation_main_explanation {
+  margin: 0px 300px;
+  border-bottom: 1px solid rgb(0, 0, 0, 0.5);
+}
+
+.reservation_main_explanation p {
+  margin: 40px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.reservation_main_title {
+  font-size: 30px;
+}
+
+.reservation_main_subtitle {
+  font-size: 23px;
+  color: rgb(0, 0, 0, 0.5);
+}
+
+.reservation_main_piano {
+  margin: 60px 200px;
+}
+
+.reservation_main_piano-1 {
+  width: 40%;
+  height: 600px;
+  border: 3px solid rgb(0, 0, 0, 0.5);
+  border-top: 40px solid rgb(0, 0, 0, 0.5);
+  padding: 100px 40px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.reservation_main_piano-1_title {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.reservation_main_piano-1_time {
+  font-size: 20px;
+  color: rgb(0, 0, 0, 0.7);
+  margin: 20px 0px;
+}
+
+.reservation_main_piano-1_subtitle {
+  font-weight: 700;
+}
+
+.reservation_main_piano-1_btn {
+  margin-top: 270px;
+  font-size: 25px;
+  font-weight: 700;
+  border-top: 1;
 }
