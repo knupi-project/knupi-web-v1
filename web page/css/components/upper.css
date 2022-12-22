@@ -21,7 +21,7 @@
 }
 
 .nav__column:nth-child(2) {
-  font-family: 'Noto Serif', serif;
+  font-family: 'Frank Ruhl Libre', serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,8 +29,8 @@
 }
 
 .nav_logo-big {
-  font-size: 50px;
-  font-weight: 600;
+  font-size: 45px;
+  font-weight: 800;
   letter-spacing: 4px;
   font-display: center;
 }
@@ -67,4 +67,9 @@
   font-size: 20px;
   font-weight: 300;
   color: #7c7c7c;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav__link:hover {
+  color: black;
 }
