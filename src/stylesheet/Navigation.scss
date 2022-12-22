@@ -70,11 +70,14 @@ $menu-font-size: 1.35rem;
 
     transition: all 0.3s ease-in-out;
     &:hover,
-    :focus {
+    &:focus {
       background-color: $hover-color;
     }
   }
-
+  .selected {
+    font-weight: 400;
+    background-color: $hover-color;
+  }
   .nav__usermenu {
     display: flex;
     flex-direction: row;

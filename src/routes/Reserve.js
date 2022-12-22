@@ -1,22 +1,24 @@
-import ReserveExec from 'components/ReserveExec';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import ReserveExec from 'components/ReserveExec';
+import ReserveStatus from 'components/ReserveStatus';
+// import { Link } from 'react-router-dom';
 
 const Reserve = () => {
-  const [page, setPage] = React.useState(0);
+  const [page, setPage] = useState(<ReserveExec />);
 
   const pageHandler = (e) => {
-    console.log(e.target.id);
     switch (e.target.id) {
       case 'exec':
-        setPage(0);
+        setPage(<ReserveExec />);
         break;
       case 'status':
-        setPage(1);
+        setPage(<ReserveStatus />);
         break;
       default:
         break;
     }
+    window.scrollTo({ top: e.clientY, behavior: 'smooth' });
   };
 
   return (
@@ -31,17 +33,16 @@ const Reserve = () => {
           <span className="reservation_mid-subtitle">피아노 예약하기</span>
         </div>
       </div>
-
       <div className="reservation_main">
         <div className="reservation_main_top-button">
-          <button id="exec" onClick={pageHandler} >
+          <button id="exec" autoFocus onClick={pageHandler}>
             예약하기
           </button>
           <button id="status" onClick={pageHandler}>
             예약현황
           </button>
         </div>
-        <ReserveExec />
+        {page}
       </div>
     </div>
   );
