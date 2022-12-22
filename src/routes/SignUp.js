@@ -11,11 +11,11 @@ import {
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db, auth } from 'util/firebaseConfig';
 import { useDispatch } from 'react-redux';
-import { setLogIn } from 'util/reducer/loginSlice';
 import SignUpButton from 'components/ui/Button/SignUpButton';
 import UserInfoForm from 'components/ui/Form/UserInfoForm';
 import FormBtn from 'components/ui/Button/FormBtn';
 import FormInput from 'components/ui/Input/FormInput';
+import BackButton from 'components/ui/Button/BackButton';
 
 setPersistence(auth, browserSessionPersistence); // 세션 유지 시 로그인 유지
 const provider = new GoogleAuthProvider(); // 구글 로그인 공급자 생성
@@ -27,6 +27,7 @@ const SignUp = () => {
   const [authError, setAuthError] = useState(null);
   const [nickName, setNickName] = useState('');
   const navigate = useNavigate();
+  //eslint-disable-next-line
   const dispatch = useDispatch();
 
   const nickChangeHandler = ({ target: { value } }) => setNickName(value);
@@ -35,12 +36,13 @@ const SignUp = () => {
     try {
       event.preventDefault();
       console.log('nickName: ', nickName);
-      await setDoc(docRef, docData, { merge: true });
-      dispatch(setLogIn());
+      //회원가입 정보 DB에 저장
+      await setDoc(docRef, { ...docData, nickname: nickName }, { merge: true });
+      alert('회원가입이 완료되었습니다. 다시 로그인해주세요.');
+      //홈페이지로 이동
       navigate('/');
     } catch (error) {
       setAuthError(error.message);
-      console.log(error.message);
       signOut(auth);
     }
   };
@@ -83,6 +85,7 @@ const SignUp = () => {
 
   return (
     <div className="sign">
+      <BackButton />
       <div className="sign-loginbox">
         <Link to="/home">
           <img
@@ -105,7 +108,7 @@ const SignUp = () => {
               <span style={{ marginRight: '3px' }}>
                 이미 계정이 있으신가요 ?
               </span>
-              <Link to="/sign">
+              <Link to="/signin">
                 <span style={{ color: 'black', fontWeight: 'bold' }}>
                   로그인
                 </span>
@@ -122,6 +125,20 @@ const SignUp = () => {
                 onChange={nickChangeHandler}
               />
               <FormBtn title="회원가입" />
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  width: '320px',
+                  textAlign: 'left',
+                  justifyContent: 'flex-start',
+                  alignContent: 'flex-start',
+                  alignItems: 'flex-start',
+                }}
+              >
+                회원가입을 누르면 첫 화면으로 이동합니다.
+                <br /> 다시 로그인해주세요.
+              </div>
             </UserInfoForm>
           </>
         )}

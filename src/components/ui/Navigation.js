@@ -36,11 +36,11 @@ const Navigation = () => {
 
       <div className="nav__row">
         <div className="nav__link" />
-        <Link to="/reserve" className="nav__link">
+        <Link to="/reserve#" className="nav__link">
           Reservation
         </Link>
         {!loginUser ? (
-          <Link to="/signin" className="nav__usermenu nav__link">
+          <Link to="/signin#" className="nav__usermenu nav__link">
             <img
               className="user-login-icon"
               src={process.env.PUBLIC_URL + '/img/user-icon.png'}

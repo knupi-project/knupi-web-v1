@@ -5,7 +5,7 @@ const Reserve = () => {
     <div className="reservation">
       <div className="reservation__mid">
         <img
-          src={process.env.PUBLIC_URL + 'img/reservation_mid.png'}
+          src={process.env.PUBLIC_URL + '/img/reservation_mid.png'}
           alt="img"
         />
         <div className="txt">

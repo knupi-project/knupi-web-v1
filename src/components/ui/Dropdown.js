@@ -41,8 +41,8 @@ const Dropdown = () => {
         <div className="dropbtn" />
       </div>
       <div id="dropdown-list" className="dropdown-content">
-        <Link to="/profile/info">내 정보</Link>
-        <Link to="/profile/reserve">내 예약</Link>
+        <Link to="/profile/info#">내 정보</Link>
+        <Link to="/profile/reserve#">내 예약</Link>
         <hr></hr>
         <Link to="#logout" onClick={logOutHandler}>
           로그아웃

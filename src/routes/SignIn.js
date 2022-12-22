@@ -13,6 +13,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setLogIn } from 'util/reducer/loginSlice';
 import SignInButton from 'components/ui/Button/SignInButton';
+import BackButton from 'components/ui/Button/BackButton';
 
 setPersistence(auth, browserSessionPersistence); // 세션 유지 시 로그인 유지
 const provider = new GoogleAuthProvider(); // 구글 로그인 공급자 생성
@@ -38,13 +39,13 @@ const SignIn = () => {
       navigate('/');
     } catch (error) {
       setAuthError(error.message);
-      console.log(error.message);
       signOut(auth);
     }
   };
 
   return (
     <div className="sign">
+      <BackButton />
       <div className="sign-loginbox">
         <Link to="/home">
           <img

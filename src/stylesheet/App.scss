@@ -5,6 +5,12 @@ html {
   padding: 0px;
   margin: 0px;
   font-family: 'Noto Serif', 'Noto Serif KR', serif;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+html ::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
 }
 body {
   padding: 0px;
@@ -107,7 +113,7 @@ body {
 .sign {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -123,7 +129,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 834px;
-    padding-bottom: 50px;
+    padding-bottom: 14vh;
   }
 
   .sign-loginbox-title {
@@ -157,5 +163,6 @@ body {
     text-align: center;
     font-size: 14px;
     font-weight: normal;
+    text-decoration-line: black;
   }
 }

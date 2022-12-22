@@ -7,13 +7,13 @@ const Footer = () => {
       <div className="footer__title">Contacts</div>
       <div className="footer__menu">
         <div className="footer__menu__item">
-          <img src={process.env.PUBLIC_URL + 'img/message.png'} alt="img" />
+          <img src={process.env.PUBLIC_URL + '/img/message.png'} alt="img" />
         </div>
         <div className="footer__menu__item">
-          <img src={process.env.PUBLIC_URL + 'img/call.png'} alt="img" />
+          <img src={process.env.PUBLIC_URL + '/img/call.png'} alt="img" />
         </div>
         <div className="footer__menu__item">
-          <img src={process.env.PUBLIC_URL + 'img/insta.png'} alt="img" />
+          <img src={process.env.PUBLIC_URL + '/img/insta.png'} alt="img" />
         </div>
       </div>
       <div className="footer__copyright">
