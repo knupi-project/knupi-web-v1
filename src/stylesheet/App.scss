@@ -58,7 +58,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
+
     .home__main__title {
       font-size: 45px;
       font-weight: 600;
@@ -99,18 +99,17 @@ body {
 }
 
 .reservation {
-  background-color: #fff;
-  padding: 0;
-  margin: 0;
-  height: 100vh;
   width: 100vw;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  .reservation__mid {
-    display: flex;
-    .txt {
+
+  .reservation_mid {
+    width: 100%;
+
+    .reservation_mid-text {
       position: absolute;
       top: 40%;
       left: 50%;
@@ -121,22 +120,109 @@ body {
       span {
         text-align: center;
       }
-      .txt__title {
-        font-size: 50px;
-        font-weight: 500;
-        padding: 25px;
-        border-bottom: 1px solid black;
-        font-family: Helvetica Neue;
+    }
+
+    .reservation_mid-title {
+      font-size: 50px;
+      font-weight: 500;
+      padding: 25px;
+      border-bottom: 1px solid black;
+      font-family: 'Helvetica Neue';
+    }
+
+    .reservation_mid-subtitle {
+      margin-top: 30px;
+      font-size: 25px;
+      font-family: 'Noto Sans KR', sans-serif;
+      color: #000000;
+    }
+  }
+
+  .reservation_main {
+    font-family: 'Noto Sans KR', sans-serif;
+    .reservation_main_top-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      button {
+        margin: 40px 6px;
+        font-size: 20px;
+        color: rgb(0, 0, 0);
+        opacity: 60%;
+
+        cursor: pointer;
+        outline: none;
+        background: none;
+
+        border: none;
+
+        &:hover {
+          color: black;
+        }
+        &:active {
+          color: rgb(0, 0, 0.5);
+        }
       }
-      .txt__subtitle {
-        margin-top: 30px;
+    }
+
+    .reservation_main_explanation {
+      margin: 0px 300px;
+      border-bottom: 1px solid rgb(0, 0, 0.5);
+      p {
+        margin: 40px;
+        margin-top: 20px;
+        text-align: center;
+      }
+      .reservation_main_title {
+        font-size: 30px;
+      }
+
+      .reservation_main_subtitle {
+        font-size: 23px;
+        color: rgb(0, 0, 0.5);
+      }
+    }
+
+    .reservation_main_piano {
+      margin: 60px 200px;
+
+      .reservation_main_piano-1 {
+        width: 40%;
+        height: 600px;
+        border: 3px solid rgb(0, 0, 0.5);
+        border-top: 40px solid rgb(0, 0, 0.5);
+        padding: 100px 40px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .reservation_main_piano-1_title {
+        font-size: 30px;
+        font-weight: 700;
+      }
+
+      .reservation_main_piano-1_time {
+        font-size: 20px;
+        color: rgb(0, 0, 0.7);
+        margin: 20px 0px;
+      }
+
+      .reservation_main_piano-1_subtitle {
+        font-weight: 700;
+      }
+
+      .reservation_main_piano-1_btn {
+        margin-top: 270px;
         font-size: 25px;
-        font-family: 'Noto Sans KR', sans-serif;
-        color: #000000;
+        font-weight: 700;
+        border-top: 1;
       }
     }
   }
 }
+
 // sign
 .sign {
   display: flex;

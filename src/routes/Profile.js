@@ -24,12 +24,18 @@ const Profile = () => {
           <Link
             to={`/profile:${auth.currentUser.email}/info`}
             className="profile__menu__item"
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
           >
             My Account
           </Link>
           <Link
             to={`/profile:${auth.currentUser.email}/reserve`}
             className="profile__menu__item"
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
           >
             My Reservation
           </Link>
