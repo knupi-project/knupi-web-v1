@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState} from 'react';
+import { useState } from 'react';
 import {
   signInWithPopup,
   GoogleAuthProvider,
@@ -7,19 +7,22 @@ import {
   browserSessionPersistence,
   signOut,
 } from 'firebase/auth';
-import {doc, getDoc} from 'firebase/firestore';
-import {db, auth} from 'util/firebaseConfig';
-import {Link, useNavigate} from 'react-router-dom';
+import { doc, getDoc } from 'firebase/firestore';
+import { db, auth } from 'util/firebaseConfig';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setLogIn } from 'util/reducer/loginSlice';
 import SignInButton from 'components/ui/Button/SignInButton';
-import 'stylesheet/SignIn.scss';
+import BackButton from 'components/ui/Button/BackButton';
 
 setPersistence(auth, browserSessionPersistence); // 세션 유지 시 로그인 유지
 const provider = new GoogleAuthProvider(); // 구글 로그인 공급자 생성
 
-const SignIn = ({setIsLoggedIn}) => {
+const SignIn = () => {
   const [authError, setAuthError] = useState(false);
   const navigate = useNavigate();
-  
+  const dispatch = useDispatch();
+
   const authHandler = async () => {
     try {
       //인증정보 가지고오기
@@ -31,38 +34,38 @@ const SignIn = ({setIsLoggedIn}) => {
       if (!docSnap.exists()) {
         throw new Error('회원 정보가 없습니다. 회원가입 후 이용해주세요.');
       }
-      setAuthError(false);
-      setIsLoggedIn(true);
-      navigate('/home');
+      setAuthError(null);
+      dispatch(setLogIn());
+      navigate('/');
     } catch (error) {
       setAuthError(error.message);
-      console.log(error.message);
       signOut(auth);
     }
   };
 
   return (
-    <div className="signin">
-      <div className="signin-loginbox">
+    <div className="sign">
+      <BackButton />
+      <div className="sign-loginbox">
         <Link to="/home">
           <img
             src={process.env.PUBLIC_URL + '/img/logo1.png'}
             width="236"
             height="82"
             alt="logo-signsin-title"
-            style={{marginBottom: '83px'}}
+            style={{ marginBottom: '83px' }}
           />
         </Link>
-        <div className="signin-loginbox-title">로그인</div>
+        <div className="sign-loginbox-title">로그인</div>
         <SignInButton
           platform="구글"
           imgSrc={process.env.PUBLIC_URL + '/img/google24.png'}
           onClick={authHandler}
         />
         <div className="rq-msg">
-          <span style={{marginRight: '3px'}}>아직 계정이 없으신가요 ?</span>
+          <span style={{ marginRight: '3px' }}>아직 계정이 없으신가요 ?</span>
           <Link to="/signup">
-            <span style={{color: 'black', fontWeight: 'bold'}}>회원가입</span>
+            <span style={{ color: 'black', fontWeight: 'bold' }}>회원가입</span>
           </Link>
         </div>
         {authError && (

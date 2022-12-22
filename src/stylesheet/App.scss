@@ -1,8 +1,308 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:wght@400;700&display=swap');
+
 html {
   padding: 0px;
   margin: 0px;
+  font-family: 'Noto Serif', 'Noto Serif KR', serif;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+html ::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
 }
 body {
   padding: 0px;
   margin: 0px;
+}
+
+// LAYOUT
+.layout {
+  background-color: #fff;
+  padding: 0;
+  margin: 0;
+
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+// HOME
+.home {
+  background-color: #fff;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Frank Ruhl Libre', serif;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .home__main__text {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .home__main__title {
+      font-size: 45px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      font-display: center;
+      margin-bottom: 20px;
+    }
+
+    .home__main__subtitle {
+      font-size: 25px;
+      font-weight: 500;
+      font-display: center;
+      margin-bottom: 30px;
+    }
+
+    .home__main__btn {
+      height: 45px;
+      width: 180px;
+      border: 1px solid black;
+      border-radius: 5px;
+      background-color: #000000bb;
+      font-size: 20px;
+      letter-spacing: 2px;
+      color: wheat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.4s ease-in-out;
+
+      text-decoration-line: none;
+      text-decoration: none;
+      &:hover {
+        background-color: #00000000;
+        color: black;
+      }
+    }
+  }
+}
+
+.reservation {
+  width: 100vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .reservation_mid {
+    .reservation_mid-text {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      span {
+        text-align: center;
+      }
+    }
+
+    .reservation_mid-title {
+      font-size: 50px;
+      font-weight: 500;
+      padding: 25px;
+      border-bottom: 1px solid black;
+      font-family: 'Helvetica Neue';
+    }
+
+    .reservation_mid-subtitle {
+      margin-top: 30px;
+      font-size: 25px;
+      font-family: 'Noto Sans KR', sans-serif;
+      color: #000000;
+    }
+  }
+
+  .reservation_main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    width: 100%;
+    .reservation_main_top-button {
+      display: flex;
+      justify-content: center;
+
+      button {
+        padding: 10px 0px;
+        margin: 20px 6px;
+
+        font-size: 20px;
+        color: rgb(0, 0, 0);
+
+        cursor: pointer;
+        background: none;
+        background-color: none;
+        border: none;
+
+        &:focus {
+          color: black;
+          font-weight: 700;
+          border-bottom: 2px solid black;
+        }
+        &:hover {
+          color: rgb(70, 70, 124);
+        }
+      }
+    }
+  }
+
+  .reservation_main_explanation {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    width: 65%;
+
+    align-items: center;
+    border-bottom: 1px solid rgb(0, 0, 0);
+
+    p {
+      text-align: center;
+    }
+    .reservation_main_title {
+      font-size: 30px;
+      margin: 10px 0px;
+    }
+
+    .reservation_main_subtitle {
+      font-size: 23px;
+      color: rgb(0, 0, 0);
+      opacity: 50%;
+      margin: 10px 0px 20px 0px;
+    }
+  }
+
+  $piano-border-color: rgb(99, 99, 99);
+  .piano_card_box {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 40px 0px;
+
+    .piano_card {
+      width: 45%;
+      // height: 450px;
+      border: 3px solid $piano-border-color;
+      border-top: 40px solid $piano-border-color;
+      padding: 40px;
+      margin: 40px 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+
+      .piano_card_title {
+        font-size: 30px;
+        font-weight: 700;
+      }
+
+      .piano_card_time {
+        font-size: 20px;
+        color: rgb(0, 0, 0);
+        opacity: 70%;
+
+        margin: 30px 0px;
+      }
+
+      .piano_card_subtitle {
+        font-weight: 700;
+      }
+
+      .piano_card_bar {
+        margin-top: 150px;
+        font-size: 25px;
+        font-weight: 700;
+        border-top: 4px solid rgb(0, 0, 0);
+      }
+
+      .piano_card_btn {
+        margin: 40px 0px;
+      }
+    }
+  }
+}
+
+// sign
+.sign {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  min-height: 680px;
+  min-width: 320px;
+
+  .sign-loginbox {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 834px;
+    padding-bottom: 14vh;
+  }
+
+  .sign-loginbox-title {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    width: 320px;
+
+    text-align: left;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin: 0px 0px 29px 0px;
+  }
+
+  .cf-msg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 320px;
+    height: 16.8px;
+    text-align: left;
+    font-size: 12px;
+    color: #f24957;
+    margin-bottom: 24px;
+  }
+
+  .rq-msg {
+    margin-top: 48px;
+    width: 320px;
+    height: 46px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: normal;
+    text-decoration-line: black;
+  }
 }

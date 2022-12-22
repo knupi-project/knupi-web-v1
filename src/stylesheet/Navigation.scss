@@ -1,0 +1,108 @@
+$hover-color: rgb(237, 237, 237);
+$usermenu-width: 116px;
+$menu-font-size: 1.35rem;
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 0px 30px;
+  min-height: 140px;
+  height: 10vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+
+  .nav__logo {
+    width: 33%;
+    font-family: 'Noto Serif', serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .nav__logo__big {
+      font-size: 50px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      font-display: center;
+    }
+
+    .nav__logo__small {
+      margin-top: 10px;
+      font-size: 25px;
+      font-weight: 400;
+      letter-spacing: 4px;
+      font-display: center;
+    }
+  }
+
+  .nav__row {
+    width: 33%;
+    display: flex;
+
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0px 20px;
+  }
+
+  .nav__link {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: $menu-font-size;
+    font-weight: 350;
+    cursor: pointer;
+    padding: 0.5rem 0.5rem;
+
+    min-width: 30px;
+
+    border: none;
+    border-radius: 5px;
+
+    text-decoration-line: none;
+    text-decoration: none;
+    color: #424141;
+
+    transition: all 0.3s ease-in-out;
+    &:hover,
+    &:focus {
+      background-color: $hover-color;
+    }
+  }
+  .selected {
+    font-weight: 400;
+    background-color: $hover-color;
+  }
+  .nav__usermenu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    min-width: $usermenu-width;
+
+    .nav__usermenu__button {
+      color: #000;
+      font-size: $menu-font-size;
+      font-weight: 350;
+    }
+  }
+}
+
+.user-login-icon {
+  width: 42px;
+  height: 42px;
+}
+
+.user-img {
+  padding: 2px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  overflow: hidden;
+}

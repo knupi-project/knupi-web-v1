@@ -1,0 +1,66 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: black;
+
+  font-family: 'Noto Sans KR';
+  text-align: center;
+
+  height: 10vh;
+  min-height: 175px;
+  width: 100%;
+
+  margin-top: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  text-align: center;
+
+  .footer__title {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+  .footer__menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 65%;
+    height: 100%;
+    margin: 20px 0px;
+
+    .footer__menu__item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1rem;
+      height: 32px;
+
+      img {
+        width: 33px;
+        height: 100%;
+        margin: 0px 20px;
+      }
+      p {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+
+  .footer__copyright {
+    width: 90%;
+    padding: 15px 0px;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+}
