@@ -4,29 +4,32 @@ const loginSlice = createSlice({
   name: 'login',
   initialState: {
     isLoggedIn: false,
-    authErrorMsg: null,
     isSignUpSuccess: false,
+    authErrorMsg: null,
+    userInfo: null,
   },
   reducers: {
-    updateLoginState: (state, action) => {
-      state.isLoggedIn = action.payload;
-    },
-
     setLogout: (state) => {
       state.isLoggedIn = false;
+      state.userInfo = null;
+      console.log('setLogout 실행', state.isLoggedIn);
+      console.log('userInfo : ', state.userInfo);
     },
-
-    setLogIn: (state) => {
+    setLogIn: (state, action) => {
       state.isLoggedIn = true;
+      console.log('setLogIn 실행', state.isLoggedIn);
+      console.log('userInfo : ', state.userInfo);
     },
-
     setAuthErrorMsg: (state, action) => {
       state.authErrorMsg = action.payload;
       console.log('setAuthErrorMsg 실행', state.authErrorMsg);
     },
-
     setIsSignUpSuccess: (state, action) => {
       state.isSignUpSuccess = action.payload;
+    },
+    updateUserInfo: (state, action) => {
+      state.userInfo = action.payload;
+      console.log(state.userInfo);
     },
   },
 });
@@ -34,11 +37,11 @@ const loginSlice = createSlice({
 export { loginSlice };
 // Action creators are generated for each case reducer function
 export const {
-  updateLoginState,
   setLogIn,
   setLogout,
   setAuthErrorMsg,
   setIsSignUpSuccess,
+  updateUserInfo,
 } = loginSlice.actions;
 
 export default loginSlice.reducer;

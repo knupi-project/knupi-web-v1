@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
 import { auth } from 'util/firebaseConfig';
 import { signOut } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
@@ -24,7 +23,7 @@ const Dropdown = () => {
       !event.target.matches('.dropdown-group') &&
       !event.target.matches('.dropbtn') &&
       !event.target.matches('.user-img') &&
-      !event.target.matches('.nav__usermeu')
+      !event.target.matches('.nav__usermenu')
     ) {
       const dropdowns = document.getElementsByClassName('dropdown-content');
       for (let i = 0; i < dropdowns.length; i++) {
@@ -42,8 +41,8 @@ const Dropdown = () => {
         <div className="dropbtn" />
       </div>
       <div id="dropdown-list" className="dropdown-content">
-        <Link to="/profile/info">내 정보</Link>
-        <Link to="/profile/reserve">내 예약</Link>
+        <Link to={`/profile:${auth.currentUser.email}/info`}>내 정보</Link>
+        <Link to={`/profile:${auth.currentUser.email}/reserve`}>내 예약</Link>
         <hr></hr>
         <Link to="#logout" onClick={logOutHandler}>
           로그아웃
