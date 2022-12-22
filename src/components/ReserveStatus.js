@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
 
 const ReserveStatus = () => {
   return (
-    <div>ReserveStatus</div>
-  )
-}
+    <div className="reservation_main">
+      ReserveStatus
+      <div></div>
+    </div>
+  );
+};
 
-export default ReserveStatus
+export default ReserveStatus;

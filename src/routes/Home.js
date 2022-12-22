@@ -12,13 +12,25 @@ const Home = () => {
         <p className="home__main__subtitle">KNU PIANO CLUB</p>
         {loginUser ? (
           <>
-            <Link to="/reserve" className="home__main__btn">
+            <Link
+              to="/reserve"
+              className="home__main__btn"
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            >
               Reservation
             </Link>
           </>
         ) : (
           <>
-            <Link to="/signin" className="home__main__btn">
+            <Link
+              to="/signin"
+              className="home__main__btn"
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            >
               JOIN
             </Link>
           </>
