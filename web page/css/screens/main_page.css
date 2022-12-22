@@ -54,30 +54,3 @@ body {
   background-color: #00000000;
   color: black;
 }
-
-footer {
-  font-family: 'Noto Sans KR';
-  text-align: center;
-  font-size: 19px;
-  color: rgba(0, 0, 0, 0.678);
-}
-
-footer p {
-  margin-top: 44px;
-  margin-bottom: 50px;
-}
-
-footer div:first-child p {
-  font-size: 30px;
-}
-
-.footer_info {
-  display: flex;
-  justify-content: center;
-  margin: 30px 30px;
-  margin-top: 0px;
-}
-
-.footer_info_title {
-  border-top: 1px solid black;
-}
