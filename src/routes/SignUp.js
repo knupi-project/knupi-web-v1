@@ -11,11 +11,11 @@ import {
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db, auth } from 'util/firebaseConfig';
 import { useDispatch } from 'react-redux';
-import SignUpButton from 'components/ui/Button/SignUpButton';
-import UserInfoForm from 'components/ui/Form/UserInfoForm';
-import FormBtn from 'components/ui/Button/FormBtn';
-import FormInput from 'components/ui/Input/FormInput';
-import BackButton from 'components/ui/Button/BackButton';
+import SignUpButton from 'components/Sign/SignUpButton';
+import UserInfoForm from 'components/Sign/UserInfoForm';
+import FormBtn from 'components/Sign/FormBtn';
+import FormInput from 'components/Sign/FormInput';
+import BackButton from 'components/UI/BackButton';
 
 setPersistence(auth, browserSessionPersistence); // 세션 유지 시 로그인 유지
 const provider = new GoogleAuthProvider(); // 구글 로그인 공급자 생성

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import AppRouter from 'components/Router';
-import Loader from 'components/ui/Loader';
+import Loader from 'components/UI/Loader';
 import { useSelector } from 'react-redux';
 
 const timer = (ms) => new Promise((res) => setTimeout(res, ms));

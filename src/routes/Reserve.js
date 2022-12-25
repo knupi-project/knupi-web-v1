@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
-import ReserveExec from 'components/ReserveExec';
-import ReserveStatus from 'components/ReserveStatus';
+import ReserveExec from 'components/Reserve/ReserveExec';
+import ReserveStatus from 'components/Reserve/ReserveStatus';
 // import { Link } from 'react-router-dom';
 
 const Reserve = () => {
@@ -9,15 +9,20 @@ const Reserve = () => {
 
   const pageHandler = (e) => {
     switch (e.target.id) {
-      case 'exec':
+      case 'button-0':
         setPage(<ReserveExec />);
+        document.getElementById('button-1').classList.remove('selected');
+
         break;
-      case 'status':
+      case 'button-1':
         setPage(<ReserveStatus />);
+        document.getElementById('button-0').classList.remove('selected');
+
         break;
       default:
         break;
     }
+    e.target.classList.add('selected');
     window.scrollTo({ top: e.clientY, behavior: 'smooth' });
   };
 
@@ -31,10 +36,10 @@ const Reserve = () => {
       </div>
       <div className="reservation_main">
         <div className="reservation_main_top-button">
-          <button id="exec" autoFocus onClick={pageHandler}>
+          <button className="selected" id="button-0" onClick={pageHandler}>
             예약하기
           </button>
-          <button id="status" onClick={pageHandler}>
+          <button className="" id="button-1" onClick={pageHandler}>
             예약현황
           </button>
         </div>

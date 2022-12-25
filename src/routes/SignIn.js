@@ -12,8 +12,8 @@ import { db, auth } from 'util/firebaseConfig';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setLogIn } from 'util/reducer/loginSlice';
-import SignInButton from 'components/ui/Button/SignInButton';
-import BackButton from 'components/ui/Button/BackButton';
+import SignInButton from 'components/Sign/SignInButton';
+import BackButton from 'components/UI/BackButton';
 
 setPersistence(auth, browserSessionPersistence); // 세션 유지 시 로그인 유지
 const provider = new GoogleAuthProvider(); // 구글 로그인 공급자 생성

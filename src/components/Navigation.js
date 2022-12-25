@@ -1,5 +1,5 @@
 import React from 'react';
-import Dropdown from 'components/ui/Dropdown';
+import Dropdown from 'components/UI/Dropdown';
 import { Link } from 'react-router-dom';
 import { auth } from 'util/firebaseConfig';
 import 'stylesheet/Navigation.scss';
