@@ -24,13 +24,9 @@ const Reserve = () => {
   return (
     <div className="reservation">
       <div className="reservation_mid">
-        <img
-          src={process.env.PUBLIC_URL + '/img/reservation_mid.png'}
-          alt="img"
-        />
         <div className="reservation_mid-text">
           <span className="reservation_mid-title">Reservation</span>
-          <span className="reservation_mid-subtitle">피아노 예약하기</span>
+          <span className="reservation_mid-subtitle">피아노 예약</span>
         </div>
       </div>
       <div className="reservation_main">

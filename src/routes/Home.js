@@ -6,10 +6,10 @@ const Home = () => {
 
   return (
     <div className="home">
-      <img src={process.env.PUBLIC_URL + '/img/Main 1.png'} alt="img" />
-      <div className="home__main__text">
-        <p className="home__main__title">KNUPI</p>
-        <p className="home__main__subtitle">KNU PIANO CLUB</p>
+      {/* <img src={process.env.PUBLIC_URL + '/img/Main 1.png'} alt="img" /> */}
+      <div className="home__main">
+        <span className="home__main__title">KNUPI</span>
+        <span className="home__main__subtitle">KNU PIANO CLUB</span>
         {loginUser ? (
           <>
             <Link

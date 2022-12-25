@@ -10,9 +10,9 @@ const ReserveExec = () => {
         <p className="reservation_main_subtitle">Choose the Piano</p>
       </div>
       <div className="piano_card_box">
-        {[1, 2, 3, 4].map((element) => {
+        {[1, 2, 3, 4].map((element, index) => {
           return (
-            <div className="piano_card">
+            <div className="piano_card" key={index}>
               <span className="piano_card_title">업라이트 피아노</span>
               <span className="piano_card_time">진행 시간 : 30분</span>
               <span className="piano_card_subtitle">
