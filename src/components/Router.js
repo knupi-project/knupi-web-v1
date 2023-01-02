@@ -22,23 +22,19 @@ import Error from './Error';
 const AppRouter = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <>
-        <Route path="/" element={<Layout />} errorElement={<Error />}>
-          <Route path="/home" element={<Home />}></Route>
-          <Route path="/reserve" element={<Reserve />}></Route>
-          <Route path="/reserve/page/:id" element={<ReservePage />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/profile/:id" element={<Profile />}>
-            <Route path="/profile/:id/info" element={<UserInfo />} />
-            <Route path="/profile/:id/reserve" element={<UserReserve />} />
-          </Route>
-          <Route path="/" element={<Navigate to="/home" />}></Route>
-          <Route path="/*" element={<Navigate to="/home" />}></Route>
+      <Route path="/" element={<Layout />} errorElement={<Error />}>
+        <Route path="/home" element={<Home />}></Route>
+        <Route path="/reserve" element={<Reserve />}></Route>
+        <Route path="/reserve/page/:id" element={<ReservePage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/profile/:id" element={<Profile />}>
+          <Route path="/profile/:id/info" element={<UserInfo />} />
+          <Route path="/profile/:id/reserve" element={<UserReserve />} />
         </Route>
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
-      </>
+      </Route>
     )
   );
   return <RouterProvider router={router} />;
