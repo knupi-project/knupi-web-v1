@@ -39,7 +39,7 @@ const Navigation = () => {
         </Link>
       </div>
       <Link
-        to="#"
+        to="home"
         onClick={() => {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
