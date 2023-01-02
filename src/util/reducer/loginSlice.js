@@ -28,8 +28,10 @@ const loginSlice = createSlice({
       state.isSignUpSuccess = action.payload;
     },
     updateUserInfo: (state, action) => {
-      state.userInfo = action.payload;
-      console.log(state.userInfo);
+      state.userInfo = {
+        name: action.payload.name,
+        email: action.payload.email,
+      };
     },
   },
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import Dropdown from 'components/Dropdown';
+import Dropdown from 'components/UI/Dropdown';
 import { Link } from 'react-router-dom';
 import { auth } from 'util/firebaseConfig';
 import 'stylesheet/Navigation.scss';
@@ -37,10 +37,9 @@ const Navigation = () => {
         <Link to="/contact" className="nav__link" onClick={navLinkClickHandler}>
           Contact
         </Link>
-        <div className="nav__link" />
       </div>
       <Link
-        to="#"
+        to="/home"
         onClick={() => {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
@@ -55,7 +54,6 @@ const Navigation = () => {
       </Link>
 
       <div className="nav__row">
-        <div className="nav__link" />
         <Link to="/reserve" className="nav__link" onClick={navLinkClickHandler}>
           Reservation
         </Link>
@@ -66,14 +64,14 @@ const Navigation = () => {
               src={process.env.PUBLIC_URL + '/img/user-icon.png'}
               alt="user-login-icon"
             />
-            <div className="nav__usermenu__button">로그인</div>
+            <span>로그인</span>
           </Link>
         ) : (
           <div
             className="nav__usermenu nav__link"
-            onClick={() => {
-              dropdownHandler();
-              navLinkClickHandler();
+            onClick={(e) => {
+              dropdownHandler(e);
+              // navLinkClickHandlser(e);
             }}
           >
             <img
