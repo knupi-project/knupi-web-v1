@@ -1,6 +1,6 @@
 import React from 'react';
 import Navigation from 'components/Navigation';
-import Footer from 'components/ui/Footer';
+import Footer from 'components/Footer';
 import { Outlet } from 'react-router-dom';
 
 const Root = () => {

@@ -6,6 +6,7 @@ html {
   padding: 0px;
   margin: 0px;
   font-family: 'Noto Serif', 'Noto Serif KR', serif;
+  font-size: 18px;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
@@ -13,6 +14,7 @@ html {
 html ::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera*/
 }
+
 body {
   padding: 0px;
   margin: 0px;
@@ -36,31 +38,41 @@ body {
   background-color: #fff;
   padding: 0;
   margin: 0;
-  height: 100vh;
   width: 100vw;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: 'Frank Ruhl Libre', serif;
+  margin-top: 140px;
 
   img {
     width: 100%;
     height: 100%;
   }
 
-  .home__main__text {
-    width: 100%;
+  .home__main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    justify-content: center;
+
+    width: 100%;
+
+    min-height: 500px;
+    height: 100vh;
+
+    background-image: url('../../public/img/Main\ 1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
 
     .home__main__title {
-      font-size: 45px;
+      font-size: 2.4rem;
       font-weight: 600;
       letter-spacing: 4px;
       font-display: center;
@@ -68,7 +80,7 @@ body {
     }
 
     .home__main__subtitle {
-      font-size: 25px;
+      font-size: 1.5rem;
       font-weight: 500;
       font-display: center;
       margin-bottom: 30px;
@@ -80,7 +92,7 @@ body {
       border: 1px solid black;
       border-radius: 5px;
       background-color: #000000bb;
-      font-size: 20px;
+      font-size: 1.2rem;
       letter-spacing: 2px;
       color: wheat;
       display: flex;
@@ -99,40 +111,49 @@ body {
 }
 
 .reservation {
-  width: 100vw;
-  height: auto;
   display: flex;
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+  margin-top: 140px;
+
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   .reservation_mid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../public/img/reservation_mid.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 80vh;
+    min-height: 500px;
+    max-height: 740px;
     .reservation_mid-text {
-      position: absolute;
-      top: 40%;
-      left: 50%;
-      transform: translate(-50%, -50%);
       display: flex;
       flex-direction: column;
       justify-content: center;
       span {
+        font-family: 'Frank Ruhl Libre', serif;
         text-align: center;
       }
     }
 
     .reservation_mid-title {
-      font-size: 50px;
-      font-weight: 500;
+      font-size: 3rem;
+      font-weight: 550;
       padding: 25px;
       border-bottom: 1px solid black;
-      font-family: 'Helvetica Neue';
     }
 
     .reservation_mid-subtitle {
       margin-top: 30px;
-      font-size: 25px;
-      font-family: 'Noto Sans KR', sans-serif;
-      color: #000000;
+      font-size: 1.5rem;
+      color: black;
     }
   }
 
@@ -151,7 +172,7 @@ body {
         padding: 10px 0px;
         margin: 20px 6px;
 
-        font-size: 20px;
+        font-size: 1.2rem;
         color: rgb(0, 0, 0);
 
         cursor: pointer;
@@ -159,14 +180,19 @@ body {
         background-color: none;
         border: none;
 
-        &:focus {
-          color: black;
-          font-weight: 700;
-          border-bottom: 2px solid black;
-        }
+        // &:focus {
+        //   color: black;
+        //   font-weight: 700;
+        //   border-bottom: 2px solid black;
+        // }
         &:hover {
           color: rgb(70, 70, 124);
         }
+      }
+      .selected {
+        color: black;
+        font-weight: 700;
+        border-bottom: 2px solid black;
       }
     }
   }
@@ -185,12 +211,12 @@ body {
       text-align: center;
     }
     .reservation_main_title {
-      font-size: 30px;
+      font-size: 2rem;
       margin: 10px 0px;
     }
 
     .reservation_main_subtitle {
-      font-size: 23px;
+      font-size: 1.7rem;
       color: rgb(0, 0, 0);
       opacity: 50%;
       margin: 10px 0px 20px 0px;
@@ -202,42 +228,48 @@ body {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     width: 80%;
     margin: 40px 0px;
 
     .piano_card {
       width: 45%;
-      // height: 450px;
+      min-width: 340px;
+      max-width: 500px;
+      height: 50vh;
+      min-height: 340px;
+      max-height: 500px;
+
       border: 3px solid $piano-border-color;
       border-top: 40px solid $piano-border-color;
       padding: 40px;
-      margin: 40px 20px;
+      margin: 40px 10px;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
 
       .piano_card_title {
-        font-size: 30px;
+        font-size: 1.5rem;
         font-weight: 700;
       }
 
       .piano_card_time {
-        font-size: 20px;
+        font-size: 1rem;
         color: rgb(0, 0, 0);
         opacity: 70%;
 
-        margin: 30px 0px;
+        margin: 20px 0px;
       }
 
       .piano_card_subtitle {
+        font-size: 0.8rem;
         font-weight: 700;
       }
 
       .piano_card_bar {
         margin-top: 150px;
-        font-size: 25px;
+        font-size: 1.5rem;
         font-weight: 700;
         border-top: 4px solid rgb(0, 0, 0);
       }
@@ -288,21 +320,25 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
+
     width: 320px;
-    height: 16.8px;
     text-align: left;
-    font-size: 12px;
+    font-size: 0.8rem;
     color: #f24957;
     margin-bottom: 24px;
   }
 
   .rq-msg {
-    margin-top: 48px;
     width: 320px;
     height: 46px;
     text-align: center;
-    font-size: 14px;
+
+    font-size: 1rem;
     font-weight: normal;
     text-decoration-line: black;
+
+    margin-top: 48px;
+    margin-bottom: 24px;
   }
 }
