@@ -22,7 +22,7 @@ const Profile = () => {
         </div>
         <div className="menu">
           <Link
-            to={`/profile:${auth.currentUser.email}/info`}
+            to={`/profile/:${auth.currentUser.email}/info`}
             className="profile__menu__item"
             onClick={() => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -31,7 +31,7 @@ const Profile = () => {
             My Account
           </Link>
           <Link
-            to={`/profile:${auth.currentUser.email}/reserve`}
+            to={`/profile/:${auth.currentUser.email}/reserve`}
             className="profile__menu__item"
             onClick={() => {
               window.scrollTo({ top: 0, behavior: 'smooth' });

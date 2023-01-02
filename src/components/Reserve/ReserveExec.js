@@ -15,7 +15,6 @@ const ReserveExec = () => {
   const loginUser = auth.currentUser;
 
   useEffect(() => {
-
     if (!piano) {
       const getPianoInfo = async () => {
         //인증정보 바탕으로 DB 회원정보 쿼리

@@ -26,12 +26,12 @@ const AppRouter = () => {
         <Route path="/" element={<Layout />} errorElement={<Error />}>
           <Route path="/home" element={<Home />}></Route>
           <Route path="/reserve" element={<Reserve />}></Route>
-          <Route path="/reserve/page:id" element={<ReservePage />} />
+          <Route path="/reserve/page/:id" element={<ReservePage />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/profile:id" element={<Profile />}>
-            <Route path="/profile:id/info" element={<UserInfo />} />
-            <Route path="/profile:id/reserve" element={<UserReserve />} />
+          <Route path="/profile/:id" element={<Profile />}>
+            <Route path="/profile/:id/info" element={<UserInfo />} />
+            <Route path="/profile/:id/reserve" element={<UserReserve />} />
           </Route>
           <Route path="/" element={<Navigate to="/home" />}></Route>
           <Route path="/*" element={<Navigate to="/home" />}></Route>
