@@ -13,7 +13,7 @@ const Home = () => {
         {loginUser ? (
           <>
             <Link
-              to="/reserve"
+              to="/app/reserve"
               className="home__main__btn"
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
