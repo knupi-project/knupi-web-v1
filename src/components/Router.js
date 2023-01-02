@@ -11,6 +11,7 @@ import Home from '../routes/Home';
 import SignIn from '../routes/SignIn';
 import SignUp from '../routes/SignUp';
 import Reserve from 'routes/Reserve';
+import ReservePage from 'routes/ReservePage';
 import Profile from 'routes/Profile';
 import UserInfo from 'routes/UserInfo';
 import UserReserve from 'routes/UserReserve';
@@ -25,6 +26,7 @@ const AppRouter = () => {
         <Route path="/" element={<Layout />} errorElement={<Error />}>
           <Route path="/home" element={<Home />}></Route>
           <Route path="/reserve" element={<Reserve />}></Route>
+          <Route path="/reserve/page:id" element={<ReservePage />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/profile:id" element={<Profile />}>

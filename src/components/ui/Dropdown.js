@@ -41,8 +41,22 @@ const Dropdown = () => {
         <div className="dropbtn" />
       </div>
       <div id="dropdown-list" className="dropdown-content">
-        <Link to={`/profile:${auth.currentUser.email}/info`}>내 정보</Link>
-        <Link to={`/profile:${auth.currentUser.email}/reserve`}>내 예약</Link>
+        <Link
+          to={`/profile:${auth.currentUser.email}/info`}
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+        >
+          내 정보
+        </Link>
+        <Link
+          to={`/profile:${auth.currentUser.email}/reserve`}
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+        >
+          내 예약
+        </Link>
         <hr></hr>
         <Link to="#logout" onClick={logOutHandler}>
           로그아웃

@@ -9,16 +9,20 @@ $menu-font-size: 1.35rem;
   justify-content: space-between;
   background-color: #fff;
   border-bottom: 1px solid #e5e5e5;
-  padding: 0px 30px;
-  min-height: 140px;
+
   height: 10vh;
+  min-height: 140px;
   width: 100%;
-  position: fixed;
+  min-width: 900px;
+
+  padding: 0px 25px;
+
   top: 0;
+  position: fixed;
   z-index: 100;
 
   .nav__logo {
-    width: 33%;
+    width: 32%;
     font-family: 'Noto Serif', serif;
     display: flex;
     flex-direction: column;
@@ -42,7 +46,7 @@ $menu-font-size: 1.35rem;
   }
 
   .nav__row {
-    width: 33%;
+    width: 34%;
     display: flex;
 
     flex-direction: row;
@@ -59,22 +63,27 @@ $menu-font-size: 1.35rem;
     cursor: pointer;
     padding: 0.5rem 0.5rem;
 
-    min-width: 30px;
-
     border: none;
     border-radius: 5px;
 
+    text-align: center;
     text-decoration-line: none;
     text-decoration: none;
     color: #424141;
 
     transition: all 0.3s ease-in-out;
     &:hover,
-    :focus {
+    &:focus {
       background-color: $hover-color;
     }
   }
+  .selected {
+    // font-weight: bolder;
+    transition: all 0.1s ease-in;
 
+    border-radius: 0%;
+    border-bottom: #000000 1px solid;
+  }
   .nav__usermenu {
     display: flex;
     flex-direction: row;
@@ -83,10 +92,11 @@ $menu-font-size: 1.35rem;
 
     min-width: $usermenu-width;
 
-    .nav__usermenu__button {
+    span {
       color: #000;
       font-size: $menu-font-size;
       font-weight: 350;
+      min-width: 70px;
     }
   }
 }

@@ -33,7 +33,7 @@ const UserInfo = () => {
         const docRef = doc(db, 'users', auth.currentUser.uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          dispatch(updateUserInfo(docSnap.data()));
+          dispatch(updateUserInfo({ ...docSnap.data(), timestamp: '' }));
           setUserInfo(docSnap.data());
         }
       };
@@ -69,7 +69,7 @@ const UserInfo = () => {
           <form className="menu__content__form" onSubmit={formSubmitHandler}>
             {[1, 2, 3, 4].map((item, index) => {
               return (
-                <div className="inputbox">
+                <div className="inputbox" key={index}>
                   <div className="inputbox__title">이름</div>
                   <input
                     type="text"
