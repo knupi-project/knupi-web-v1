@@ -54,7 +54,7 @@ const ReserveExec = () => {
                 <p className="piano_card_btn">
                   {loginUser && (
                     <Link
-                      to={`/reserve/page:${loginUser.email}`}
+                      to={`/app/reserve/page/:${loginUser.email}`}
                       onClick={() => {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
@@ -64,7 +64,7 @@ const ReserveExec = () => {
                   )}
                   {!loginUser && (
                     <Link
-                      to="/login"
+                      to="/signin"
                       onClick={() => {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}

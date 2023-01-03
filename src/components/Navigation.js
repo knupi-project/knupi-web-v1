@@ -24,23 +24,37 @@ const Navigation = () => {
     <div className="nav">
       <div className="nav__row">
         <Link
-          to="/home"
+          id="nav__home"
+          to="/app/home"
           className="nav__link selected"
           onClick={navLinkClickHandler}
           autoFocus
         >
           Home
         </Link>
-        <Link to="/about" className="nav__link" onClick={navLinkClickHandler}>
+        <Link
+          to="/app/about"
+          className="nav__link"
+          onClick={navLinkClickHandler}
+        >
           About
         </Link>
-        <Link to="/contact" className="nav__link" onClick={navLinkClickHandler}>
+        <Link
+          to="/app/contact"
+          className="nav__link"
+          onClick={navLinkClickHandler}
+        >
           Contact
         </Link>
       </div>
       <Link
-        to="/home"
+        to="/app/home"
         onClick={() => {
+          const elements = document.getElementsByClassName('nav__link');
+          for (let i = 0; i < elements.length; i++) {
+            elements[i].classList.remove('selected');
+          }
+          document.getElementById('nav__home').classList.add('selected');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
         className="nav__logo"
@@ -54,7 +68,11 @@ const Navigation = () => {
       </Link>
 
       <div className="nav__row">
-        <Link to="/reserve" className="nav__link" onClick={navLinkClickHandler}>
+        <Link
+          to="/app/reserve"
+          className="nav__link"
+          onClick={navLinkClickHandler}
+        >
           Reservation
         </Link>
         {!loginUser ? (
@@ -71,7 +89,6 @@ const Navigation = () => {
             className="nav__usermenu nav__link"
             onClick={(e) => {
               dropdownHandler(e);
-              // navLinkClickHandlser(e);
             }}
           >
             <img

@@ -87,7 +87,7 @@ const SignUp = () => {
     <div className="sign">
       <BackButton />
       <div className="sign-loginbox">
-        <Link to="/home">
+        <Link to="/">
           <img
             src={process.env.PUBLIC_URL + '/img/logo1.png'}
             width="236"

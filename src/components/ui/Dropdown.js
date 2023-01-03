@@ -42,7 +42,7 @@ const Dropdown = () => {
       </div>
       <div id="dropdown-list" className="dropdown-content">
         <Link
-          to={`/profile/:${auth.currentUser.email}/info`}
+          to={`/app/profile/:${auth.currentUser.email}/info`}
           onClick={() => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
@@ -50,7 +50,7 @@ const Dropdown = () => {
           내 정보
         </Link>
         <Link
-          to={`/profile/:${auth.currentUser.email}/reserve`}
+          to={`/app/profile/:${auth.currentUser.email}/reserve`}
           onClick={() => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}

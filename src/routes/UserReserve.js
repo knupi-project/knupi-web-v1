@@ -39,7 +39,7 @@ const UserReserve = () => {
       {reserveList.length === 0 && (
         <div className="menu__content none">
           <div className="msg">현재 예약 현황이 없습니다.</div>
-          <Link to="/reserve">예약하기</Link>
+          <Link to="/app/reserve">예약하기</Link>
         </div>
       )}
       {reserveList.length === 0 && (
