@@ -281,6 +281,142 @@ body {
   }
 }
 
+// home
+.home {
+  font-family: 'Noto Sans KR', sans-serif;
+
+  .home_top-bar {
+    background-color: #888888;
+    width: 1080px;
+    height: 40px;
+    margin-top: 200px;
+  }
+  .home_main {
+    border: 3px solid #f8f8f8;
+    width: 1080px;
+    height: 720px;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    box-shadow: 3px 3px 3px 3px rgba(128, 128, 128, 0.5);
+  }
+  .home_info {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .home_info_back {
+    display: flex;
+    align-items: center;
+    margin: 20px 0px 0px -140px;
+    text-decoration: none;
+  }
+  .home_info_back-btn {
+    height: 25px;
+    width: 28px;
+    margin: 0px 10px;
+  }
+  .home_info_back-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+  }
+  .home_info_back-title:visited {
+    color: black;
+  }
+  .home_info_piano_img {
+    margin-top: 30px;
+    width: 180px;
+    height: 160px;
+  }
+  .home_info_title {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 20px 0px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid black;
+  }
+  .home_info_subtitle {
+    font-weight: 500;
+    font-size: 25px;
+    margin-top: 0px;
+  }
+  .home_info_time-info {
+    font-size: 25px;
+    margin-top: 0px;
+    color: rgba(0, 0, 0, 0.8);
+  }
+  .home_date {
+    width: 480px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding: 0px 50px;
+  }
+  #home_box {
+    height: 500px;
+    margin-top: 90px;
+  }
+  #home__title {
+    font-size: 25px;
+    font-weight: 500;
+    margin: 0px 0px 0px -7px;
+  }
+  .home_time_subtitle {
+    font-weight: 500;
+    margin: 10px 0px;
+  }
+  .home_time {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    padding: 0px 50px;
+  }
+  .home_time_block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .time-block {
+    border-radius: 15px;
+    width: 150px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    margin: 10px 0px;
+    border: 2px solid #a9a1a1;
+    background-color: white;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    padding-left: 10px;
+
+    &.active {
+      background-color: #a9a1a1;
+      color: white;
+      position: relative;
+    }
+  }
+  .time-block:hover {
+    background-color: #a9a1a1;
+    color: white;
+  }
+  .home_time_block_confirm {
+    position: absolute;
+    right: 510px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    width: 36px;
+    height: 28px;
+    background-color: white;
+    border: none;
+    color: #646464;
+    cursor: pointer;
+  }
+}
+
 // sign
 .sign {
   display: flex;
