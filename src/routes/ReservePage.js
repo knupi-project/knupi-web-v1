@@ -1,7 +1,9 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { auth } from 'util/firebaseConfig';
 import { Link } from 'react-router-dom';
 const ReservePage = () => {
+  const loginUser = auth.currentUser;
   let data = ['10:00', '10:30', '11:00', '11:30', '12:00'];
 
   let [btnActive, setBtnActive] = useState('');
@@ -12,16 +14,12 @@ const ReservePage = () => {
     });
   };
 
-  const confirmActive = (e) => {
-    alert('hi');
-  };
-
   return (
     <div className="home">
       <div className="home_top-bar"></div>
       <div className="home_main">
         <div className="home_info">
-          <Link className="home_info_back" to="#">
+          <Link className="home_info_back" to={`/app/reserve`}>
             <img
               className="home_info_back-btn"
               src={process.env.PUBLIC_URL + '/img/back.png'}
@@ -64,14 +62,15 @@ const ReservePage = () => {
                     onClick={toggleActive}
                   >
                     {item}
-                  </button>
-
-                  <button
-                    key={'confirm_button' + idx}
-                    className="home_time_block_confirm"
-                    onClick={confirmActive}
-                  >
-                    확인
+                    <Link to={`/app/reserve/check/:${loginUser.email}`}>
+                      <button
+                        key={'confirm_button' + idx}
+                        className="home_time_block_confirm"
+                        onClick={() => localStorage.setItem('key', item)}
+                      >
+                        확인
+                      </button>
+                    </Link>
                   </button>
                 </div>
               );

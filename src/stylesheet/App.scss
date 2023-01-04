@@ -349,8 +349,8 @@ body {
   }
   .home_date {
     width: 480px;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
+    border-left: 2px solid #dbdbdb;
+    border-right: 2px solid #dbdbdb;
     padding: 0px 50px;
   }
   #home_box {
@@ -372,16 +372,13 @@ body {
     width: 280px;
     padding: 0px 50px;
   }
-  .home_time_block {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
+
   .time-block {
     border-radius: 15px;
-    width: 150px;
+    width: 140px;
     height: 42px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     margin: 10px 0px;
     border: 2px solid #a9a1a1;
@@ -402,18 +399,69 @@ body {
     color: white;
   }
   .home_time_block_confirm {
-    position: absolute;
-    right: 510px;
     text-align: center;
     border-radius: 10px;
     font-size: 13px;
-    font-weight: 700;
     width: 36px;
     height: 28px;
     background-color: white;
     border: none;
     color: #646464;
     cursor: pointer;
+  }
+
+  //체크페이지
+
+  .home_check {
+    margin-top: 90px;
+    width: 760px;
+    padding: 0px 50px;
+    border-left: 2px solid #dbdbdb;
+    height: 500px;
+  }
+  #home_check_title {
+    margin: 0px 0px 20px 0px;
+    font-size: 25px;
+    font-weight: 600;
+  }
+  #home_check_subtitle {
+    margin: 50px 0px;
+    font-size: 21px;
+    font-weight: 400;
+  }
+  #checkbox_div {
+    display: flex;
+    height: 60px;
+    align-items: center;
+  }
+  input[type='checkbox'] {
+    width: 25px;
+    height: 25px;
+    border-radius: 20%;
+    background: #d9d9d9;
+    appearance: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin: 0px 20px;
+  }
+  input[type='checkbox']:checked {
+    background: #646464;
+    border: none;
+  }
+  .reserve_button_div {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .home_check_reserve {
+    height: 60px;
+    width: 200px;
+    border-radius: 15px;
+    border: none;
+    background: #d9d9d9;
+  }
+  .home_check_reserve:active {
+    background: #646464;
+    color: white;
   }
 }
 

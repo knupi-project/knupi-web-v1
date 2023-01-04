@@ -12,6 +12,8 @@ import SignIn from '../routes/SignIn';
 import SignUp from '../routes/SignUp';
 import Reserve from 'routes/Reserve';
 import ReservePage from 'routes/ReservePage';
+import ReserveCheck from 'routes/ReserveCheck';
+import ReserveComplete from 'routes/ReserveComplete';
 import Profile from 'routes/Profile';
 import UserInfo from 'routes/UserInfo';
 import UserReserve from 'routes/UserReserve';
@@ -27,6 +29,11 @@ const AppRouter = () => {
           <Route path="/app/home" element={<Home />}></Route>
           <Route path="/app/reserve" element={<Reserve />}></Route>
           <Route path="/app/reserve/page/:id" element={<ReservePage />} />
+          <Route path="/app/reserve/check/:id" element={<ReserveCheck />} />
+          <Route
+            path="/app/reserve/complete/:id"
+            element={<ReserveComplete />}
+          />
           <Route path="/app/about" element={<About />} />
           <Route path="/app/contact" element={<Contact />} />
           <Route path="/app/profile/:id" element={<Profile />}>
