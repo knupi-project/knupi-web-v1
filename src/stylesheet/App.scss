@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 
 html {
   padding: 0px;
@@ -223,6 +224,29 @@ body {
     }
   }
 
+  .reservation_main_container {
+    display: flex;
+    justify-content: center;
+    margin: 35px 0px;
+    box-sizing: border-box;
+  }
+
+  .reservation_main_box {
+    width: 624px;
+    display: flex;
+    justify-content: center;
+    margin: 0px 20px;
+  }
+
+  .reservation_main_box:first-child {
+  }
+
+  #reservation_main_box_title {
+    font-size: 25px;
+    font-weight: 500;
+    margin: 20px 0px 50px -15px;
+  }
+
   $piano-border-color: rgb(99, 99, 99);
   .piano_card_box {
     display: flex;
@@ -286,7 +310,7 @@ body {
   font-family: 'Noto Sans KR', sans-serif;
 
   .home_top-bar {
-    background-color: #888888;
+    background-color: rgb(185, 183, 183);
     width: 1080px;
     height: 40px;
     margin-top: 200px;
@@ -363,8 +387,9 @@ body {
     margin: 0px 0px 0px -7px;
   }
   .home_time_subtitle {
-    font-weight: 500;
-    margin: 10px 0px;
+    font-weight: 400;
+    margin-top: 20px;
+    font-size: 20px;
   }
   .home_time {
     display: flex;
@@ -372,7 +397,11 @@ body {
     width: 280px;
     padding: 0px 50px;
   }
-
+  .home_time_container {
+    overflow: auto;
+    margin-top: 0px;
+    border-right: 6px solid rgb(216, 215, 215);
+  }
   .time-block {
     border-radius: 15px;
     width: 140px;
@@ -381,7 +410,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin: 10px 0px;
-    border: 2px solid #a9a1a1;
+    border: 2px solid #bed6f0c2;
     background-color: white;
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 600;
@@ -389,14 +418,12 @@ body {
     padding-left: 10px;
 
     &.active {
-      background-color: #a9a1a1;
-      color: white;
+      background-color: #e3f0fe;
       position: relative;
     }
   }
   .time-block:hover {
-    background-color: #a9a1a1;
-    color: white;
+    background-color: #e3f0fe;
   }
   .home_time_block_confirm {
     text-align: center;
@@ -525,4 +552,90 @@ body {
     margin-top: 48px;
     margin-bottom: 24px;
   }
+}
+
+// 달력
+.react-datepicker {
+  font-size: 1.1rem !important;
+  border: 1px solid #888888;
+}
+
+.react-datepicker__current-month {
+  font-size: 1.5rem !important;
+  font-weight: 500 !important;
+}
+
+.react-datepicker__navigation {
+  top: 13px !important;
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day {
+  margin: 0.8rem 10px !important;
+}
+
+.react-datepicker__day-name {
+  color: black;
+  font-weight: 700;
+  margin: 0px 14px !important;
+}
+
+.react-datepicker__day--disabled {
+  color: #c5c3c3 !important;
+}
+
+.react-datepicker__header,
+.react-datepicker__header--custom {
+  background-color: white;
+  padding-top: 6px !important;
+  border-bottom: none;
+}
+
+.normal-day {
+  background: white !important;
+  line-height: 1.2;
+  text-align: center;
+  padding: 8px !important;
+  margin: 11px 9px !important;
+  height: 40px;
+  width: 40px;
+}
+
+.normal-day:hover {
+  background: #f6f8fc !important;
+  border-radius: 0px;
+}
+
+.selected-day,
+.selected-day:focus {
+  background: rgba(0, 0, 0, 0.137) !important;
+  color: black !important;
+  border-radius: 0px;
+  height: 40px;
+  width: 40px;
+}
+
+.datepickerHeader {
+  padding: 15px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.h-6 {
+  width: 20% !important;
+  height: auto !important;
+  cursor: pointer;
+  filter: invert(30%);
+}
+
+#h-6_reverse {
+  transform: scaleX(-1);
+}
+
+.hasCalendar {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import { auth } from 'util/firebaseConfig';
 import { Link } from 'react-router-dom';
 const Reservecheck = () => {
   const selectedTime = localStorage.getItem('key');
