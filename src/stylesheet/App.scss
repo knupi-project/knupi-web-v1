@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 
 html {
   padding: 0px;
@@ -223,6 +224,29 @@ body {
     }
   }
 
+  .reservation_main_container {
+    display: flex;
+    justify-content: center;
+    margin: 35px 0px;
+    box-sizing: border-box;
+  }
+
+  .reservation_main_box {
+    width: 624px;
+    display: flex;
+    justify-content: center;
+    margin: 0px 20px;
+  }
+
+  .reservation_main_box:first-child {
+  }
+
+  #reservation_main_box_title {
+    font-size: 25px;
+    font-weight: 500;
+    margin: 20px 0px 50px -15px;
+  }
+
   $piano-border-color: rgb(99, 99, 99);
   .piano_card_box {
     display: flex;
@@ -278,6 +302,193 @@ body {
         margin: 40px 0px;
       }
     }
+  }
+}
+
+// home
+.home {
+  font-family: 'Noto Sans KR', sans-serif;
+
+  .home_top-bar {
+    background-color: rgb(185, 183, 183);
+    width: 1080px;
+    height: 40px;
+    margin-top: 200px;
+  }
+  .home_main {
+    border: 3px solid #f8f8f8;
+    width: 1080px;
+    height: 720px;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    box-shadow: 3px 3px 3px 3px rgba(128, 128, 128, 0.5);
+  }
+  .home_info {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .home_info_back {
+    display: flex;
+    align-items: center;
+    margin: 20px 0px 0px -140px;
+    text-decoration: none;
+  }
+  .home_info_back-btn {
+    height: 25px;
+    width: 28px;
+    margin: 0px 10px;
+  }
+  .home_info_back-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+  }
+  .home_info_back-title:visited {
+    color: black;
+  }
+  .home_info_piano_img {
+    margin-top: 30px;
+    width: 180px;
+    height: 160px;
+  }
+  .home_info_title {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 20px 0px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid black;
+  }
+  .home_info_subtitle {
+    font-weight: 500;
+    font-size: 25px;
+    margin-top: 0px;
+  }
+  .home_info_time-info {
+    font-size: 25px;
+    margin-top: 0px;
+    color: rgba(0, 0, 0, 0.8);
+  }
+  .home_date {
+    width: 480px;
+    border-left: 2px solid #dbdbdb;
+    border-right: 2px solid #dbdbdb;
+    padding: 0px 50px;
+  }
+  #home_box {
+    height: 500px;
+    margin-top: 90px;
+  }
+  #home__title {
+    font-size: 25px;
+    font-weight: 500;
+    margin: 0px 0px 0px -7px;
+  }
+  .home_time_subtitle {
+    font-weight: 400;
+    margin-top: 20px;
+    font-size: 20px;
+  }
+  .home_time {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    padding: 0px 50px;
+  }
+  .home_time_container {
+    overflow: auto;
+    margin-top: 0px;
+    border-right: 6px solid rgb(216, 215, 215);
+  }
+  .time-block {
+    border-radius: 15px;
+    width: 140px;
+    height: 42px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0px;
+    border: 2px solid #bed6f0c2;
+    background-color: white;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    padding-left: 10px;
+
+    &.active {
+      background-color: #e3f0fe;
+      position: relative;
+    }
+  }
+  .time-block:hover {
+    background-color: #e3f0fe;
+  }
+  .home_time_block_confirm {
+    text-align: center;
+    border-radius: 10px;
+    font-size: 13px;
+    width: 36px;
+    height: 28px;
+    background-color: white;
+    border: none;
+    color: #646464;
+    cursor: pointer;
+  }
+
+  //체크페이지
+
+  .home_check {
+    margin-top: 90px;
+    width: 760px;
+    padding: 0px 50px;
+    border-left: 2px solid #dbdbdb;
+    height: 500px;
+  }
+  #home_check_title {
+    margin: 0px 0px 20px 0px;
+    font-size: 25px;
+    font-weight: 600;
+  }
+  #home_check_subtitle {
+    margin: 50px 0px;
+    font-size: 21px;
+    font-weight: 400;
+  }
+  #checkbox_div {
+    display: flex;
+    height: 60px;
+    align-items: center;
+  }
+  input[type='checkbox'] {
+    width: 25px;
+    height: 25px;
+    border-radius: 20%;
+    background: #d9d9d9;
+    appearance: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin: 0px 20px;
+  }
+  input[type='checkbox']:checked {
+    background: #646464;
+    border: none;
+  }
+  .reserve_button_div {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .home_check_reserve {
+    height: 60px;
+    width: 200px;
+    border-radius: 15px;
+    border: none;
+    background: #d9d9d9;
+  }
+  .home_check_reserve:active {
+    background: #646464;
+    color: white;
   }
 }
 
@@ -341,4 +552,90 @@ body {
     margin-top: 48px;
     margin-bottom: 24px;
   }
+}
+
+// 달력
+.react-datepicker {
+  font-size: 1.1rem !important;
+  border: 1px solid #888888;
+}
+
+.react-datepicker__current-month {
+  font-size: 1.5rem !important;
+  font-weight: 500 !important;
+}
+
+.react-datepicker__navigation {
+  top: 13px !important;
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day {
+  margin: 0.8rem 10px !important;
+}
+
+.react-datepicker__day-name {
+  color: black;
+  font-weight: 700;
+  margin: 0px 14px !important;
+}
+
+.react-datepicker__day--disabled {
+  color: #c5c3c3 !important;
+}
+
+.react-datepicker__header,
+.react-datepicker__header--custom {
+  background-color: white;
+  padding-top: 6px !important;
+  border-bottom: none;
+}
+
+.normal-day {
+  background: white !important;
+  line-height: 1.2;
+  text-align: center;
+  padding: 8px !important;
+  margin: 11px 9px !important;
+  height: 40px;
+  width: 40px;
+}
+
+.normal-day:hover {
+  background: #f6f8fc !important;
+  border-radius: 0px;
+}
+
+.selected-day,
+.selected-day:focus {
+  background: rgba(0, 0, 0, 0.137) !important;
+  color: black !important;
+  border-radius: 0px;
+  height: 40px;
+  width: 40px;
+}
+
+.datepickerHeader {
+  padding: 15px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.h-6 {
+  width: 20% !important;
+  height: auto !important;
+  cursor: pointer;
+  filter: invert(30%);
+}
+
+#h-6_reverse {
+  transform: scaleX(-1);
+}
+
+.hasCalendar {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
 }
