@@ -19,6 +19,7 @@ const ReserveExec = () => {
       const getPianoInfo = async () => {
         //인증정보 바탕으로 DB 회원정보 쿼리
         const docRef = doc(db, 'piano', 'info');
+
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           dispatch(updatePianoList(docSnap.data().pianoList));
@@ -45,22 +46,34 @@ const ReserveExec = () => {
             return (
               <div className="piano_card" key={index}>
                 <span className="piano_card_title">{element.name}</span>
-                <span className="piano_card_time">
-                  🕑 진행 시간 : {element.time}
-                </span>
+                <span className="piano_card_time">🕑 진행 시간 : 30분</span>
                 <span className="piano_card_subtitle">
                   {element.name} 예약하기
                 </span>
-                <p className="piano_card_btn">
+                <div className="piano_card_btn">
                   {loginUser && (
-                    <Link
-                      to={`/app/reserve/page/:${loginUser.email}`}
-                      onClick={() => {
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                      }}
-                    >
-                      예약하기
-                    </Link>
+                    <div className="piano_card_container">
+                      <Link
+                        className="piano_card_link"
+                        style={{
+                          textDecoration: 'none',
+                          color: 'black',
+                          fontSize: '20px',
+                          fontWeight: '600',
+                        }}
+                        to={`/app/reserve/page/:${loginUser.email}`}
+                        onClick={() => {
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                      >
+                        예약하기
+                        <img
+                          className="piano_card_go"
+                          src={process.env.PUBLIC_URL + '/img/back.png'}
+                          alt="img"
+                        />
+                      </Link>
+                    </div>
                   )}
                   {!loginUser && (
                     <Link
@@ -72,7 +85,7 @@ const ReserveExec = () => {
                       로그인
                     </Link>
                   )}
-                </p>
+                </div>
               </div>
             );
           })}
