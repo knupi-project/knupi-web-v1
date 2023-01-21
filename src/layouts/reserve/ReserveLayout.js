@@ -11,7 +11,7 @@ const Reserve = () => {
   let pianoName = '';
 
   switch (pianoNumber) {
-    case 0:
+    case '0':
       pianoName = '업라이트 피아노';
       break;
 

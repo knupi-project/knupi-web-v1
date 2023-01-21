@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Dropdown from 'components/UI/Dropdown';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { auth } from 'util/firebaseConfig';
 import 'stylesheet/Navigation.scss';
 
 const Navigation = () => {
   const loginUser = auth.currentUser;
+  const { pathname } = useLocation();
 
   const navLinkClickHandler = (e) => {
     const elements = document.getElementsByClassName('nav__link');
@@ -20,19 +21,25 @@ const Navigation = () => {
     document.getElementById('dropdown-list').classList.toggle('show');
   };
 
+  useEffect(() => {
+    const elements = document.getElementById('nav__' + pathname.split('/')[2]);
+    elements && elements.classList.add('selected');
+  }, [pathname]);
+
   return (
     <div className="nav">
       <div className="nav__row">
         <Link
           id="nav__home"
           to="/app/home"
-          className="nav__link selected"
+          className="nav__link"
           onClick={navLinkClickHandler}
           autoFocus
         >
           Home
         </Link>
         <Link
+          id="nav__about"
           to="/app/about"
           className="nav__link"
           onClick={navLinkClickHandler}
@@ -40,6 +47,7 @@ const Navigation = () => {
           About
         </Link>
         <Link
+          id="nav__contact"
           to="/app/contact"
           className="nav__link"
           onClick={navLinkClickHandler}
@@ -71,6 +79,7 @@ const Navigation = () => {
         {!loginUser ? (
           <Link
             to="/auth/signin"
+            id="nav__reservation"
             className="nav__link"
             onClick={() => {
               window.alert(
@@ -84,6 +93,7 @@ const Navigation = () => {
           <Link
             to="/app/reservation"
             className="nav__link"
+            id="nav__reservation"
             onClick={navLinkClickHandler}
           >
             Reservation

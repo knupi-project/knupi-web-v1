@@ -1,8 +1,17 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Reservecheck = () => {
   const selectedTime = localStorage.getItem('key');
+
+  useEffect(() => {
+    const keyData = localStorage.getItem('key');
+    !keyData && alert('예약 시간이 없습니다. 예약 페이지로 이동합니다.');
+    return () => {
+
+    };
+  }, []);
 
   return (
     <div className="home_check">

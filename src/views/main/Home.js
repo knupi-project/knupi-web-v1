@@ -17,6 +17,10 @@ const Home = () => {
               className="home__main__btn"
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+                const elements = document.getElementsByClassName('nav__link');
+                for (let i = 0; i < elements.length; i++) {
+                  elements[i].classList.remove('selected');
+                }
               }}
             >
               Reservation

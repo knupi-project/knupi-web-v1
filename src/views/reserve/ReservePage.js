@@ -22,7 +22,7 @@ const ReservePage = () => {
     '12:30',
   ];
   const { type } = useParams();
-  
+
   let [btnActive, setBtnActive] = useState();
   const toggleActive = (e) => {
     setBtnActive((prev) => {
@@ -119,7 +119,6 @@ const ReservePage = () => {
                     <button
                       key={'confirm_button' + idx}
                       className="home_time_block_confirm"
-                      onClick={() => localStorage.setItem('key', item)}
                     >
                       확인
                     </button>
