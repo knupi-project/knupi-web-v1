@@ -7,9 +7,9 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import Layout from 'routes/Layout';
-import Home from '../routes/Home';
-import SignIn from '../routes/SignIn';
-import SignUp from '../routes/SignUp';
+import Home from './routes/Home';
+import SignIn from './routes/SignIn';
+import SignUp from './routes/SignUp';
 import Reserve from 'routes/Reserve';
 import ReservePage from 'routes/ReservePage';
 import ReserveCheck from 'routes/ReserveCheck';
@@ -19,7 +19,7 @@ import UserInfo from 'routes/UserInfo';
 import UserReserve from 'routes/UserReserve';
 import About from 'routes/About';
 import Contact from 'routes/Contact';
-import Error from './Error';
+import Error from './components/Error';
 
 const AppRouter = () => {
   const router = createBrowserRouter(

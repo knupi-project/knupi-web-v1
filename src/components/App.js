@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import AppRouter from 'components/Router';
+import AppRouter from 'Router';
 import Loader from 'components/UI/Loader';
 import { useSelector } from 'react-redux';
 

@@ -47,6 +47,7 @@ const ReserveStatus = () => {
                 <div className="datepickerHeader">
                   <div onClick={decreaseMonth}>
                     <img
+                      alt="backbutton"
                       src={process.env.PUBLIC_URL + '/img/back.png'}
                       className="h-6"
                     />
@@ -54,6 +55,7 @@ const ReserveStatus = () => {
                   <div> {formatDate(date)}</div>
                   <div onClick={increaseMonth}>
                     <img
+                      alt="backbutton"
                       src={process.env.PUBLIC_URL + '/img/back.png'}
                       className="h-6"
                       id="h-6_reverse"
@@ -91,6 +93,7 @@ const ReserveStatus = () => {
                 <div className="datepickerHeader">
                   <div onClick={decreaseMonth}>
                     <img
+                      alt="backbutton"
                       src={process.env.PUBLIC_URL + '/img/back.png'}
                       className="h-6"
                     />
@@ -98,6 +101,7 @@ const ReserveStatus = () => {
                   <div> {formatDate(date)}</div>
                   <div onClick={increaseMonth}>
                     <img
+                      alt="backbutton"
                       src={process.env.PUBLIC_URL + '/img/back.png'}
                       className="h-6"
                       id="h-6_reverse"
