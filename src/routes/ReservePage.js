@@ -8,6 +8,7 @@ import { ko } from 'date-fns/esm/locale';
 import { getMonth, getDate, addDays } from 'date-fns';
 import moment from 'moment';
 import 'moment/locale/ko';
+import BackButton from 'components/UI/BackButton';
 
 const ReservePage = () => {
   const loginUser = auth.currentUser;
@@ -24,7 +25,7 @@ const ReservePage = () => {
     '12:30',
   ];
 
-  let [btnActive, setBtnActive] = useState('');
+  let [btnActive, setBtnActive] = useState();
 
   const toggleActive = (e) => {
     setBtnActive((prev) => {
@@ -44,115 +45,115 @@ const ReservePage = () => {
 
   return (
     <div className="home">
-      <div className="home_top-bar"></div>
-      <div className="home_main">
-        <div className="home_info">
-          <Link className="home_info_back" to={`/app/reserve`}>
+      <div className="reserve_home">
+        <div className="home_top-bar"></div>
+        <div className="home_main">
+          <div className="home_info">
+            <BackButton
+              style={{
+                margin: '40px 0px 0px 40px',
+                padding: '0px',
+              }}
+            />
             <img
-              className="home_info_back-btn"
-              src={process.env.PUBLIC_URL + '/img/back.png'}
+              className="home_info_piano_img"
+              src={process.env.PUBLIC_URL + '/img/piano_img.png'}
               alt="img"
             />
-            <p className="home_info_back-title">뒤로가기</p>
-          </Link>
-          <img
-            className="home_info_piano_img"
-            src={process.env.PUBLIC_URL + '/img/piano_img.png'}
-            alt="img"
-          />
-          <p className="home_info_title">피아노 예약하기</p>
-          <p className="home_info_subtitle">업라이트 피아노</p>
-          <p className="home_info_time-info">🕑 진행시간 : 30분</p>
-        </div>
-        <div className="home_date" id="home_box">
-          <p className="home_date_title" id="home__title">
-            1. 날짜 선택
-          </p>
-          <div className="home_date_calendar">
-            <div className="hasCalendar">
-              <DatePicker
-                className="input-datepicker" // class name
-                inline // 달력 화면에 바로 나오도록 설정
-                locale={ko} // 한국어 설정
-                dateFormat="yyyy-MM-dd" // 데이터 포맷
-                popperModifiers={{
-                  // 모바일 web 환경에서 화면을 벗어나지 않도록 하는 설정
-                  preventOverflow: {
-                    enabled: true,
-                  },
-                }}
-                minDate={new Date()} // 과거 날짜는 선택할 수 없게 disable
-                maxDate={addDays(new Date(), 13)} // 오늘로부터 13일까지 날짜 선택 가능
-                onChange={(date) => setStartDate(date)} // 바뀐 날짜로 저장
-                renderCustomHeader={({
-                  date,
-                  decreaseMonth,
-                  increaseMonth,
-                }) => (
-                  <div className="datepickerHeader">
-                    <div onClick={decreaseMonth}>
-                      <img
-                        alt="backbutton"
-                        src={process.env.PUBLIC_URL + '/img/back.png'}
-                        className="h-6"
-                      />
+            <p className="home_info_title">피아노 예약하기</p>
+            <p className="home_info_subtitle">업라이트 피아노</p>
+            <p className="home_info_time-info">🕑 진행시간 : 30분</p>
+          </div>
+          <div className="home_date" id="home_box">
+            <p className="home_date_title" id="home__title">
+              1. 날짜 선택
+            </p>
+            <div className="home_date_calendar">
+              <div className="hasCalendar">
+                <DatePicker
+                  className="input-datepicker" // class name
+                  inline // 달력 화면에 바로 나오도록 설정
+                  locale={ko} // 한국어 설정
+                  dateFormat="yyyy-MM-dd" // 데이터 포맷
+                  popperModifiers={{
+                    // 모바일 web 환경에서 화면을 벗어나지 않도록 하는 설정
+                    preventOverflow: {
+                      enabled: true,
+                    },
+                  }}
+                  minDate={new Date()} // 과거 날짜는 선택할 수 없게 disable
+                  maxDate={addDays(new Date(), 13)} // 오늘로부터 13일까지 날짜 선택 가능
+                  onChange={(date) => setStartDate(date)} // 바뀐 날짜로 저장
+                  renderCustomHeader={({
+                    date,
+                    decreaseMonth,
+                    increaseMonth,
+                  }) => (
+                    <div className="datepickerHeader">
+                      <div onClick={decreaseMonth}>
+                        <img
+                          src={process.env.PUBLIC_URL + '/img/back.png'}
+                          className="h-6"
+                        />
+                      </div>
+                      <div> {formatDate(date)}</div>
+                      <div onClick={increaseMonth}>
+                        <img
+                          src={process.env.PUBLIC_URL + '/img/back.png'}
+                          className="h-6"
+                          id="h-6_reverse"
+                        />
+                      </div>
                     </div>
-                    <div> {formatDate(date)}</div>
-                    <div onClick={increaseMonth}>
-                      <img
-                        alt="backbutton"
-                        src={process.env.PUBLIC_URL + '/img/back.png'}
-                        className="h-6"
-                        id="h-6_reverse"
-                      />
-                    </div>
-                  </div>
-                )}
-                dayClassName={(d) =>
-                  getDate(d) === getDate(startDate) &&
-                  getMonth(d) === getMonth(startDate)
-                    ? 'normal-day selected-day'
-                    : 'normal-day'
-                }
-              />
+                  )}
+                  dayClassName={(d) =>
+                    getDate(d) === getDate(startDate) &&
+                    getMonth(d) === getMonth(startDate)
+                      ? 'normal-day selected-day'
+                      : 'normal-day'
+                  }
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="home_time" id="home_box">
-          <div className="home_time_text">
-            <p className="home_time_title" id="home__title">
-              2. 시간 선택
-            </p>
-            <p className="home_time_subtitle">
-              {moment(startDate).format('M월 D일 dddd')}
-            </p>
-          </div>
-          <div className="home_time_container">
-            {data.map((item, idx) => {
-              return (
-                <div className="home_time_block" key={idx + 'big_button'}>
-                  <button
-                    key={idx}
-                    value={idx}
-                    className={
-                      'time-block' + (idx === btnActive ? ' active' : '')
-                    }
-                    onClick={toggleActive}
-                  >
-                    {item}
-                    <Link to={`/app/reserve/check/:${loginUser.email}`}>
-                      <button
-                        key={'confirm_button' + idx}
-                        className="home_time_block_confirm"
-                        onClick={() => localStorage.setItem('key', item)}
-                      >
-                        확인
-                      </button>
-                    </Link>
-                  </button>
-                </div>
-              );
-            })}
+          <div className="home_time" id="home_box">
+            <div className="home_time_text">
+              <p className="home_time_title" id="home__title">
+                2. 시간 선택
+              </p>
+              <p className="home_time_subtitle">
+                {moment(startDate).format('M월 D일 dddd')}
+              </p>
+            </div>
+
+            <div className="home_time_container">
+              {data.map((item, idx) => {
+                return (
+                  <div className="home_time_block" key={idx + 'big_button'}>
+                    <div
+                      key={idx}
+                      value={idx}
+                      className={
+                        'time-block' + (idx == btnActive ? ' active' : '')
+                      }
+                      onClick={toggleActive}
+                      tabIndex="0"
+                    >
+                      {item}
+                      <Link to={`/app/reserve/check/:${loginUser.email}`}>
+                        <button
+                          key={'confirm_button' + idx}
+                          className="home_time_block_confirm"
+                          onClick={() => localStorage.setItem('key', item)}
+                        >
+                          확인
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

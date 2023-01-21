@@ -32,7 +32,7 @@ const UserReserve = () => {
 
   return (
     <div className="profile__main">
-      <div className="title">예약관리</div>
+      <div className="title">예약 관리</div>
       <div className="msg">내 예약 일정을 확인, 취소합니다.</div>
       <div className="msg">현재시각 : {currentTime}</div>
       <div className="menu__title">예약현황</div>

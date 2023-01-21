@@ -28,7 +28,7 @@ const Profile = () => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           >
-            My Account
+            내 계정
           </Link>
           <Link
             to={`/app/profile/:${auth.currentUser.email}/reserve`}
@@ -37,7 +37,7 @@ const Profile = () => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           >
-            My Reservation
+            예약 관리
           </Link>
         </div>
       </div>
