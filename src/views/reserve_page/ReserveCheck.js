@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import BackButton from 'components/UI/BackButton';
 
 import { db, auth } from 'util/firebaseConfig';
-import { getDoc, doc } from 'firebase/firestore';
+import { getDoc, doc, collection, addDoc } from 'firebase/firestore';
 
 const Reservecheck = () => {
   const selectedTime = localStorage.getItem('key');
@@ -41,9 +41,15 @@ const Reservecheck = () => {
   };
 
   const formSubmitHandler = async (event) => {
+    event.preventDefault();
     try {
-      event.preventDefault();
-
+      const docRef = await addDoc(collection(db, '0'), {
+        name: userData.nickname,
+        createdAt: Date.now(),
+        reserveTime: selectedTime,
+        purpose: purpose,
+      });
+      console.log('Document written with ID: ', docRef.id);
       console.log('formSubmitHandler 실행');
       //홈페이지로 이동
       navigate('/app/reserve/complete/:id');
