@@ -4,7 +4,7 @@ import ReserveExec from 'views/main/reservation/components/ReservationExec';
 import ReserveStatus from 'views/main/reservation/components/ReservationStatus';
 // import { Link } from 'react-router-dom';
 
-const Reserve = () => {
+const Reservation = () => {
   const [page, setPage] = useState(<ReserveExec />);
 
   const pageHandler = (e) => {
@@ -49,4 +49,4 @@ const Reserve = () => {
   );
 };
 
-export default Reserve;
+export default Reservation;

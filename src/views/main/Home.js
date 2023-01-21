@@ -13,7 +13,7 @@ const Home = () => {
         {loginUser ? (
           <>
             <Link
-              to="/app/reserve"
+              to="/app/reservation"
               className="home__main__btn"
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -25,7 +25,7 @@ const Home = () => {
         ) : (
           <>
             <Link
-              to="/signin"
+              to="/auth/signin"
               className="home__main__btn"
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
