@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import BackButton from 'components/UI/BackButton';
-import { getByDisplayValue } from '@testing-library/react';
+
 import { db, auth } from 'util/firebaseConfig';
-import { getDoc, docSnap, doc } from 'firebase/firestore';
+import { getDoc, doc } from 'firebase/firestore';
 
 const Reservecheck = () => {
   const selectedTime = localStorage.getItem('key');
@@ -12,16 +12,18 @@ const Reservecheck = () => {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    console.log('page load');
     const getDB = async () => {
       const docRef = doc(db, 'users', auth.currentUser.uid);
       const docSnap = await getDoc(docRef);
-      console.log(docSnap.data());
       setUserData(docSnap.data());
     };
     getDB();
   }, []);
 
+  // 사용 목적 체크박스 state
+  const [purpose, setPurpose] = useState('');
+
+  // 체크박스 1개만 체크 가능 & 체크한 값을 저장
   const checkOnlyOne = (checkThis) => {
     const checkboxes = document.getElementsByName('checkbox');
     for (let i = 0; i < checkboxes.length; i++) {
@@ -29,17 +31,22 @@ const Reservecheck = () => {
         checkboxes[i].checked = false;
       }
     }
-    if (checkboxes[0].checked === true || checkboxes[1].checked === true) {
+    if (checkboxes[0].checked === true) {
       handlecheck(true);
+      setPurpose(0);
+    } else if (checkboxes[1].checked === true) {
+      handlecheck(true);
+      setPurpose(1);
     }
   };
 
   const formSubmitHandler = async (event) => {
     try {
       event.preventDefault();
+
       console.log('formSubmitHandler 실행');
       //홈페이지로 이동
-      navigate('/');
+      navigate('/app/reserve/complete/:id');
     } catch (error) {
       console.log(error.message);
     }
