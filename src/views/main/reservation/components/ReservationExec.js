@@ -61,7 +61,7 @@ const ReserveExec = () => {
                           fontSize: '20px',
                           fontWeight: '600',
                         }}
-                        to={`/app/reserve/page/:${loginUser.email}`}
+                        to={`/app/reserve/page:${index}`}
                         onClick={() => {
                           window.scrollTo({ top: 0, behavior: 'smooth' });
                         }}
@@ -77,7 +77,7 @@ const ReserveExec = () => {
                   )}
                   {!loginUser && (
                     <Link
-                      to="/signin"
+                      to="/auth/signin"
                       onClick={() => {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
@@ -89,7 +89,7 @@ const ReserveExec = () => {
               </div>
             );
           })}
-        {!piano && <Loader></Loader>}
+        {!piano && <Loader />}
       </div>
     </>
   );

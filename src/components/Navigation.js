@@ -68,13 +68,27 @@ const Navigation = () => {
       </Link>
 
       <div className="nav__row">
-        <Link
-          to="/app/reserve"
-          className="nav__link"
-          onClick={navLinkClickHandler}
-        >
-          Reservation
-        </Link>
+        {!loginUser ? (
+          <Link
+            to="/auth/signin"
+            className="nav__link"
+            onClick={() => {
+              window.alert(
+                '로그인이 필요한 서비스입니다. 로그인 페이지로 이동합니다.'
+              );
+            }}
+          >
+            Reservation
+          </Link>
+        ) : (
+          <Link
+            to="/app/reservation"
+            className="nav__link"
+            onClick={navLinkClickHandler}
+          >
+            Reservation
+          </Link>
+        )}
         {!loginUser ? (
           <Link to="/auth/signin" className="nav__usermenu nav__link">
             <img
