@@ -12,8 +12,7 @@ import { db, auth } from 'util/firebaseConfig';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setLogIn } from 'util/reducer/loginSlice';
-import SignInButton from 'components/Sign/SignInButton';
-import BackButton from 'components/UI/BackButton';
+import SignInButton from 'views/auth/components/SignInButton';
 
 setPersistence(auth, browserSessionPersistence); // 세션 유지 시 로그인 유지
 const provider = new GoogleAuthProvider(); // 구글 로그인 공급자 생성
@@ -44,39 +43,27 @@ const SignIn = () => {
   };
 
   return (
-    <div className="sign">
-      <BackButton />
-      <div className="sign-loginbox">
-        <Link to="/">
-          <img
-            src={process.env.PUBLIC_URL + '/img/logo1.png'}
-            width="236"
-            height="82"
-            alt="logo-signsin-title"
-            style={{ marginBottom: '83px' }}
-          />
+    <>
+      <div className="sign-loginbox-title">로그인</div>
+      <SignInButton
+        platform="구글"
+        imgSrc={process.env.PUBLIC_URL + '/img/google24.png'}
+        onClick={authHandler}
+      />
+      <div className="rq-msg">
+        <span style={{ marginRight: '3px' }}>아직 계정이 없으신가요 ?</span>
+        <Link to="/auth/signup">
+          <span style={{ color: 'black', fontWeight: 'bold' }}>회원가입</span>
         </Link>
-        <div className="sign-loginbox-title">로그인</div>
-        <SignInButton
-          platform="구글"
-          imgSrc={process.env.PUBLIC_URL + '/img/google24.png'}
-          onClick={authHandler}
-        />
-        <div className="rq-msg">
-          <span style={{ marginRight: '3px' }}>아직 계정이 없으신가요 ?</span>
-          <Link to="/signup">
-            <span style={{ color: 'black', fontWeight: 'bold' }}>회원가입</span>
-          </Link>
-        </div>
-        {authError && (
-          <div className="cf-msg">
-            로그인 중에 문제가 발생했습니다.
-            <br />
-            메세지 : {authError}
-          </div>
-        )}
       </div>
-    </div>
+      {authError && (
+        <div className="cf-msg">
+          로그인 중에 문제가 발생했습니다.
+          <br />
+          메세지 : {authError}
+        </div>
+      )}
+    </>
   );
 };
 

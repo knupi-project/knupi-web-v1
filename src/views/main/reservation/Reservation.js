@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
-import ReserveExec from 'components/Reserve/ReserveExec';
-import ReserveStatus from 'components/Reserve/ReserveStatus';
+import ReserveExec from 'views/main/reservation/components/ReservationExec';
+import ReserveStatus from 'views/main/reservation/components/ReservationStatus';
 // import { Link } from 'react-router-dom';
 
 const Reserve = () => {

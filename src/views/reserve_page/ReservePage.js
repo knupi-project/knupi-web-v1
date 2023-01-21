@@ -92,6 +92,7 @@ const ReservePage = () => {
                     <div className="datepickerHeader">
                       <div onClick={decreaseMonth}>
                         <img
+                          alt="달력 왼쪽 화살표"
                           src={process.env.PUBLIC_URL + '/img/back.png'}
                           className="h-6"
                         />
@@ -99,6 +100,7 @@ const ReservePage = () => {
                       <div> {formatDate(date)}</div>
                       <div onClick={increaseMonth}>
                         <img
+                          alt="달력 오른쪽 화살표"
                           src={process.env.PUBLIC_URL + '/img/back.png'}
                           className="h-6"
                           id="h-6_reverse"
@@ -134,7 +136,7 @@ const ReservePage = () => {
                       key={idx}
                       value={idx}
                       className={
-                        'time-block' + (idx == btnActive ? ' active' : '')
+                        'time-block' + (idx === btnActive ? ' active' : '')
                       }
                       onClick={toggleActive}
                       tabIndex="0"

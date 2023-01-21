@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import ReserveTable from 'components/UserReserve/ReserveTable';
+import ReserveTable from 'views/profile/components/ReserveTable';
 
 const options = {
   weekday: 'short',

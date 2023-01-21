@@ -76,7 +76,7 @@ const Navigation = () => {
           Reservation
         </Link>
         {!loginUser ? (
-          <Link to="/signin" className="nav__usermenu nav__link">
+          <Link to="/auth/signin" className="nav__usermenu nav__link">
             <img
               className="user-login-icon"
               src={process.env.PUBLIC_URL + '/img/user-icon.png'}
