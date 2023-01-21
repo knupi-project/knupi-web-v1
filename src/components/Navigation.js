@@ -22,8 +22,15 @@ const Navigation = () => {
   };
 
   useEffect(() => {
-    const elements = document.getElementById('nav__' + pathname.split('/')[2]);
+    let elements = document.getElementsByClassName('nav__link');
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].classList.remove('selected');
+    }
+    elements = document.getElementById('nav__' + pathname.split('/')[2]);
+    elements && elements.focus()
     elements && elements.classList.add('selected');
+    
+    
   }, [pathname]);
 
   return (
