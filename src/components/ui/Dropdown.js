@@ -17,6 +17,14 @@ const Dropdown = () => {
     navigate('/');
   };
 
+  const onClickHandler = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const elements = document.getElementsByClassName('nav__link');
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].classList.remove('selected');
+    }
+  };
+
   // Close the dropdown if the user clicks outside of it
   window.onclick = function (event) {
     if (
@@ -43,17 +51,13 @@ const Dropdown = () => {
       <div id="dropdown-list" className="dropdown-content">
         <Link
           to={`/app/profile/:${auth.currentUser.email}/info`}
-          onClick={() => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
+          onClick={onClickHandler}
         >
           내 정보
         </Link>
         <Link
           to={`/app/profile/:${auth.currentUser.email}/reserve`}
-          onClick={() => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
+          onClick={onClickHandler}
         >
           내 예약
         </Link>
