@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { db, auth } from 'util/firebaseConfig';
 import { getDoc, doc } from 'firebase/firestore';
@@ -15,6 +17,12 @@ const Reservecheck = () => {
       setUserData(docSnap.data());
     };
     getDB();
+  }, []);
+
+  useEffect(() => {
+    const keyData = localStorage.getItem('key');
+    !keyData && alert('예약 시간이 없습니다. 예약 페이지로 이동합니다.');
+    return () => {};
   }, []);
 
   return (
