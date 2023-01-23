@@ -304,8 +304,7 @@ body {
 
       .piano_card_container {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
       }
 
       .piano_card_go {

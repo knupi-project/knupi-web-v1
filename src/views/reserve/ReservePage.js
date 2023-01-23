@@ -9,20 +9,39 @@ import moment from 'moment';
 import 'moment/locale/ko';
 
 const ReservePage = () => {
-  let data = [
-    '8:00',
-    '8:30',
-    '9:00',
-    '9:30',
-    '10:00',
-    '10:30',
-    '11:00',
-    '11:30',
-    '12:00',
-    '12:30',
-  ];
+  function getTimeFromHourMinuteString(hourMinuteString) {
+    const [hour, minute] = hourMinuteString.split(':');
+    const time = new Date();
+    time.setHours(parseInt(hour));
+    time.setMinutes(parseInt(minute));
+    time.setSeconds(0);
+
+    return time;
+  }
+
+  function getStringFromDate(date) {
+    const hours = ('0' + date.getHours()).slice(-2);
+    const minutes = ('0' + date.getMinutes()).slice(-2);
+    const timeStr = hours + ':' + minutes;
+
+    return timeStr;
+  }
+
+  function getTimeArray(start, end, interval) {
+    let startTime = getTimeFromHourMinuteString(start);
+    const endTime = getTimeFromHourMinuteString(end);
+    const timeArray = [];
+    const intervalMS = interval * 60 * 1000;
+    while (startTime < endTime) {
+      timeArray.push(startTime);
+      startTime = new Date(startTime.getTime() + intervalMS);
+    }
+    return timeArray;
+  }
+  const data = getTimeArray('09:00', '22:30', 30);
+
   const { type } = useParams();
-  
+
   let [btnActive, setBtnActive] = useState();
   const toggleActive = (e) => {
     setBtnActive((prev) => {
@@ -114,12 +133,23 @@ const ReservePage = () => {
                   onClick={toggleActive}
                   tabIndex="0"
                 >
-                  {item}
+                  {getStringFromDate(item)}
                   <Link to={`/app/reserve/check${type}`}>
                     <button
                       key={'confirm_button' + idx}
                       className="home_time_block_confirm"
-                      onClick={() => localStorage.setItem('key', item)}
+                      onClick={() => {
+                        localStorage.setItem(
+                          'start time',
+                          getStringFromDate(item)
+                        );
+                        localStorage.setItem(
+                          'end time',
+                          getStringFromDate(
+                            new Date(item.getTime() + 30 * 60 * 1000)
+                          )
+                        );
+                      }}
                     >
                       확인
                     </button>

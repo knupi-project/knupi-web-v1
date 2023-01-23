@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react';
 
 import { useNavigate, useParams } from 'react-router-dom';
 import { db, auth } from 'util/firebaseConfig';
-import { getDoc, doc } from 'firebase/firestore';
+import { getDoc, doc, collection, addDoc } from 'firebase/firestore';
 
 const Reservecheck = () => {
-  const selectedTime = localStorage.getItem('key');
+  const selectedTime = localStorage.getItem('start time');
+  const finishTime = localStorage.getItem('end time');
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
 
+  // getDB
   useEffect(() => {
     const getDB = async () => {
       const docRef = doc(db, 'users', auth.currentUser.uid);
@@ -38,9 +40,18 @@ const Reservecheck = () => {
     }
   };
 
+  // submit
   const formSubmitHandler = async (event) => {
+    event.preventDefault();
     try {
-      event.preventDefault();
+      const docRef = await addDoc(collection(db, type), {
+        name: userData.nickname,
+        createdAt: Date.now(),
+        reserveTime: selectedTime,
+        purpose: purpose,
+        pianoNumber: type,
+      });
+      console.log('Document written with ID: ', docRef.id);
 
       console.log('formSubmitHandler 실행');
       //홈페이지로 이동
@@ -53,6 +64,7 @@ const Reservecheck = () => {
 
   const [imChecked, handlecheck] = useState(true);
   const { type } = useParams();
+
   return (
     <div className="home_check">
       <p id="home_check_title">예약 정보를 확인해주세요</p>
@@ -61,7 +73,7 @@ const Reservecheck = () => {
           이름 : {userData && userData.nickname}
         </p>
         <p className="home_check_time" id="home_check_subtitle">
-          예약 시간 : {selectedTime} ~ {selectedTime}
+          예약 시간 : {selectedTime} ~ {finishTime}
         </p>
       </div>
       <p id="home_check_title">사용 목적을 입력해주세요</p>
