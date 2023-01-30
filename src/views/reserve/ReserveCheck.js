@@ -7,6 +7,8 @@ import { getDoc, doc, collection, addDoc } from 'firebase/firestore';
 const Reservecheck = () => {
   const selectedTime = localStorage.getItem('start time');
   const finishTime = localStorage.getItem('end time');
+  const selectedDate = localStorage.getItem('date');
+
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
 
@@ -22,6 +24,15 @@ const Reservecheck = () => {
 
   // 사용 목적 체크박스 state
   const [purpose, setPurpose] = useState('');
+
+  // purpose값 string으로 바꾸기
+  useEffect(() => {
+    if (purpose === 0) {
+      setPurpose('멘토링');
+    } else {
+      setPurpose('개인 연습');
+    }
+  }, [purpose]);
 
   // 체크박스 1개만 체크 가능 & 체크한 값을 저장
   const checkOnlyOne = (checkThis) => {
@@ -47,6 +58,7 @@ const Reservecheck = () => {
       const docRef = await addDoc(collection(db, type), {
         name: userData.nickname,
         createdAt: Date.now(),
+        reserveDate: selectedDate,
         reserveTime: selectedTime,
         purpose: purpose,
         pianoNumber: type,
@@ -72,8 +84,8 @@ const Reservecheck = () => {
         <p className="home_check_name" id="home_check_subtitle">
           이름 : {userData && userData.nickname}
         </p>
-        <p className="home_check_time" id="home_check_subtitle">
-          예약 시간 : {selectedTime} ~ {finishTime}
+        <p id="home_check_subtitle">
+          예약 일시 : {selectedDate} // {selectedTime} ~ {finishTime}
         </p>
       </div>
       <p id="home_check_title">사용 목적을 입력해주세요</p>

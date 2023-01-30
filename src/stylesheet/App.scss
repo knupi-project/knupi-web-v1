@@ -247,7 +247,7 @@ body {
     margin: 20px 0px 50px -15px;
   }
 
-  $piano-border-color: rgb(185, 183, 183);
+  $piano-border-color: #000000;
   .piano_card_box {
     display: flex;
     flex-wrap: wrap;
@@ -265,7 +265,7 @@ body {
       min-height: 340px;
       max-height: 500px;
 
-      border: 3px solid $piano-border-color;
+      border: 2px solid $piano-border-color;
       border-top: 40px solid $piano-border-color;
       padding: 40px;
       margin: 40px 10px;
@@ -324,18 +324,18 @@ body {
     margin: 100px 0px;
 
     .home_top-bar {
-      background-color: rgb(185, 183, 183);
+      background-color: #000000;
       width: 1080px;
       height: 40px;
     }
     .home_main {
-      border: 3px solid #f8f8f8;
+      border: 1px solid #000000;
       width: 1080px;
       height: 720px;
       display: flex;
       justify-content: center;
       box-sizing: border-box;
-      box-shadow: 3px 3px 3px 3px rgba(128, 128, 128, 0.5);
+      box-shadow: 3px 3px 3px 3px rgba(120, 122, 124, 0.5);
     }
     .home_info {
       width: 320px;
@@ -473,6 +473,7 @@ body {
   }
   #home_check_subtitle {
     margin: 50px 0px;
+    line-height: 10px;
     font-size: 21px;
     font-weight: 400;
   }

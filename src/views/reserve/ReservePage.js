@@ -149,6 +149,10 @@ const ReservePage = () => {
                             new Date(item.getTime() + 30 * 60 * 1000)
                           )
                         );
+                        localStorage.setItem(
+                          'date',
+                          moment(startDate).format('YYYY년 M월 D일')
+                        );
                       }}
                     >
                       확인

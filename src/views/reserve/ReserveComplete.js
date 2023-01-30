@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import React from 'react';
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { db, auth } from 'util/firebaseConfig';
 import { getDoc, doc } from 'firebase/firestore';
@@ -8,6 +6,7 @@ import { getDoc, doc } from 'firebase/firestore';
 const Reservecheck = () => {
   const selectedTime = localStorage.getItem('start time');
   const finishTime = localStorage.getItem('end time');
+  const selectedDate = localStorage.getItem('date');
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -20,7 +19,7 @@ const Reservecheck = () => {
   }, []);
 
   useEffect(() => {
-    const keyData = localStorage.getItem('key');
+    const keyData = localStorage.getItem('start time');
     !keyData && alert('예약 시간이 없습니다. 예약 페이지로 이동합니다.');
     return () => {};
   }, []);
@@ -33,7 +32,7 @@ const Reservecheck = () => {
           이름 : {userData && userData.nickname}
         </p>
         <p className="home_check_time" id="home_check_subtitle">
-          예약 시간 : {selectedTime} ~ {finishTime}
+          예약 일시 : {selectedDate} // {selectedTime} ~ {finishTime}
         </p>
       </div>
 

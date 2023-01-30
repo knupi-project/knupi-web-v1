@@ -2,7 +2,14 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { auth, db } from 'util/firebaseConfig';
-import { doc, getDoc } from 'firebase/firestore';
+import {
+  doc,
+  getDoc,
+  updateDoc,
+  query,
+  collection,
+  onSnapshot,
+} from 'firebase/firestore';
 import { updateUserInfo } from 'util/reducer/loginSlice';
 
 const UserInfo = () => {
@@ -10,12 +17,19 @@ const UserInfo = () => {
     useSelector((state) => state.login.userInfo)
   );
   const dispatch = useDispatch();
+  const [editing, setEditing] = useState(false);
   const [nickName, setNickName] = useState('');
+
+  const toggleEditing = () => setEditing((prev) => !prev);
 
   const formSubmitHandler = async (event) => {
     try {
       event.preventDefault();
       console.log('formSubmitHandler 실행');
+      const UserRef = doc(db, 'users', `${auth.currentUser.uid}`);
+      await updateDoc(UserRef, { nickname: nickName });
+      toggleEditing();
+      alert('변경되었습니다!');
     } catch (error) {
       console.log(error.message);
     }
@@ -23,7 +37,6 @@ const UserInfo = () => {
 
   const nickChangeHandler = ({ target: { value } }) => {
     setNickName(value);
-    console.log(nickName);
   };
 
   useEffect(() => {
@@ -62,24 +75,44 @@ const UserInfo = () => {
           <div className="menu__content__msg">
             로그인 이메일 : {userInfo.email}
           </div>
-          <div className="menu__content__msg">
-            로그인 닉네임 : {userInfo.nickname}
+          <div className="menu__nickname_div">
+            {editing ? (
+              <div className="edit_mode_container">
+                <form
+                  className="menu__content__form"
+                  onSubmit={formSubmitHandler}
+                >
+                  <div className="edit_mode_div">
+                    <label htmlFor="name">변경할 닉네임 : </label>
+                    <input
+                      type="text"
+                      placeholder="이름을 입력하세요"
+                      onChange={nickChangeHandler}
+                      id="name"
+                      required
+                    />
+                  </div>
+                  <button className="edit_mode_btn" type="submit">
+                    submit
+                  </button>
+                </form>
+                <button
+                  style={{ marginTop: '-3px' }}
+                  className="edit_mode_btn"
+                  onClick={toggleEditing}
+                >
+                  back
+                </button>
+              </div>
+            ) : (
+              <>
+                <p>로그인 닉네임 : {userInfo.nickname}</p>
+                <button className="edit_btn" onClick={toggleEditing}>
+                  수정하기
+                </button>
+              </>
+            )}
           </div>
-          <form className="menu__content__form" onSubmit={formSubmitHandler}>
-            {[1, 2, 3, 4].map((item, index) => {
-              return (
-                <div className="inputbox" key={index}>
-                  <div className="inputbox__title">이름</div>
-                  <input
-                    type="text"
-                    placeholder="이름을 입력하세요"
-                    onChange={nickChangeHandler}
-                  />
-                </div>
-              );
-            })}
-            <button type="submit">폼 버튼</button>
-          </form>
         </div>
       )}
       {!userInfo && <div>데이터 로딩중..</div>}

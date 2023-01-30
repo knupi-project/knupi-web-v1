@@ -202,6 +202,43 @@
           }
         }
       }
+
+      .edit_mode_container {
+        width: 100%;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+      }
+
+      .menu__nickname_div {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+
+        height: 50px;
+        width: 50%;
+        font-size: 1.1rem;
+        font-weight: 400;
+
+        .edit_btn {
+          margin-left: 15px !important;
+        }
+
+        #name {
+          margin: 0px 10px;
+        }
+      }
+    }
+
+    .edit_mode_div {
+      display: flex;
+      align-items: center;
+      .edit_mode_btn {
+      }
+    }
+
+    .cancel_btn {
+      width: 40px !important;
     }
 
     .none {
