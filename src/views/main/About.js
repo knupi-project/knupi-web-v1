@@ -45,28 +45,84 @@ function About() {
     return `${year}년 ${`0${monthIndex}`.slice(-2)}월`;
   };
 
+  function getTimeArray(start, end, interval) {
+    let startTime = getTimeFromHourMinuteString(start);
+    const endTime = getTimeFromHourMinuteString(end);
+    const timeArray = [];
+    const intervalMS = interval * 60 * 1000;
+    while (startTime < endTime) {
+      timeArray.push(startTime);
+      startTime = new Date(startTime.getTime() + intervalMS);
+    }
+    return timeArray;
+  }
+  function getTimeFromHourMinuteString(hourMinuteString) {
+    const [hour, minute] = hourMinuteString.split(':');
+    const time = new Date();
+    time.setHours(parseInt(hour));
+    time.setMinutes(parseInt(minute));
+    time.setSeconds(0);
+
+    return time;
+  }
+  const timeArray = getTimeArray('09:00', '22:30', 30);
+
   // 날짜 선택할 때 마다 쿼리함. 저번에 얘기 했을 때는 여러번 쿼리 안하자 했는데..
   useEffect(() => {
     // 콜렉션 ":0"에서 선택한 날짜 변수가 존재하는 문서만 쿼리
-    const q = query(
-      collection(db, ':0'),
-      where('reserveDate', '==', SelectedDay)
-    );
+    const asdfa = timeArray.map(async function (time) {
+      const q0 = query(
+        collection(db, ':0'),
+        where('reserveDateTime', '==', `${SelectedDay}_${time}`)
+      );
+      const q1 = query(
+        collection(db, ':1'),
+        where('reserveDateTime', '==', `${SelectedDay}_${time}`)
+      );
+      const q2 = query(
+        collection(db, ':2'),
+        where('reserveDateTime', '==', `${SelectedDay}_${time}`)
+      );
+      const q3 = query(
+        collection(db, ':3'),
+        where('reserveDateTime', '==', `${SelectedDay}_${time}`)
+      );
+      const query0Snapshot = await getDocs(q0);
+      const query1Snapshot = await getDocs(q1);
+      const query2Snapshot = await getDocs(q2);
+      const query3Snapshot = await getDocs(q3);
+      Promise.all([
+        query0Snapshot,
+        query1Snapshot,
+        query2Snapshot,
+        query3Snapshot,
+      ])
+        .then(
+          ([
+            query0Snapshot,
+            query1Snapshot,
+            query2Snapshot,
+            query3Snapshot,
+          ]) => {
+            const findFnc = async () => {
+              const NamesArr0 = query0Snapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+              }));
+              setNames(NamesArr0);
+            };
+            console.log(names);
+            findFnc();
+          }
+        )
+        .catch((error) => {
+          // Handle errors here
+        });
+    });
 
-    //ㅡㅇ악 밥ㅁㄱ으러 갈거얄만어람너리만어라멍
-    const citiesRef = collection(db, 'reservation');
+    console.log(asdfa);
 
     // 쿼리한 문서 + document id값 해서 names에 array로 저장
-    const findFnc = async () => {
-      const querySnapshot = await getDocs(q);
-      const NamesArr = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setNames(NamesArr);
-    };
-    console.log(names);
-    findFnc();
   }, [startDate]);
 
   // firebase 예약 데이터

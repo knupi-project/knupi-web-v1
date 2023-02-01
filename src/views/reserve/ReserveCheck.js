@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { useNavigate, useParams } from 'react-router-dom';
 import { db, auth } from 'util/firebaseConfig';
-import { getDoc, doc, collection, addDoc } from 'firebase/firestore';
+import { getDoc, doc, collection, setDoc } from 'firebase/firestore';
 
 const Reservecheck = () => {
   const selectedTime = localStorage.getItem('start time');
@@ -55,13 +55,12 @@ const Reservecheck = () => {
   const formSubmitHandler = async (event) => {
     event.preventDefault();
     try {
-      const docRef = await addDoc(collection(db, type), {
+      const docRef = doc(db, type, `${selectedDate}_${selectedTime}`);
+      await setDoc(docRef, {
         name: userData.nickname,
         createdAt: Date.now(),
-        reserveDate: selectedDate,
-        reserveTime: selectedTime,
+        reserveDateTime: `${selectedDate}_${selectedTime}`,
         purpose: purpose,
-        pianoNumber: type,
       });
       console.log('Document written with ID: ', docRef.id);
 
