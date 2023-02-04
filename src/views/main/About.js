@@ -51,7 +51,7 @@ function About() {
     const timeArray = [];
     const intervalMS = interval * 60 * 1000;
     while (startTime < endTime) {
-      timeArray.push(startTime);
+      timeArray.push(getStringFromDate(startTime));
       startTime = new Date(startTime.getTime() + intervalMS);
     }
     return timeArray;
@@ -65,12 +65,24 @@ function About() {
 
     return time;
   }
+  function getStringFromDate(date) {
+    const hours = ('0' + date.getHours()).slice(-2);
+    const minutes = ('0' + date.getMinutes()).slice(-2);
+    const timeStr = hours + ':' + minutes;
+
+    return timeStr;
+  }
+
   const timeArray = getTimeArray('09:00', '22:30', 30);
+
+  const dayReserve = [];
+
+  // firebase 예약 데이터
+  const [names, setNames] = useState([]);
 
   // 날짜 선택할 때 마다 쿼리함. 저번에 얘기 했을 때는 여러번 쿼리 안하자 했는데..
   useEffect(() => {
-    // 콜렉션 ":0"에서 선택한 날짜 변수가 존재하는 문서만 쿼리
-    const asdfa = timeArray.map(async function (time) {
+    timeArray.map(async function (time) {
       const q0 = query(
         collection(db, ':0'),
         where('reserveDateTime', '==', `${SelectedDay}_${time}`)
@@ -87,65 +99,46 @@ function About() {
         collection(db, ':3'),
         where('reserveDateTime', '==', `${SelectedDay}_${time}`)
       );
-      const query0Snapshot = await getDocs(q0);
-      const query1Snapshot = await getDocs(q1);
-      const query2Snapshot = await getDocs(q2);
-      const query3Snapshot = await getDocs(q3);
-      Promise.all([
-        query0Snapshot,
-        query1Snapshot,
-        query2Snapshot,
-        query3Snapshot,
-      ])
-        .then(
-          ([
-            query0Snapshot,
-            query1Snapshot,
-            query2Snapshot,
-            query3Snapshot,
-          ]) => {
-            const findFnc = async () => {
-              const NamesArr0 = query0Snapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-              }));
-              setNames(NamesArr0);
-            };
-            console.log(names);
-            findFnc();
-          }
-        )
-        .catch((error) => {
-          // Handle errors here
-        });
+      const [query0Snapshot, query1Snapshot, query2Snapshot, query3Snapshot] =
+        await Promise.all([getDocs(q0), getDocs(q1), getDocs(q2), getDocs(q3)]);
+      query0Snapshot.docs.map((doc) => {
+        if (doc.data) {
+          dayReserve.push(doc.data());
+        }
+      });
+      query1Snapshot.docs.map((doc) => {
+        if (doc.data) {
+          dayReserve.push(doc.data());
+        }
+      });
+      query2Snapshot.docs.map((doc) => {
+        if (doc.data) {
+          dayReserve.push(doc.data());
+        }
+      });
+      query3Snapshot.docs.map((doc) => {
+        if (doc.data) {
+          dayReserve.push(doc.data());
+        }
+      });
+      setNames(dayReserve);
     });
-
-    console.log(asdfa);
-
     // 쿼리한 문서 + document id값 해서 names에 array로 저장
   }, [startDate]);
 
-  // firebase 예약 데이터
-  const [names, setNames] = useState([]);
-
   // 현황표에 들어가는 data
   const [data, setData] = useState([]);
-
-  // 표에 들어가는 data state에 names array를 저장
-  useEffect(() => {
-    setData(names);
-  }, [names]);
 
   // 표 columns
   const columns = useMemo(
     () => [
       {
         Header: '예약 시간',
-        accessor: 'reserveTime',
+        accessor: 'reserveDateTime',
       },
       {
         Header: '피아노 번호',
-        accessor: 'pianoNumber',
+        accessor: 'number',
       },
       {
         Header: '이름',
@@ -159,8 +152,16 @@ function About() {
     []
   );
 
+  // 표에 들어가는 data state에 names array를 저장
+  useEffect(() => {
+    setData(names);
+  }, [names]);
+
+  console.log(data);
+
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });
+  console.log(names);
 
   return (
     <div className="reservation_main" style={{ marginTop: '150px' }}>

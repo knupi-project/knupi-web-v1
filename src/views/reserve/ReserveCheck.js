@@ -61,6 +61,7 @@ const Reservecheck = () => {
         createdAt: Date.now(),
         reserveDateTime: `${selectedDate}_${selectedTime}`,
         purpose: purpose,
+        number: `${type.slice(1, 2)}번`,
       });
       console.log('Document written with ID: ', docRef.id);
 
