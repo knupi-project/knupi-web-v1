@@ -101,31 +101,48 @@ function About() {
       );
       const [query0Snapshot, query1Snapshot, query2Snapshot, query3Snapshot] =
         await Promise.all([getDocs(q0), getDocs(q1), getDocs(q2), getDocs(q3)]);
-      query0Snapshot.docs.map((doc) => {
-        if (doc.data) {
-          dayReserve.push(doc.data());
-        }
-      });
-      query1Snapshot.docs.map((doc) => {
-        if (doc.data) {
-          dayReserve.push(doc.data());
-        }
-      });
-      query2Snapshot.docs.map((doc) => {
-        if (doc.data) {
-          dayReserve.push(doc.data());
-        }
-      });
-      query3Snapshot.docs.map((doc) => {
-        if (doc.data) {
-          dayReserve.push(doc.data());
-        }
-      });
+      const timeQuery = {
+        time: time,
+        no0: ' ',
+        no1: ' ',
+        no2: ' ',
+        no3: ' ',
+      };
+      if (
+        query0Snapshot.empty &&
+        query1Snapshot.empty &&
+        query2Snapshot.empty &&
+        query3Snapshot.empty
+      ) {
+      } else {
+        query0Snapshot.docs.map((doc) => {
+          const Name0 = `${doc.data().name} // ${doc.data().purpose}`;
+          console.log(Name0);
+          timeQuery['no0'] = Name0;
+        });
+
+        query1Snapshot.docs.map((doc) => {
+          const Name1 = `${doc.data().name} // ${doc.data().purpose}`;
+          timeQuery['no1'] = Name1;
+        });
+
+        query2Snapshot.docs.map((doc) => {
+          const Name2 = `${doc.data().name} // ${doc.data().purpose}`;
+          timeQuery['no2'] = Name2;
+        });
+
+        query3Snapshot.docs.map((doc) => {
+          const Name3 = `${doc.data().name} // ${doc.data().purpose}`;
+          timeQuery['no3'] = Name3;
+        });
+
+        dayReserve.push(timeQuery);
+      }
       setNames(dayReserve);
     });
     // 쿼리한 문서 + document id값 해서 names에 array로 저장
+    console.log(names);
   }, [startDate]);
-
   // 현황표에 들어가는 data
   const [data, setData] = useState([]);
 
@@ -134,19 +151,23 @@ function About() {
     () => [
       {
         Header: '예약 시간',
-        accessor: 'reserveDateTime',
+        accessor: 'time',
       },
       {
-        Header: '피아노 번호',
-        accessor: 'number',
+        Header: '업라이트 피아노',
+        accessor: 'no0',
       },
       {
-        Header: '이름',
-        accessor: 'name',
+        Header: '1번 피아노',
+        accessor: 'no1',
       },
       {
-        Header: '사용목적',
-        accessor: 'purpose',
+        Header: '2번 피아노',
+        accessor: 'no2',
+      },
+      {
+        Header: '3번 피아노',
+        accessor: 'no3',
       },
     ],
     []
@@ -157,14 +178,13 @@ function About() {
     setData(names);
   }, [names]);
 
-  console.log(data);
+  // console.log(names);
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });
-  console.log(names);
 
   return (
-    <div className="reservation_main" style={{ marginTop: '150px' }}>
+    <div className="about_main" style={{ marginTop: '150px' }}>
       <div className="reservation_main_container">
         <div className="reservation_main_box">
           <div className="reservation_main_calendar">
@@ -216,11 +236,11 @@ function About() {
         </div>
       </div>
 
-      <div>
+      <div className="hi">
         <table
           {...getTableProps()}
           style={{
-            width: '100%',
+            width: '150%',
           }}
         >
           <thead>
@@ -231,10 +251,11 @@ function About() {
                     {...column.getHeaderProps()}
                     style={{
                       textAlign: 'center',
-                      width: '20%',
+                      width: '10%',
                       borderBottom: 'solid 3px black',
                       color: 'black',
                       fontWeight: 'bold',
+                      fontSize: '20px',
                     }}
                   >
                     {column.render('Header')}
@@ -254,6 +275,7 @@ function About() {
                         {...cell.getCellProps()}
                         style={{
                           textAlign: 'center',
+                          fontSize: '20px',
                         }}
                       >
                         {cell.render('Cell')}
