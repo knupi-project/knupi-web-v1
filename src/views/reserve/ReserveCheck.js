@@ -55,14 +55,17 @@ const Reservecheck = () => {
   const formSubmitHandler = async (event) => {
     event.preventDefault();
     try {
-      const docRef = doc(db, type, `${selectedDate}_${selectedTime}`);
-      await setDoc(docRef, {
+      const docRef = doc(
+        collection(db, 'reservations', selectedDate, `${type.slice(1, 2)}번`),
+        selectedTime
+      );
+      const reservationData = {
         name: userData.nickname,
         createdAt: Date.now(),
         reserveDateTime: `${selectedDate}_${selectedTime}`,
         purpose: purpose,
-        number: `${type.slice(1, 2)}번`,
-      });
+      };
+      await setDoc(docRef, reservationData);
       console.log('Document written with ID: ', docRef.id);
 
       console.log('formSubmitHandler 실행');

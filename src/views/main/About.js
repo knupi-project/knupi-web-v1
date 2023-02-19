@@ -37,6 +37,7 @@ function getTimeFromHourMinuteString(hourMinuteString) {
 
   return time;
 }
+
 function getStringFromDate(date) {
   const hours = ('0' + date.getHours()).slice(-2);
   const minutes = ('0' + date.getMinutes()).slice(-2);
@@ -61,11 +62,8 @@ function About() {
     const getData = async () => {
       let dayReserve = await Promise.all(
         timeArray.map(async (time) => {
-          const querys = [':0', ':1', ':2', ':3'].map((item) => {
-            return query(
-              collection(db, item),
-              where('reserveDateTime', '==', `${SelectedDay}_${time}`)
-            );
+          const querys = ['0번', '1번', '2번', '3번'].map((item) => {
+            return query(collection(db, 'reservations', startDate, item));
           });
 
           const [
