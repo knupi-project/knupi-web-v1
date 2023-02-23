@@ -12,19 +12,19 @@ const ReservedList = ({ list }) => {
       },
       {
         Header: '업라이트 피아노',
-        accessor: 'no0',
+        accessor: '0번',
       },
       {
         Header: '1번 피아노',
-        accessor: 'no1',
+        accessor: '1번',
       },
       {
         Header: '2번 피아노',
-        accessor: 'no2',
+        accessor: '2번',
       },
       {
         Header: '3번 피아노',
-        accessor: 'no3',
+        accessor: '3번',
       },
     ],
     []

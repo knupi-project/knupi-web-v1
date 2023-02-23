@@ -64,6 +64,7 @@ const Reservecheck = () => {
         createdAt: Date.now(),
         reserveDateTime: `${selectedDate}_${selectedTime}`,
         purpose: purpose,
+        pianoNum: `${type.slice(1, 2)}번`,
       };
       await setDoc(docRef, reservationData);
       console.log('Document written with ID: ', docRef.id);
