@@ -1,6 +1,8 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { db } from 'util/firebaseConfig';
 import { Link, useParams } from 'react-router-dom';
+import { collection, getDocs, doc } from 'firebase/firestore';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'; // css import
 import { ko } from 'date-fns/esm/locale';
@@ -9,6 +11,15 @@ import moment from 'moment';
 import 'moment/locale/ko';
 
 const ReservePage = () => {
+  // 달력
+  const [startDate, setStartDate] = useState(new Date()); // 달력 날짜 변경 시 기준점이 되는 날짜
+  const formatDate = (d) => {
+    const date = new Date(d);
+    const monthIndex = date.getMonth() + 1;
+    const year = date.getFullYear();
+    return `${year}년 ${`0${monthIndex}`.slice(-2)}월`;
+  };
+
   function getTimeFromHourMinuteString(hourMinuteString) {
     const [hour, minute] = hourMinuteString.split(':');
     const time = new Date();
@@ -38,7 +49,39 @@ const ReservePage = () => {
     }
     return timeArray;
   }
-  const data = getTimeArray('09:00', '22:30', 30);
+  function getTimeFromHourMinuteString(hourMinuteString) {
+    const [hour, minute] = hourMinuteString.split(':');
+    const time = new Date();
+    time.setHours(parseInt(hour));
+    time.setMinutes(parseInt(minute));
+    time.setSeconds(0);
+
+    return time;
+  }
+
+  function getStringFromDate(date) {
+    const hours = ('0' + date.getHours()).slice(-2);
+    const minutes = ('0' + date.getMinutes()).slice(-2);
+    const timeStr = hours + ':' + minutes;
+
+    return timeStr;
+  }
+  const timeArray = getTimeArray('09:00', '22:30', 30);
+
+  const YMD = moment(startDate).format('YYYY년 M월 D일');
+  const [list, setLists] = useState([]);
+  useEffect(() => {
+    // 선택한 날짜
+    const reservationsRef = doc(db, 'reservations', YMD);
+    const setTimeArray = async () => {
+      const querySnapshot = await getDocs(collection(reservationsRef, '0번'));
+      querySnapshot.forEach((doc) => {
+        timeArray.pop(doc.id);
+        console.log(doc.id, 'detected');
+      });
+    };
+    setTimeArray();
+  }, [startDate]);
 
   const { type } = useParams();
 
@@ -47,15 +90,6 @@ const ReservePage = () => {
     setBtnActive((prev) => {
       return e.target.value;
     });
-  };
-
-  // 달력
-  const [startDate, setStartDate] = useState(new Date()); // 달력 날짜 변경 시 기준점이 되는 날짜
-  const formatDate = (d) => {
-    const date = new Date(d);
-    const monthIndex = date.getMonth() + 1;
-    const year = date.getFullYear();
-    return `${year}년 ${`0${monthIndex}`.slice(-2)}월`;
   };
 
   return (
@@ -121,7 +155,7 @@ const ReservePage = () => {
         </div>
 
         <div className="home_time_container">
-          {data.map((item, idx) => {
+          {timeArray.map((item, idx) => {
             return (
               <div className="home_time_block" key={idx + 'big_button'}>
                 <div
