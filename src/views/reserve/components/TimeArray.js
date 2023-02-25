@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import 'moment/locale/ko';
 
-const TimeArray = ({ startDate, type }) => {
+const TimeArray = ({ startDate, type, reserveArray }) => {
   let [btnActive, setBtnActive] = useState();
   const toggleActive = (e) => {
     setBtnActive((prev) => {
@@ -12,9 +12,8 @@ const TimeArray = ({ startDate, type }) => {
     });
   };
 
-  function getTimeFromHourMinuteString(hourMinuteString) {
+  function getTimeFromHourMinuteString(hourMinuteString, time = new Date()) {
     const [hour, minute] = hourMinuteString.split(':');
-    const time = new Date();
     time.setHours(parseInt(hour));
     time.setMinutes(parseInt(minute));
     time.setSeconds(0);
@@ -33,30 +32,25 @@ const TimeArray = ({ startDate, type }) => {
   function getTimeArray(start, end, interval) {
     let startTime = getTimeFromHourMinuteString(start);
     const endTime = getTimeFromHourMinuteString(end);
-    const timeArray = [];
+    let timeArray = [];
     const intervalMS = interval * 60 * 1000;
     while (startTime < endTime) {
       timeArray.push(startTime);
       startTime = new Date(startTime.getTime() + intervalMS);
     }
+    reserveArray.forEach((data, i) => {
+      const [hour, minute] = data.split(':');
+      const index = (hour - 9) * 2 + (minute === '30' ? 1 : 0);
+      timeArray.splice(index, 1, 0);
+    });
+    // for (let i = 0; i < reserveArray.length; i++) {
+    //   const [hour, minute] = reserveArray[i].split(':');
+    //   const index = (hour - 9) * 2 + (minute === '30' ? 1 : 0);
+    //   timeArray.splice(index, 1, 0);
+    // }
+    timeArray = timeArray.filter((word) => word != 0);
+    console.log(timeArray);
     return timeArray;
-  }
-  function getTimeFromHourMinuteString(hourMinuteString) {
-    const [hour, minute] = hourMinuteString.split(':');
-    const time = new Date();
-    time.setHours(parseInt(hour));
-    time.setMinutes(parseInt(minute));
-    time.setSeconds(0);
-
-    return time;
-  }
-
-  function getStringFromDate(date) {
-    const hours = ('0' + date.getHours()).slice(-2);
-    const minutes = ('0' + date.getMinutes()).slice(-2);
-    const timeStr = hours + ':' + minutes;
-
-    return timeStr;
   }
   const timeArray = getTimeArray('09:00', '22:30', 30);
 

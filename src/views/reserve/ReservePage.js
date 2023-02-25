@@ -22,20 +22,25 @@ const ReservePage = () => {
   };
 
   const YMD = moment(startDate).format('YYYY년 M월 D일');
-  const [list, setLists] = useState([]);
+  const [reserveArray, setReserveArray] = useState([]);
   useEffect(() => {
     // 선택한 날짜
     const reservationsRef = doc(db, 'reservations', YMD);
     const setTimeArray = async () => {
-      const querySnapshot = await getDocs(collection(reservationsRef, '0번'));
+      const querySnapshot = await getDocs(
+        collection(reservationsRef, `${type.slice(1, 2)}번`)
+      );
+      let tempArray = [];
       querySnapshot.forEach((doc) => {
-        // timeArray.pop(doc.id);
-        console.log(doc.id, 'detected');
+        tempArray.push(doc.id);
       });
+      setReserveArray(tempArray);
     };
     setTimeArray();
   }, [startDate]);
-
+  useEffect(() => {
+    console.log(reserveArray);
+  }, [reserveArray]);
   const { type } = useParams();
 
   return (
@@ -101,7 +106,11 @@ const ReservePage = () => {
         </div>
 
         <div className="home_time_container">
-          <TimeArray startDate={startDate} type={type} />
+          <TimeArray
+            startDate={startDate}
+            type={type}
+            reserveArray={reserveArray}
+          />
         </div>
       </div>
     </>
