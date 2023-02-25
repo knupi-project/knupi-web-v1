@@ -67,51 +67,13 @@ const UserInfo = () => {
         <div className="menu__content exists">
           <div className="menu__content__title">계정</div>
           <div className="menu__content__msg">
-            개인정보를 업데이트 해주세요.
-          </div>
-          <div className="menu__content__msg">
             로그인 이름 : {userInfo.name}
           </div>
           <div className="menu__content__msg">
             로그인 이메일 : {userInfo.email}
           </div>
-          <div className="menu__nickname_div">
-            {editing ? (
-              <div className="edit_mode_container">
-                <form
-                  className="menu__content__form"
-                  onSubmit={formSubmitHandler}
-                >
-                  <div className="edit_mode_div">
-                    <label htmlFor="name">변경할 닉네임 : </label>
-                    <input
-                      type="text"
-                      placeholder="이름을 입력하세요"
-                      onChange={nickChangeHandler}
-                      id="name"
-                      required
-                    />
-                  </div>
-                  <button className="edit_mode_btn" type="submit">
-                    submit
-                  </button>
-                </form>
-                <button
-                  style={{ marginTop: '-3px' }}
-                  className="edit_mode_btn"
-                  onClick={toggleEditing}
-                >
-                  back
-                </button>
-              </div>
-            ) : (
-              <>
-                <p>로그인 닉네임 : {userInfo.nickname}</p>
-                <button className="edit_btn" onClick={toggleEditing}>
-                  수정하기
-                </button>
-              </>
-            )}
+          <div className="menu__content__msg">
+            로그인 닉네임 : {userInfo.nickname}
           </div>
         </div>
       )}
