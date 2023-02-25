@@ -4,7 +4,7 @@ import { collection, getDocs, doc } from 'firebase/firestore';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'; // css import
 import { ko } from 'date-fns/esm/locale';
-import { getMonth, getDate, addDays } from 'date-fns';
+import { getMonth, getDate, addDays, subDays } from 'date-fns';
 import moment from 'moment';
 import 'moment/locale/ko';
 import ReservedList from 'views/main/ReservedList';
@@ -125,7 +125,7 @@ const ReserveStatus = () => {
                   enabled: true,
                 },
               }}
-              minDate={new Date()} // 과거 날짜는 선택할 수 없게 disable
+              minDate={subDays(new Date(), 5)} // 과거 날짜는 선택할 수 없게 disable
               maxDate={addDays(new Date(), 13)} // 오늘로부터 13일까지 날짜 선택 가능
               onChange={(date) => setStartDate(date)} // 바뀐 날짜로 저장
               renderCustomHeader={({ date, decreaseMonth, increaseMonth }) => (
