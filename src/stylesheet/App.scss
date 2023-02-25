@@ -5,25 +5,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&display=swap');
 
 @media all and (min-width: 800px) {
-  html{
+  html {
     font-size: 19px;
   }
 }
 
 @media all and (max-width: 799px) and (min-width: 550px) {
-  html{
+  html {
     font-size: 2.6vw;
   }
 }
 
 @media all and (max-width: 549px) and (min-width: 340px) {
-  html{
+  html {
     font-size: 4.4vw;
   }
 }
 
 @media all and (max-width: 339px) and (min-width: 340px) {
-  html{
+  html {
     font-size: 13px;
   }
 }
@@ -248,6 +248,9 @@ body {
     .reservation_main_title {
       font-size: 1.5rem;
       margin: 10px 0px;
+      @media screen and (max-width: 768px) {
+        font-size: 1.25rem;
+      }
     }
 
     .reservation_main_subtitle {
@@ -494,28 +497,54 @@ body {
 
 .home_check {
   margin-top: 90px;
-  width: 760px;
+  width: 71%;
   padding: 0px 50px;
   border-left: 2px solid #dbdbdb;
   height: 500px;
+  @media screen and (max-width: 768px) {
+    border-left: 0px solid #dbdbdb;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
 #home_check_title {
+  @media screen and (max-width: 768px) {
+    width: 500px;
+    text-align: center;
+  }
   margin: 0px 0px 20px 0px;
-  font-size: 25px;
+  font-size: 1.3rem;
   font-weight: 600;
 }
 #home_check_subtitle {
+  width: 500px;
+  @media screen and (max-width: 768px) {
+    width: 500px;
+    text-align: center;
+  }
   margin: 50px 0px;
   line-height: 10px;
-  font-size: 21px;
+  font-size: 1.1rem;
   font-weight: 400;
 }
 #checkbox_div {
   display: flex;
+
   height: 60px;
   align-items: center;
+  @media screen and (max-width: 768px) {
+    width: 10rem;
+    justify-content: center;
+  }
 }
 input[type='checkbox'] {
+  @media screen and (max-width: 768px) {
+    width: 7.3rem;
+    height: 1.5rem;
+  }
   width: 25px;
   height: 25px;
   border-radius: 20%;
@@ -530,6 +559,9 @@ input[type='checkbox']:checked {
   border: none;
 }
 .reserve_button_div {
+  @media screen and (max-width: 768px) {
+    align-items: center;
+  }
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -557,7 +589,11 @@ input[type='checkbox']:checked {
   border-radius: 15px;
   border: none;
   background: #d9d9d9;
+  @media screen and (max-width: 768px) {
+    width: 30px;
+  }
 }
+
 .home_check_reserve:active {
   background: #646464;
   color: white;
