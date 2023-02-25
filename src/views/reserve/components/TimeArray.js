@@ -44,7 +44,6 @@ const TimeArray = ({ startDate, type, reserveArray }) => {
       timeArray.splice(index, 1);
     });
 
-    console.log(timeArray);
     return timeArray;
   }
   const timeArray = getTimeArray('09:00', '22:30', 30);
