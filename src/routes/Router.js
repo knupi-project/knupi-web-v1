@@ -27,22 +27,41 @@ const AppRouter = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" errorElement={<Error />}>
-        <Route path="/knupi-web-v1" element={<Navigate to="/knupi-web-v1/app/home" />}></Route>
+        <Route path="/" element={<Navigate to="/knupi-web-v1" />} />
+        <Route
+          path="/knupi-web-v1"
+          element={<Navigate to="/knupi-web-v1/app/home" />}
+        />
         <Route path="/knupi-web-v1/app" element={<MainLayout />}>
           <Route path="/knupi-web-v1/app/home" element={<Home />} />
-          <Route path="/knupi-web-v1/app/reservation" element={<Reservation />} />
+          <Route
+            path="/knupi-web-v1/app/reservation"
+            element={<Reservation />}
+          />
           <Route path="/knupi-web-v1/app/about" element={<About />} />
           <Route path="/knupi-web-v1/app/contact" element={<Contact />} />
           <Route path="/knupi-web-v1/app/reserve" element={<ReserveLayout />}>
-            <Route path="/knupi-web-v1/app/reserve/page:type" element={<ReservePage />} />
-            <Route path="/knupi-web-v1/app/reserve/check:type" element={<ReserveCheck />} />
+            <Route
+              path="/knupi-web-v1/app/reserve/page:type"
+              element={<ReservePage />}
+            />
+            <Route
+              path="/knupi-web-v1/app/reserve/check:type"
+              element={<ReserveCheck />}
+            />
             <Route
               path="/knupi-web-v1/app/reserve/complete:type"
               element={<ReserveComplete />}
             />
           </Route>
-          <Route path="/knupi-web-v1/app/profile/:id" element={<ProfileLayout />}>
-            <Route path="/knupi-web-v1/app/profile/:id/info" element={<UserInfo />} />
+          <Route
+            path="/knupi-web-v1/app/profile/:id"
+            element={<ProfileLayout />}
+          >
+            <Route
+              path="/knupi-web-v1/app/profile/:id/info"
+              element={<UserInfo />}
+            />
             <Route
               path="/knupi-web-v1/app/profile/:id/reserve"
               element={<UserReserveInfo />}
