@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { db } from 'util/firebaseConfig';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { collection, getDocs, doc } from 'firebase/firestore';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'; // css import
@@ -9,6 +9,7 @@ import { ko } from 'date-fns/esm/locale';
 import { getMonth, getDate, addDays } from 'date-fns';
 import moment from 'moment';
 import 'moment/locale/ko';
+import TimeArray from './components/TimeArray';
 
 const ReservePage = () => {
   // 달력
@@ -20,54 +21,6 @@ const ReservePage = () => {
     return `${year}년 ${`0${monthIndex}`.slice(-2)}월`;
   };
 
-  function getTimeFromHourMinuteString(hourMinuteString) {
-    const [hour, minute] = hourMinuteString.split(':');
-    const time = new Date();
-    time.setHours(parseInt(hour));
-    time.setMinutes(parseInt(minute));
-    time.setSeconds(0);
-
-    return time;
-  }
-
-  function getStringFromDate(date) {
-    const hours = ('0' + date.getHours()).slice(-2);
-    const minutes = ('0' + date.getMinutes()).slice(-2);
-    const timeStr = hours + ':' + minutes;
-
-    return timeStr;
-  }
-
-  function getTimeArray(start, end, interval) {
-    let startTime = getTimeFromHourMinuteString(start);
-    const endTime = getTimeFromHourMinuteString(end);
-    const timeArray = [];
-    const intervalMS = interval * 60 * 1000;
-    while (startTime < endTime) {
-      timeArray.push(startTime);
-      startTime = new Date(startTime.getTime() + intervalMS);
-    }
-    return timeArray;
-  }
-  function getTimeFromHourMinuteString(hourMinuteString) {
-    const [hour, minute] = hourMinuteString.split(':');
-    const time = new Date();
-    time.setHours(parseInt(hour));
-    time.setMinutes(parseInt(minute));
-    time.setSeconds(0);
-
-    return time;
-  }
-
-  function getStringFromDate(date) {
-    const hours = ('0' + date.getHours()).slice(-2);
-    const minutes = ('0' + date.getMinutes()).slice(-2);
-    const timeStr = hours + ':' + minutes;
-
-    return timeStr;
-  }
-  const timeArray = getTimeArray('09:00', '22:30', 30);
-
   const YMD = moment(startDate).format('YYYY년 M월 D일');
   const [list, setLists] = useState([]);
   useEffect(() => {
@@ -76,7 +29,7 @@ const ReservePage = () => {
     const setTimeArray = async () => {
       const querySnapshot = await getDocs(collection(reservationsRef, '0번'));
       querySnapshot.forEach((doc) => {
-        timeArray.pop(doc.id);
+        // timeArray.pop(doc.id);
         console.log(doc.id, 'detected');
       });
     };
@@ -84,13 +37,6 @@ const ReservePage = () => {
   }, [startDate]);
 
   const { type } = useParams();
-
-  let [btnActive, setBtnActive] = useState();
-  const toggleActive = (e) => {
-    setBtnActive((prev) => {
-      return e.target.value;
-    });
-  };
 
   return (
     <>
@@ -155,47 +101,7 @@ const ReservePage = () => {
         </div>
 
         <div className="home_time_container">
-          {timeArray.map((item, idx) => {
-            return (
-              <div className="home_time_block" key={idx + 'big_button'}>
-                <div
-                  key={idx}
-                  value={idx}
-                  className={
-                    'time-block' + (idx === btnActive ? ' active' : '')
-                  }
-                  onClick={toggleActive}
-                  tabIndex="0"
-                >
-                  {getStringFromDate(item)}
-                  <Link to={`/app/reserve/check${type}`}>
-                    <button
-                      key={'confirm_button' + idx}
-                      className="home_time_block_confirm"
-                      onClick={() => {
-                        localStorage.setItem(
-                          'start time',
-                          getStringFromDate(item)
-                        );
-                        localStorage.setItem(
-                          'end time',
-                          getStringFromDate(
-                            new Date(item.getTime() + 30 * 60 * 1000)
-                          )
-                        );
-                        localStorage.setItem(
-                          'date',
-                          moment(startDate).format('YYYY년 M월 D일')
-                        );
-                      }}
-                    >
-                      확인
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            );
-          })}
+          <TimeArray startDate={startDate} type={type} />
         </div>
       </div>
     </>
