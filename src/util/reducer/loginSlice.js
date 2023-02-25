@@ -12,17 +12,17 @@ const loginSlice = createSlice({
     setLogout: (state) => {
       state.isLoggedIn = false;
       state.userInfo = null;
-      console.log('setLogout 실행', state.isLoggedIn);
-      console.log('userInfo : ', state.userInfo);
+      // console.log('setLogout 실행', state.isLoggedIn);
+      // console.log('userInfo : ', state.userInfo);
     },
     setLogIn: (state, action) => {
       state.isLoggedIn = true;
-      console.log('setLogIn 실행', state.isLoggedIn);
-      console.log('userInfo : ', state.userInfo);
+      // console.log('setLogIn 실행', state.isLoggedIn);
+      // console.log('userInfo : ', state.userInfo);
     },
     setAuthErrorMsg: (state, action) => {
       state.authErrorMsg = action.payload;
-      console.log('setAuthErrorMsg 실행', state.authErrorMsg);
+      // console.log('setAuthErrorMsg 실행', state.authErrorMsg);
     },
     setIsSignUpSuccess: (state, action) => {
       state.isSignUpSuccess = action.payload;
