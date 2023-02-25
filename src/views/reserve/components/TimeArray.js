@@ -67,7 +67,7 @@ const TimeArray = ({ startDate, type, reserveArray }) => {
               tabIndex="0"
             >
               {getStringFromDate(item)}
-              <Link to={`/app/reserve/check${type}`}>
+              <Link to={`/knupi-web-v1/app/reserve/check${type}`}>
                 <button
                   key={'confirm_button' + idx}
                   className="home_time_block_confirm"

@@ -38,7 +38,7 @@ const Navigation = () => {
       <div className="nav__row">
         <Link
           id="nav__home"
-          to="/app/home"
+          to="/knupi-web-v1/app/home"
           className="nav__link"
           onClick={navLinkClickHandler}
           autoFocus
@@ -47,7 +47,7 @@ const Navigation = () => {
         </Link>
         <Link
           id="nav__about"
-          to="/app/about"
+          to="/knupi-web-v1/app/about"
           className="nav__link"
           onClick={navLinkClickHandler}
         >
@@ -55,7 +55,7 @@ const Navigation = () => {
         </Link>
         <Link
           id="nav__contact"
-          to="/app/contact"
+          to="/knupi-web-v1/app/contact"
           className="nav__link"
           onClick={navLinkClickHandler}
         >
@@ -63,7 +63,7 @@ const Navigation = () => {
         </Link>
       </div>
       <Link
-        to="/app/home"
+        to="/knupi-web-v1/app/home"
         onClick={() => {
           const elements = document.getElementsByClassName('nav__link');
           for (let i = 0; i < elements.length; i++) {
@@ -85,7 +85,7 @@ const Navigation = () => {
       <div className="nav__row">
         {!loginUser ? (
           <Link
-            to="/auth/signin"
+            to="/knupi-web-v1/auth/signin"
             id="nav__reservation"
             className="nav__link"
             onClick={() => {
@@ -98,7 +98,7 @@ const Navigation = () => {
           </Link>
         ) : (
           <Link
-            to="/app/reservation"
+            to="/knupi-web-v1/app/reservation"
             className="nav__link"
             id="nav__reservation"
             onClick={navLinkClickHandler}
@@ -107,7 +107,7 @@ const Navigation = () => {
           </Link>
         )}
         {!loginUser ? (
-          <Link to="/auth/signin" className="nav__usermenu nav__link">
+          <Link to="/knupi-web-v1/auth/signin" className="nav__usermenu nav__link">
             <img
               className="user-login-icon"
               src={process.env.PUBLIC_URL + '/img/user-icon.png'}

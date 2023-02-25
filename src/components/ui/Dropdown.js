@@ -50,13 +50,13 @@ const Dropdown = () => {
       </div>
       <div id="dropdown-list" className="dropdown-content">
         <Link
-          to={`/app/profile/:${auth.currentUser.email}/info`}
+          to={`/knupi-web-v1/app/profile/:${auth.currentUser.email}/info`}
           onClick={onClickHandler}
         >
           내 정보
         </Link>
         <Link
-          to={`/app/profile/:${auth.currentUser.email}/reserve`}
+          to={`/knupi-web-v1/app/profile/:${auth.currentUser.email}/reserve`}
           onClick={onClickHandler}
         >
           내 예약

@@ -94,7 +94,7 @@ const SignUp = () => {
           />
           <div className="rq-msg">
             <span style={{ marginRight: '3px' }}>이미 계정이 있으신가요 ?</span>
-            <Link to="/auth/signin">
+            <Link to="/knupi-web-v1/auth/signin">
               <span style={{ color: 'black', fontWeight: 'bold' }}>로그인</span>
             </Link>
           </div>
