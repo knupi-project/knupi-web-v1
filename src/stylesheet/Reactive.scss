@@ -1,0 +1,231 @@
+.reserve_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Noto Sans KR', sans-serif;
+  margin-top: 150px;
+  height: 700px;
+  width: 390px;
+  padding: 0px 10px;
+  .reserve_textBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .reserve_pianoName {
+    margin-top: 10px !important;
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 0px;
+  }
+  .reserve_timeInfo {
+    font-size: 20px;
+    margin-top: 0px;
+    color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+.reserve_container {
+  display: flex;
+  justify-content: center;
+  // 달력
+
+  .react-datepicker-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .react-datepicker {
+    font-size: 0.8rem !important;
+    border: 1px solid #888888;
+    height: 370px !important;
+    width: 350px !important;
+  }
+  .react-datepicker__month-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .react-datepicker__month {
+    width: 330px !important;
+    height: 250px !important;
+    display: flex;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .react-datepicker__input-container {
+    width: 350px;
+    display: flex;
+    justify-content: center;
+  }
+  .input-datepicker {
+    width: 200px;
+    height: 35px;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+    background-color: #bed6f0c2;
+    border-color: #c3ced2;
+    color: #2d2f2d;
+    border-radius: 10px;
+  }
+  .react-datepicker__week {
+    width: 330px !important;
+    height: 50px !important;
+    margin-left: -15px;
+  }
+
+  .react-datepicker__current-month {
+    font-size: 1.5rem !important;
+    font-weight: 500 !important;
+  }
+
+  .react-datepicker__navigation {
+    top: 13px !important;
+  }
+
+  .react-datepicker__day-name,
+  .react-datepicker__day {
+    margin: 0.8rem 10px !important;
+  }
+  .react-datepicker__day-name {
+    color: black;
+    font-weight: 700;
+    margin: 0px 9px !important;
+  }
+
+  .react-datepicker__day--disabled {
+    color: #c5c3c3 !important;
+  }
+
+  .react-datepicker__header,
+  .react-datepicker__header--custom {
+    width: 345px;
+    padding-top: 6px !important;
+    border-bottom: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .normal-day {
+    background: white !important;
+    line-height: 1.2;
+    text-align: center;
+    margin: 5px 4.6px !important;
+    height: 40px;
+    width: 40px;
+  }
+
+  .normal-day:hover {
+    background: #f6f8fc !important;
+    border-radius: 0px;
+  }
+
+  .selected-day,
+  .selected-day:focus {
+    background: rgba(0, 0, 0, 0.137) !important;
+    color: black !important;
+    border-radius: 0px;
+    height: 40px;
+    width: 40px;
+  }
+
+  .datepickerHeader {
+    padding: 15px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+  }
+
+  .h-6 {
+    width: 20% !important;
+    height: auto !important;
+    cursor: pointer;
+    filter: invert(30%);
+  }
+
+  #h-6_reverse {
+    transform: scaleX(-1);
+  }
+
+  .hasCalendar {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+}
+
+.reserve_time_container {
+  width: 250px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+  margin-top: 0px;
+  border: 3px solid whitesmoke;
+  border-radius: 15px;
+  background-color: whitesmoke;
+
+  .home_time_block {
+    width: 150px;
+  }
+  .time-block {
+    border-radius: 15px;
+    width: 150px;
+    height: 42px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0px;
+
+    border: 2px solid #bed6f0c2;
+    background-color: white;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    padding-left: 50px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    transition: 0.3s;
+    &.active {
+      background-color: #e3f0fe;
+      position: relative;
+    }
+  }
+  .time-block:hover,
+  .time-block:focus-within {
+    background-color: #e3f0fe;
+  }
+
+  .time-block:focus-within {
+    .home_time_block_confirm {
+      margin-left: -40px;
+      transition: all 0.3s ease-in-out;
+      visibility: visible;
+      opacity: 100;
+    }
+  }
+
+  .home_time_block_confirm {
+    visibility: hidden;
+    opacity: 0;
+    margin-left: -45px;
+    text-align: center;
+    text-decoration-line: none;
+    border-radius: 10px;
+    font-size: 13px;
+    width: 36px;
+    height: 28px;
+    background-color: white;
+    border: none;
+    color: #646464;
+    cursor: pointer;
+  }
+}
