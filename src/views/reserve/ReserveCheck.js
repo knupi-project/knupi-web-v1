@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-
 import { useNavigate, useParams } from 'react-router-dom';
 import { db, auth } from 'util/firebaseConfig';
 import { getDoc, doc, collection, setDoc } from 'firebase/firestore';
