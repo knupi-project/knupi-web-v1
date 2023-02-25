@@ -17,7 +17,7 @@ const Auth = () => {
             style={{ marginBottom: '83px' }}
           />
         </Link>
-        <Outlet/>
+        <Outlet />
       </div>
     </div>
   );

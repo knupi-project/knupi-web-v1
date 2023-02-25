@@ -27,10 +27,8 @@ const Navigation = () => {
       elements[i].classList.remove('selected');
     }
     elements = document.getElementById('nav__' + pathname.split('/')[2]);
-    elements && elements.focus()
+    elements && elements.focus();
     elements && elements.classList.add('selected');
-    
-    
   }, [pathname]);
 
   return (
