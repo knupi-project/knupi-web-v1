@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import 'moment/locale/ko';
 
-const TimeArray = ({ startDate, type }) => {
+const TimeArray = ({ startDate, type, reserveArray }) => {
   let [btnActive, setBtnActive] = useState();
   const toggleActive = (e) => {
     setBtnActive((prev) => {
@@ -12,9 +12,8 @@ const TimeArray = ({ startDate, type }) => {
     });
   };
 
-  function getTimeFromHourMinuteString(hourMinuteString) {
+  function getTimeFromHourMinuteString(hourMinuteString, time = new Date()) {
     const [hour, minute] = hourMinuteString.split(':');
-    const time = new Date();
     time.setHours(parseInt(hour));
     time.setMinutes(parseInt(minute));
     time.setSeconds(0);
@@ -33,30 +32,20 @@ const TimeArray = ({ startDate, type }) => {
   function getTimeArray(start, end, interval) {
     let startTime = getTimeFromHourMinuteString(start);
     const endTime = getTimeFromHourMinuteString(end);
-    const timeArray = [];
+    let timeArray = [];
     const intervalMS = interval * 60 * 1000;
     while (startTime < endTime) {
       timeArray.push(startTime);
       startTime = new Date(startTime.getTime() + intervalMS);
     }
+    reserveArray.forEach((data, i) => {
+      const [hour, minute] = data.split(':');
+      const index = (hour - 9) * 2 + (minute === '30' ? 1 : 0) - i;
+      timeArray.splice(index, 1);
+    });
+
+    console.log(timeArray);
     return timeArray;
-  }
-  function getTimeFromHourMinuteString(hourMinuteString) {
-    const [hour, minute] = hourMinuteString.split(':');
-    const time = new Date();
-    time.setHours(parseInt(hour));
-    time.setMinutes(parseInt(minute));
-    time.setSeconds(0);
-
-    return time;
-  }
-
-  function getStringFromDate(date) {
-    const hours = ('0' + date.getHours()).slice(-2);
-    const minutes = ('0' + date.getMinutes()).slice(-2);
-    const timeStr = hours + ':' + minutes;
-
-    return timeStr;
   }
   const timeArray = getTimeArray('09:00', '22:30', 30);
 
@@ -73,7 +62,7 @@ const TimeArray = ({ startDate, type }) => {
               tabIndex="0"
             >
               {getStringFromDate(item)}
-              <Link to={`/app/reserve/check${type}`}>
+              <Link to={`/knupi-web-v1/app/reserve/check${type}`}>
                 <button
                   key={'confirm_button' + idx}
                   className="home_time_block_confirm"

@@ -61,7 +61,7 @@ const ReserveExec = () => {
                           fontSize: '20px',
                           fontWeight: '600',
                         }}
-                        to={`/app/reserve/page:${index}`}
+                        to={`/knupi-web-v1/app/reserve/page:${index}`}
                         onClick={() => {
                           window.scrollTo({ top: 0, behavior: 'smooth' });
                         }}
@@ -77,7 +77,7 @@ const ReserveExec = () => {
                   )}
                   {!loginUser && (
                     <Link
-                      to="/auth/signin"
+                      to="/knupi-web-v1/auth/signin"
                       onClick={() => {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}

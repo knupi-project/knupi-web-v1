@@ -71,11 +71,10 @@ const Reservecheck = () => {
 
       console.log('formSubmitHandler 실행');
       //홈페이지로 이동
-      navigate(`/app/reserve/complete${type}`);
+      navigate(`/knupi-web-v1/app/reserve/complete${type}`);
     } catch (error) {
       console.log(error.message);
     }
-    // location.href = '/app/reserve';
   };
 
   const [imChecked, handlecheck] = useState(true);

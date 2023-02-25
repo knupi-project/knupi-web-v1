@@ -7,7 +7,7 @@ const Footer = () => {
     <div className="footer">
       <div className="footer_go_home">
         <Link
-          to="/app/home"
+          to="/knupi-web-v1/app/home"
           style={{ textDecoration: 'none' }}
           onClick={() => {
             window.scrollTo({ top: 0, behavior: 'smooth' });

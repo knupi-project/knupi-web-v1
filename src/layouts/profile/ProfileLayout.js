@@ -22,7 +22,7 @@ const Profile = () => {
         </div>
         <div className="menu">
           <Link
-            to={`/app/profile/:${auth.currentUser.email}/info`}
+            to={`/knupi-web-v1/app/profile/:${auth.currentUser.email}/info`}
             className="profile__menu__item"
             onClick={() => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -31,7 +31,7 @@ const Profile = () => {
             내 계정
           </Link>
           <Link
-            to={`/app/profile/:${auth.currentUser.email}/reserve`}
+            to={`/knupi-web-v1/app/profile/:${auth.currentUser.email}/reserve`}
             className="profile__menu__item"
             onClick={() => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
