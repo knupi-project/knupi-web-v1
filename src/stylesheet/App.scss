@@ -1,29 +1,35 @@
+/* fonts*/
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&display=swap');
 
+/* bootstraps */
+@import '~bootstrap/scss/bootstrap';
+
+/* media query for font sizes */
+
 @media all and (min-width: 800px) {
-  html{
+  html {
     font-size: 19px;
   }
 }
 
 @media all and (max-width: 799px) and (min-width: 550px) {
-  html{
+  html {
     font-size: 2.6vw;
   }
 }
 
 @media all and (max-width: 549px) and (min-width: 340px) {
-  html{
-    font-size: 4.4vw;
+  html {
+    font-size: 3.9vw;
   }
 }
 
 @media all and (max-width: 339px) and (min-width: 340px) {
-  html{
+  html {
     font-size: 13px;
   }
 }
@@ -246,7 +252,7 @@ body {
       text-align: center;
     }
     .reservation_main_title {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       margin: 10px 0px;
     }
 

@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Dropdown from 'components/UI/Dropdown';
 import { Link, useLocation } from 'react-router-dom';
 import { auth } from 'util/firebaseConfig';
 import 'stylesheet/Navigation.scss';
+import NavBarOffcanvas from './navigation/NavBarOffcanvas';
 
 const Navigation = () => {
   const loginUser = auth.currentUser;
-  const [isToggleOpen, setIsToggleOpen] = useState(false);
   const { pathname } = useLocation();
-  const handleToggleOpen = () => {
-    setIsToggleOpen(!isToggleOpen);
-  };
 
   const navLinkClickHandler = (e) => {
     const elements = document.getElementsByClassName('nav__link');
@@ -36,9 +33,10 @@ const Navigation = () => {
   }, [pathname]);
 
   return (
-    <div className="nav">
-      {/* <div className='menuToggleBtn'></div> */}
-      <div className="nav__row">
+    <div className="nav__custom">
+      <NavBarOffcanvas loginUser={loginUser} />
+
+      <div className="nav__row" id="nav__hide">
         <Link
           id="nav__home"
           to="/knupi-web-v1/app/home"
@@ -85,11 +83,12 @@ const Navigation = () => {
         />
       </Link>
       <div className="nav__row">
+        {/* login */}
         {!loginUser ? (
           <Link
             to="/knupi-web-v1/auth/signin"
-            id="nav__reservation"
             className="nav__link"
+            id="nav__reservation"
             onClick={() => {
               window.alert(
                 '로그인이 필요한 서비스입니다. 로그인 페이지로 이동합니다.'
@@ -108,6 +107,7 @@ const Navigation = () => {
             Reservation
           </Link>
         )}
+        {/* usermenu */}
         {!loginUser ? (
           <Link
             to="/knupi-web-v1/auth/signin"
@@ -118,7 +118,7 @@ const Navigation = () => {
               src={process.env.PUBLIC_URL + '/img/user-icon.png'}
               alt="user-login-icon"
             />
-            <span>로그인</span>
+            <span style={{ fontSize: '1.2rem' }}>로그인</span>
           </Link>
         ) : (
           <div

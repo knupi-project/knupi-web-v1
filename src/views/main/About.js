@@ -53,7 +53,6 @@ function About() {
             크누피가 되고 싶습니다.
           </div>
         </div>
-
       </div>
     </div>
   );

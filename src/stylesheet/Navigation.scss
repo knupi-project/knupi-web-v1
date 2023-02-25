@@ -1,12 +1,36 @@
 $hover-color: rgb(237, 237, 237);
 $usermenu-width: 116px;
 $menu-font-size: 1.35rem;
+$nav-max-width: 840px;
 
+#offcanvas__nav__title {
+  font-size: 2rem;
+  text-align: center;
+  text-decoration-line: none;
+  text-decoration: none;
+  color: #424141;
+  margin: 0px;
+  padding: 0px;
+}
+#offcanvas__nav__link {
+  font-size: 1.6rem;
+  text-align: center;
+  text-decoration-line: none;
+  text-decoration: none;
+  color: #424141;
 
-.nav {
+  transition: all 0.3s ease-in-out;
+  &:hover,
+  &:focus {
+    background-color: $hover-color;
+  }
+}
+
+.nav__custom {
   display: flex;
   flex-direction: row;
   align-items: center;
+  flex-wrap: nowrap;
   justify-content: space-between;
   background-color: #f6f9fb;
   border-bottom: 1px solid #e5e5e5;
@@ -15,29 +39,37 @@ $menu-font-size: 1.35rem;
   min-height: 140px;
   max-height: 175px;
   width: 100%;
-  min-width: 900px;
-
+  min-width: fit-content;
   padding: 0px 25px;
 
   top: 0;
   position: fixed;
   z-index: 100;
 
-
-  .menuToggleBtn {
-    display: none;
-  }
-  @media screen and (max-width: 768px) {
-    flex-direction: column;
-    align-items: flex-start;
-    .menuToggleBtn {
-      display: block;
+  #nav__hide,
+  #nav__home,
+  #nav__about,
+  #nav__contact,
+  #nav__reservation {
+    @media screen and (max-width: $nav-max-width) {
+      display: none;
     }
   }
-  
+
+  #nav__togleBtn {
+    display: none;
+    width: 34%;
+    @media screen and (max-width: $nav-max-width) {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 
   .nav__logo {
     width: 32%;
+    min-width: fit-content;
     font-family: 'Noto Serif', serif;
     display: flex;
     flex-direction: column;
@@ -58,8 +90,15 @@ $menu-font-size: 1.35rem;
       letter-spacing: 4px;
       font-display: center;
     }
-    @media screen and (max-width: 768px) {
-      width: 100%;
+
+    @media screen and (max-width: $nav-max-width) and (min-width: 500px) {
+      img {
+        width: 236 * 0.9px;
+        height: 82 * 0.9px;
+      }
+    }
+    @media screen and (max-width: 499px) {
+      display: none;
     }
   }
 
@@ -71,9 +110,6 @@ $menu-font-size: 1.35rem;
     justify-content: space-around;
     align-items: center;
     margin: 0px 20px;
-    @media screen and (max-width: 768px) {
-      display: none;
-    }
   }
 
   .nav__link {
