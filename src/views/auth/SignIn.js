@@ -35,7 +35,7 @@ const SignIn = () => {
       }
       setAuthError(null);
       dispatch(setLogIn());
-      navigate('/');
+      navigate('/knupi-web-v1');
     } catch (error) {
       setAuthError(error.message);
       signOut(auth);
