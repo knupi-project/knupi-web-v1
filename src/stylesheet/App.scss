@@ -4,11 +4,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&display=swap');
 
+@media all and (min-width: 800px) {
+  html{
+    font-size: 19px;
+  }
+}
+
+@media all and (max-width: 799px) and (min-width: 550px) {
+  html{
+    font-size: 2.6vw;
+  }
+}
+
+@media all and (max-width: 549px) and (min-width: 340px) {
+  html{
+    font-size: 4.4vw;
+  }
+}
+
+@media all and (max-width: 339px) and (min-width: 340px) {
+  html{
+    font-size: 13px;
+  }
+}
+
 html {
   padding: 0px;
   margin: 0px;
   font-family: 'Noto Serif', 'Noto Serif KR', serif;
-  font-size: 18px;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
@@ -29,6 +52,7 @@ body {
   margin: 0;
 
   width: 100vw;
+  min-width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -38,16 +62,18 @@ body {
 // HOME
 .home {
   background-color: #fff;
-  padding: 0;
-  margin: 0;
-  width: 100vw;
+  padding: 0px;
+  margin: 0px;
+  margin-top: 140px;
+
+  width: 100%;
   height: auto;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: 'Frank Ruhl Libre', serif;
-  margin-top: 140px;
 
   img {
     width: 100%;
@@ -62,10 +88,9 @@ body {
     justify-content: center;
 
     width: 100%;
-
-    min-height: 500px;
-    height: 100vh;
-
+    height: 85vw;
+    min-height: 780px;
+    max-height: 1200px;
     background-image: url('../../public/img/Main\ 1.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -114,12 +139,14 @@ body {
 }
 
 .reservation {
-  display: flex;
-  width: 100vw;
-  padding: 0;
-  margin: 0;
+  padding: 0px;
+  margin: 0px;
   margin-top: 140px;
 
+  width: 100%;
+  height: auto;
+
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -132,10 +159,13 @@ body {
     background-image: url('../../public/img/reservation_mid.png');
     background-repeat: no-repeat;
     background-size: cover;
+
     width: 100%;
-    height: 80vh;
-    min-height: 500px;
-    max-height: 740px;
+    min-width: 340px;
+    height: 40vw;
+    min-height: 300px;
+    // max-height: 800px;
+
     .reservation_mid-text {
       display: flex;
       flex-direction: column;
@@ -146,7 +176,7 @@ body {
     }
 
     .reservation_mid-title {
-      font-size: 3rem;
+      font-size: 2.3rem;
       font-family: 'Frank Ruhl Libre', serif;
       font-weight: 550;
       padding: 25px;
@@ -155,6 +185,7 @@ body {
 
     .reservation_mid-subtitle {
       font-family: 'Noto Sans KR', sans-serif;
+      text-align: center;
       margin-top: 30px;
       font-size: 1.5rem;
       color: black;
@@ -215,12 +246,12 @@ body {
       text-align: center;
     }
     .reservation_main_title {
-      font-size: 2rem;
+      font-size: 1.5rem;
       margin: 10px 0px;
     }
 
     .reservation_main_subtitle {
-      font-size: 1.7rem;
+      font-size: 1.3rem;
       color: rgb(0, 0, 0);
       opacity: 50%;
       margin: 10px 0px 20px 0px;
@@ -243,7 +274,7 @@ body {
   }
 
   #reservation_main_box_title {
-    font-size: 25px;
+    font-size: 1rem;
     font-weight: 500;
     margin: 20px 0px 50px -15px;
   }
@@ -317,10 +348,9 @@ body {
   }
 }
 
-// home
+// reserve page
 .home {
   font-family: 'Noto Sans KR', sans-serif;
-
   .reserve_home {
     margin: 100px 0px;
 
@@ -459,7 +489,6 @@ body {
     }
   }
   //체크페이지
-
   .home_check {
     margin-top: 90px;
     width: 760px;
@@ -510,14 +539,12 @@ body {
     color: tomato;
     transition: all 0.3s ease-in-out;
   }
-
   .reserve_button_err_off {
     visibility: hidden;
     font-weight: 600;
     opacity: 0;
     transition: all 0.3s ease-in-out;
   }
-
   .home_check_reserve {
     margin: 0px 0px !important;
     height: 60px;
@@ -681,50 +708,97 @@ body {
   margin-top: 40px;
 }
 
-//about
-
-.about {
+//about,contact
+.about,
+.contact {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  margin: 50px 0px;
-}
-
-.logo_duck {
-  width: 400px;
-  margin: 30px 0px;
-}
-
-.about_title,
-.contact_title {
-  font-weight: 600;
-  font-size: 35px;
-  margin-top: 200px;
-}
-
-.about_sub_title {
-  font-weight: 500;
-  font-size: 25px;
-  margin-top: 100px;
-}
-
-.about_main {
-  font-size: 23px;
-  line-height: 45px;
-}
-
-.contact_sub_title {
-  font-weight: 500;
-  font-size: 20px;
-  margin-top: 0px;
-  line-height: 50px;
-}
-
-#contact {
-  padding-top: 50px;
-  height: 75vh;
-}
-
-.about_main {
-  width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  margin-top: 180px;
+
+  .about_title,
+  .contact_title {
+    font-weight: 600;
+    font-size: 2rem;
+  }
+
+  .contact_sub_title {
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 0px;
+    line-height: 50px;
+  }
+
+  #contact {
+    padding-top: 50px;
+    height: 75vh;
+  }
+
+  .about_main {
+    padding: 0px 30px;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 1rem;
+    line-height: 45px;
+
+    .about_logo_duck {
+      min-width: 162 * 2px;
+      max-width: 162 * 2.5px;
+      min-height: 216 * 2px;
+      max-height: 216 * 2.5px;
+      width: 16.2 * 2vw;
+      height: 21.6 * 2vw;
+      margin: 30px 20px;
+    }
+
+    .about_main_explain {
+      width: 100%;
+      min-width: 300px;
+      max-width: 800px;
+      height: fit-content;
+    }
+    b {
+      font-size: 1.3rem;
+    }
+
+    .about_article {
+      width: auto;
+      height: fit-content;
+      margin: 30px 0px;
+      font-size: 1rem;
+      line-height: 45px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .about_article_title {
+        font-weight: 700;
+        font-size: 2rem;
+        margin-top: 50px;
+      }
+      .about_article_sub_title {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 100%;
+        align-items: center;
+        font-weight: 700;
+        font-size: 25px;
+        margin-top: 30px;
+      }
+      .about_article_main {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 100%;
+      }
+    }
+  }
 }

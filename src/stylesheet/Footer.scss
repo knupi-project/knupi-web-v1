@@ -1,19 +1,22 @@
 .footer {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+
   background-color: #6e5f5042;
   color: black;
 
   font-family: 'Noto Sans KR';
   text-align: center;
 
-  height: 25vh;
-  min-height: 175px;
+  height: 20%;
+  min-height: 230px;
   width: 100%;
-
-  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 30px;
 
   .footer_logo {
     font-family: 'Frank Ruhl Libre', serif;
@@ -24,49 +27,66 @@
     text-decoration: none;
     margin-bottom: 0px;
     margin-top: -50px;
-  }
 
-  .footer_logo_duck {
-    width: 250px;
-  }
 
-  .footer_logo_text {
-    text-decoration: none;
-    margin-top: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: black;
-  }
 
-  .footer_logo__title {
-    font-size: 2.4rem;
-    font-weight: 600;
-    letter-spacing: 4px;
-    font-display: center;
-    margin-bottom: 20px;
-  }
+    .footer_logo_duck {
+      // 133 × 158 px
+      width: 13.3 * 2.5vw;
+      height: 15.8 * 2.5vw;
+      min-width: 133 * 0.9px;
+      min-height: 158 * 0.9px;
+      max-width: 133 * 1.5px;
+      max-height: 158 * 1.5px;
+    }
 
-  .footer_logo__subtitle {
-    font-size: 1.5rem;
-    font-weight: 500;
-    font-display: center;
-    margin-bottom: 30px;
+    .footer_logo_text {
+      text-decoration: none;
+      margin-top: 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: black;
+      margin-right: 35px;
+      
+      .footer_logo__title {
+        font-size: 2.3rem;
+        font-weight: 600;
+        letter-spacing: 4px;
+        font-display: center;
+      }
+
+      .footer_logo__subtitle {
+        font-size: 1rem;
+        font-weight: 500;
+        font-display: center;
+      }
+    }
   }
 
   .footer_name {
+    
     font-family: 'Montserrat', sans-serif !important;
-    margin-right: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    width: 100vw;
+    max-width: 600px;
     color: #0000008e;
-  }
-
-  .footer_name_title {
-    font-weight: 800;
-    font-size: 30px;
-  }
-
-  .footer_copyright {
-    font-size: 1rem;
-    font-weight: 400;
+    font-size: calc(17px + .5vw);
+  
+    p{
+      margin:0px;
+    }
+    .footer_name_title {
+      font-weight: 800;
+      font-size: 1em;
+      margin-bottom: 10px;
+    }
+    .footer_name_copyright {
+      font-size: 0.8em;
+      font-weight: 400;
+    }
   }
 }

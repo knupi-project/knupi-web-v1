@@ -2,6 +2,7 @@ $hover-color: rgb(237, 237, 237);
 $usermenu-width: 116px;
 $menu-font-size: 1.35rem;
 
+
 .nav {
   display: flex;
   flex-direction: row;
@@ -12,6 +13,7 @@ $menu-font-size: 1.35rem;
 
   height: 10vh;
   min-height: 140px;
+  max-height: 175px;
   width: 100%;
   min-width: 900px;
 
@@ -20,6 +22,19 @@ $menu-font-size: 1.35rem;
   top: 0;
   position: fixed;
   z-index: 100;
+
+
+  .menuToggleBtn {
+    display: none;
+  }
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    .menuToggleBtn {
+      display: block;
+    }
+  }
+  
 
   .nav__logo {
     width: 32%;
@@ -43,6 +58,9 @@ $menu-font-size: 1.35rem;
       letter-spacing: 4px;
       font-display: center;
     }
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
   }
 
   .nav__row {
@@ -53,6 +71,9 @@ $menu-font-size: 1.35rem;
     justify-content: space-around;
     align-items: center;
     margin: 0px 20px;
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
   }
 
   .nav__link {

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Dropdown from 'components/UI/Dropdown';
 import { Link, useLocation } from 'react-router-dom';
 import { auth } from 'util/firebaseConfig';
@@ -6,7 +6,11 @@ import 'stylesheet/Navigation.scss';
 
 const Navigation = () => {
   const loginUser = auth.currentUser;
+  const [isToggleOpen, setIsToggleOpen] = useState(false);
   const { pathname } = useLocation();
+  const handleToggleOpen = () => {
+    setIsToggleOpen(!isToggleOpen);
+  };
 
   const navLinkClickHandler = (e) => {
     const elements = document.getElementsByClassName('nav__link');
@@ -27,14 +31,13 @@ const Navigation = () => {
       elements[i].classList.remove('selected');
     }
     elements = document.getElementById('nav__' + pathname.split('/')[2]);
-    elements && elements.focus()
+    elements && elements.focus();
     elements && elements.classList.add('selected');
-    
-    
   }, [pathname]);
 
   return (
     <div className="nav">
+      {/* <div className='menuToggleBtn'></div> */}
       <div className="nav__row">
         <Link
           id="nav__home"
@@ -81,7 +84,6 @@ const Navigation = () => {
           alt="logo-signsin-title"
         />
       </Link>
-
       <div className="nav__row">
         {!loginUser ? (
           <Link
@@ -107,7 +109,10 @@ const Navigation = () => {
           </Link>
         )}
         {!loginUser ? (
-          <Link to="/knupi-web-v1/auth/signin" className="nav__usermenu nav__link">
+          <Link
+            to="/knupi-web-v1/auth/signin"
+            className="nav__usermenu nav__link"
+          >
             <img
               className="user-login-icon"
               src={process.env.PUBLIC_URL + '/img/user-icon.png'}

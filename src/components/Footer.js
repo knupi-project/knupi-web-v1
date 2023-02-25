@@ -29,10 +29,11 @@ const Footer = () => {
 
       <div className="footer_name">
         <p className="footer_name_title"> KNUPI | We Are KNUPI</p>
-        <p className="footer__copyright">
+        <p className="footer_name_copyright">
           © KNUPI | 2023 경북대학교 중앙동아리 크누피
         </p>
       </div>
+
     </div>
   );
 };
