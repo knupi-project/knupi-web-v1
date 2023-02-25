@@ -40,15 +40,10 @@ const TimeArray = ({ startDate, type, reserveArray }) => {
     }
     reserveArray.forEach((data, i) => {
       const [hour, minute] = data.split(':');
-      const index = (hour - 9) * 2 + (minute === '30' ? 1 : 0);
-      timeArray.splice(index, 1, 0);
+      const index = (hour - 9) * 2 + (minute === '30' ? 1 : 0) - i;
+      timeArray.splice(index, 1);
     });
-    // for (let i = 0; i < reserveArray.length; i++) {
-    //   const [hour, minute] = reserveArray[i].split(':');
-    //   const index = (hour - 9) * 2 + (minute === '30' ? 1 : 0);
-    //   timeArray.splice(index, 1, 0);
-    // }
-    timeArray = timeArray.filter((word) => word != 0);
+
     console.log(timeArray);
     return timeArray;
   }
