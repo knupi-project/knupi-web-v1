@@ -31,7 +31,7 @@ $nav-max-width: 840px;
   flex-direction: row;
   align-items: center;
   flex-wrap: nowrap;
-  justify-content: center;
+  justify-content: space-around;
   background-color: #f6f9fb;
   border-bottom: 1px solid #e5e5e5;
 
@@ -45,6 +45,11 @@ $nav-max-width: 840px;
   top: 0;
   position: fixed;
   z-index: 100;
+
+  @media screen and (max-width: $nav-max-width) {
+    justify-content: space-between;
+    padding: 0px 40px;
+  }
 
   #nav__hide,
   #nav__home,
@@ -76,7 +81,7 @@ $nav-max-width: 840px;
     justify-content: center;
     align-items: center;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: $nav-max-width) {
       display: none;
     }
 
@@ -111,7 +116,7 @@ $nav-max-width: 840px;
     justify-content: space-around;
     align-items: center;
     margin: 0px 20px;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: $nav-max-width) {
       display: none;
       width: 0px;
     }
@@ -178,7 +183,7 @@ $nav-max-width: 840px;
 
 .mobileLogo {
   display: none;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: $nav-max-width) {
     display: flex;
   }
 }

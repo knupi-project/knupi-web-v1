@@ -4,8 +4,11 @@ import { Link, useLocation } from 'react-router-dom';
 import { auth } from 'util/firebaseConfig';
 import 'stylesheet/Navigation.scss';
 import NavBarOffcanvas from './navigation/NavBarOffcanvas';
+import { useMediaQuery } from 'react-responsive';
 
 const Navigation = () => {
+  const isDesktopOrMobile = useMediaQuery({ query: '(max-width:768px)' });
+
   const loginUser = auth.currentUser;
   const { pathname } = useLocation();
 
@@ -137,7 +140,6 @@ const Navigation = () => {
           </div>
         )}
       </div>
-      <div></div>
     </div>
   );
 };
