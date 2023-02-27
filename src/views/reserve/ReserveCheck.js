@@ -29,7 +29,7 @@ const Reservecheck = () => {
     if (purpose === 0) {
       setPurpose('멘토링');
     } else {
-      setPurpose('개인 연습');
+      setPurpose('연습');
     }
   }, [purpose]);
 

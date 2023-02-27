@@ -271,15 +271,27 @@ body {
     display: flex;
     justify-content: center;
     margin: 35px 0px;
+    width: 100%;
     box-sizing: border-box;
   }
 
   .reservation_main_box {
-    width: 624px;
+    width: 600px;
     display: flex;
     justify-content: center;
     margin-left: -194px;
     margin-right: 85px;
+    @media screen and (max-width: 768px) {
+      width: 390px;
+      margin: 0px 0 150px 0 !important;
+    }
+  }
+
+  .reservation_main_calendar {
+    @media screen and (max-width: 768px) {
+      overflow: auto;
+      margin: 3rem 0 7rem 0;
+    }
   }
 
   #reservation_main_box_title {
@@ -763,6 +775,9 @@ input[type='checkbox']:checked {
   align-items: center;
   margin-top: 180px;
 
+  @media screen and (max-width: 768px) {
+    margin-bottom: 50px;
+  }
   .about_title,
   .contact_title {
     font-weight: 600;
@@ -774,6 +789,9 @@ input[type='checkbox']:checked {
     font-size: 20px;
     margin-top: 0px;
     line-height: 50px;
+    @media screen and (max-width: 768px) {
+      font-size: 13px;
+    }
   }
 
   #contact {

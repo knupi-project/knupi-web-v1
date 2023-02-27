@@ -29,6 +29,7 @@
 .reserve_container {
   display: flex;
   justify-content: center;
+  margin-bottom: 7%;
   // 달력
 
   .react-datepicker-wrapper {
@@ -227,5 +228,44 @@
     border: none;
     color: #646464;
     cursor: pointer;
+  }
+}
+
+.example-custom-input {
+  background-color: #328be5;
+  border-radius: 3px;
+  border: 0px;
+  color: white;
+  width: 35%;
+  height: 130%;
+}
+
+.reservedList_table_width {
+  width: 150%;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.reservedList_piano {
+  text-align: center;
+  width: 100px;
+  border-bottom: solid 3px black;
+  color: black;
+  font-weight: bold;
+  font-size: 1rem;
+  @media screen and (max-width: 768px) {
+    font-size: 0.5rem;
+  }
+}
+
+.reservedList_name {
+  text-align: center;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+  line-height: 1.3rem;
+  border-bottom: solid 1px gray;
+  @media screen and (max-width: 768px) {
+    font-size: 0.5rem;
   }
 }

@@ -36,27 +36,12 @@ const ReservedList = ({ list }) => {
 
   return (
     <div className="hi">
-      <table
-        {...getTableProps()}
-        style={{
-          width: '150%',
-        }}
-      >
+      <table {...getTableProps()} className="reservedList_table_width">
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
-                <th
-                  {...column.getHeaderProps()}
-                  style={{
-                    textAlign: 'center',
-                    width: '100px',
-                    borderBottom: 'solid 3px black',
-                    color: 'black',
-                    fontWeight: 'bold',
-                    fontSize: '1rem',
-                  }}
-                >
+                <th {...column.getHeaderProps()} className="reservedList_piano">
                   {column.render('Header')}
                 </th>
               ))}
@@ -70,16 +55,7 @@ const ReservedList = ({ list }) => {
               <tr {...row.getRowProps()}>
                 {row.cells.map((cell) => {
                   return (
-                    <td
-                      {...cell.getCellProps()}
-                      style={{
-                        textAlign: 'center',
-                        fontSize: '0.9rem',
-                        whiteSpace: 'pre-wrap',
-                        lineHeight: '1.3rem',
-                        borderBottom: 'solid 1px gray',
-                      }}
-                    >
+                    <td {...cell.getCellProps()} className="reservedList_name">
                       {cell.render('Cell')}
                     </td>
                   );

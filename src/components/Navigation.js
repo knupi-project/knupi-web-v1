@@ -106,7 +106,7 @@ const Navigation = () => {
           >
             Reservation
           </Link>
-        )}
+        )}{' '}
         {/* usermenu */}
         {!loginUser ? (
           <Link
@@ -137,6 +137,7 @@ const Navigation = () => {
           </div>
         )}
       </div>
+      <div></div>
     </div>
   );
 };

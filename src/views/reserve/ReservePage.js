@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, forwardRef } from 'react';
 import { db } from 'util/firebaseConfig';
 import { useParams } from 'react-router-dom';
 import { collection, getDocs, doc } from 'firebase/firestore';
@@ -45,6 +45,12 @@ const ReservePage = () => {
   }, [reserveArray]);
   const { type } = useParams();
 
+  const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
+    <button className="example-custom-input" onClick={onClick} ref={ref}>
+      {value}
+    </button>
+  ));
+
   return (
     <>
       {isDesktopOrMobile !== true ? (
@@ -75,16 +81,18 @@ const ReservePage = () => {
                     increaseMonth,
                   }) => (
                     <div className="datepickerHeader">
-                      <div onClick={decreaseMonth}>
+                      <div>
                         <img
+                          onClick={decreaseMonth}
                           alt="달력 왼쪽 화살표"
                           src={process.env.PUBLIC_URL + '/img/back.png'}
                           className="h-6"
                         />
                       </div>
                       <div> {formatDate(date)}</div>
-                      <div onClick={increaseMonth}>
+                      <div>
                         <img
+                          onClick={increaseMonth}
                           alt="달력 오른쪽 화살표"
                           src={process.env.PUBLIC_URL + '/img/back.png'}
                           className="h-6"
@@ -128,7 +136,7 @@ const ReservePage = () => {
             <DatePicker
               className="input-datepicker" // class name
               locale={ko} // 한국어 설정
-              showIcon
+              customInput={<ExampleCustomInput />}
               selected={startDate}
               dateFormat="yyyy-MM-dd" // 데이터 포맷
               popperModifiers={{
@@ -142,16 +150,18 @@ const ReservePage = () => {
               onChange={(date) => setStartDate(date)} // 바뀐 날짜로 저장
               renderCustomHeader={({ date, decreaseMonth, increaseMonth }) => (
                 <div className="datepickerHeader">
-                  <div onClick={decreaseMonth}>
+                  <div>
                     <img
+                      onClick={decreaseMonth}
                       alt="달력 왼쪽 화살표"
                       src={process.env.PUBLIC_URL + '/img/back.png'}
                       className="h-6"
                     />
                   </div>
                   <div> {formatDate(date)}</div>
-                  <div onClick={increaseMonth}>
+                  <div>
                     <img
+                      onClick={increaseMonth}
                       alt="달력 오른쪽 화살표"
                       src={process.env.PUBLIC_URL + '/img/back.png'}
                       className="h-6"

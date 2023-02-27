@@ -31,7 +31,7 @@ $nav-max-width: 840px;
   flex-direction: row;
   align-items: center;
   flex-wrap: nowrap;
-  justify-content: space-between;
+  justify-content: center;
   background-color: #f6f9fb;
   border-bottom: 1px solid #e5e5e5;
 
@@ -76,6 +76,10 @@ $nav-max-width: 840px;
     justify-content: center;
     align-items: center;
 
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+
     .nav__logo__big {
       font-size: 50px;
       font-weight: 600;
@@ -97,9 +101,6 @@ $nav-max-width: 840px;
         height: 82 * 0.9px;
       }
     }
-    @media screen and (max-width: 499px) {
-      display: none;
-    }
   }
 
   .nav__row {
@@ -110,6 +111,10 @@ $nav-max-width: 840px;
     justify-content: space-around;
     align-items: center;
     margin: 0px 20px;
+    @media screen and (max-width: 768px) {
+      display: none;
+      width: 0px;
+    }
   }
 
   .nav__link {
@@ -169,4 +174,19 @@ $nav-max-width: 840px;
   height: 38px;
   border-radius: 50%;
   overflow: hidden;
+}
+
+.mobileLogo {
+  display: none;
+  @media screen and (max-width: 768px) {
+    display: flex;
+  }
+}
+
+.mobileMyifo {
+  display: none;
+  @media screen and (max-width: 499px) {
+    display: flex;
+    width: 0px;
+  }
 }
