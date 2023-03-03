@@ -32,7 +32,7 @@ const TimeArray = ({ startDate, type, reserveArray }) => {
   function getIndexFromTime(time) {
     const hour = time.getHours();
     const min = time.getMinutes();
-    const index = (hour - 9) * 2 + (min === '30' ? 1 : 0);
+    const index = (hour - 9) * 2 + (min >= '30' ? 1 : 0);
     return index;
   }
 

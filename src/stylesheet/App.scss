@@ -248,6 +248,9 @@ body {
     align-items: center;
     border-bottom: 1px solid rgb(0, 0, 0);
 
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
     p {
       text-align: center;
     }
@@ -310,6 +313,9 @@ body {
     width: 80%;
     margin: 40px 0px;
 
+    @media screen and (max-width: 768px) {
+      margin: 20px 0px;
+    }
     .piano_card {
       width: 45%;
       min-width: 340px;
@@ -326,6 +332,15 @@ body {
       display: flex;
       flex-direction: column;
 
+      @media screen and (max-width: 768px) {
+        margin: 20px 10px 10px 10px;
+        height: 25vh;
+        min-height: 230px;
+        max-height: 500px;
+        padding: 20px 40px 20px 40px;
+        border-top: 20px solid black;
+      }
+
       .piano_card_title {
         font-size: 1.5rem;
         font-weight: 700;
@@ -337,6 +352,9 @@ body {
         opacity: 70%;
 
         margin: 20px 0px;
+        @media screen and (max-width: 768px) {
+          margin: 10px 0px;
+        }
       }
 
       .piano_card_subtitle {
@@ -353,6 +371,9 @@ body {
 
       .piano_card_btn {
         margin: 40px 0px;
+        @media screen and (max-width: 768px) {
+          margin: 20px 0px 10px 0px;
+        }
       }
 
       .piano_card_container {
