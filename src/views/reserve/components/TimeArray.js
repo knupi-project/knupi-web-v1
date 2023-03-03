@@ -29,6 +29,13 @@ const TimeArray = ({ startDate, type, reserveArray }) => {
     return timeStr;
   }
 
+  function getIndexFromTime(time) {
+    const hour = time.getHours();
+    const min = time.getMinutes();
+    const index = (hour - 9) * 2 + (min === '30' ? 1 : 0);
+    return index;
+  }
+
   function getTimeArray(start, end, interval) {
     let startTime = getTimeFromHourMinuteString(start);
     const endTime = getTimeFromHourMinuteString(end);
@@ -47,6 +54,13 @@ const TimeArray = ({ startDate, type, reserveArray }) => {
     return timeArray;
   }
   const timeArray = getTimeArray('09:00', '22:30', 30);
+
+  const today = new Date();
+  if (startDate.getDate() == today.getDate()) {
+    while (getIndexFromTime(timeArray[0]) <= getIndexFromTime(new Date())) {
+      timeArray.splice(0, 1);
+    }
+  }
 
   return (
     <>
