@@ -82,22 +82,83 @@ const SignUp = () => {
     };
   }, [isSignUpSuccess]);
 
+  const [serverPassword, setServerPassword] = useState();
+
+  useEffect(() => {
+    async function getPassword() {
+      try {
+        const docRef = doc(db, 'code', '3Fj5DOM5Lr4wLWJ5wKks');
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setServerPassword(docSnap.data().password);
+        } else {
+          console.log('No such document!');
+        }
+      } catch (error) {
+        console.log('Error getting document:', error);
+      }
+    }
+    getPassword();
+  }, [serverPassword]);
+
+  const [userPassword, setUserPassword] = useState();
+  const [isCodeSuccess, setIsCodeSuccess] = useState(false);
+
+  const passwordSubmitHandler = () => {
+    if (userPassword == serverPassword) {
+      setIsCodeSuccess(true);
+    } else {
+      handlecheck(false);
+    }
+  };
+
+  const codeChangeHandler = ({ target: { value } }) => {
+    if (value === '') {
+      handlecheck(true);
+    }
+    setUserPassword(value);
+  };
+  const [imChecked, handlecheck] = useState(true);
+
   return (
     <>
       {!isSignUpSuccess ? (
         <>
-          <div className="sign-loginbox-title">회원가입</div>
-          <SignUpButton
-            platform="구글"
-            imgSrc={process.env.PUBLIC_URL + '/img/google24.png'}
-            onClick={authHandler}
-          />
-          <div className="rq-msg">
-            <span style={{ marginRight: '3px' }}>이미 계정이 있으신가요 ?</span>
-            <Link to="/knupi-web-v1/auth/signin">
-              <span style={{ color: 'black', fontWeight: 'bold' }}>로그인</span>
-            </Link>
-          </div>
+          {isCodeSuccess ? (
+            <>
+              <div className="sign-loginbox-title">회원가입</div>
+              <SignUpButton
+                platform="구글"
+                imgSrc={process.env.PUBLIC_URL + '/img/google24.png'}
+                onClick={authHandler}
+              />
+              <div className="rq-msg">
+                <span style={{ marginRight: '3px' }}>
+                  이미 계정이 있으신가요 ?
+                </span>
+                <Link to="/knupi-web-v1/auth/signin">
+                  <span style={{ color: 'black', fontWeight: 'bold' }}>
+                    로그인
+                  </span>
+                </Link>
+              </div>
+            </>
+          ) : (
+            <>
+              <div style={{ marginBottom: '10px' }}>암호를 입력하세요</div>
+
+              <FormInput
+                type="text"
+                title="암호"
+                placeholder="암호를 입력하세요"
+                onChange={codeChangeHandler}
+              />
+              <p className={'reserve_button_err_' + (imChecked ? 'off' : 'on')}>
+                올바른 암호를 입력해주세요!
+              </p>
+              <FormBtn title="입력하기" onClick={passwordSubmitHandler} />
+            </>
+          )}
         </>
       ) : (
         <>
