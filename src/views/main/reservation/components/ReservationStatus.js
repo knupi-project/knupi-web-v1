@@ -68,6 +68,7 @@ const ReserveStatus = () => {
       .then((querySnapshotArray) => {
         const documentsArray = [];
         const timetableArray = [];
+
         // Loop through each query snapshot and add its documents to the array
         querySnapshotArray.forEach((querySnapshot) => {
           querySnapshot.forEach((doc) => {
@@ -77,21 +78,23 @@ const ReserveStatus = () => {
             });
           });
         });
-
+        
         timeArray.map((time) => {
+          const timeQuery = {
+            time: time,
+            '0번': ' ',
+            '1번': ' ',
+            '2번': ' ',
+            '3번': ' ',
+            'is0': 0,
+          };
+          timetableArray.push(timeQuery);
           for (let i = 0; i < documentsArray.length; i++) {
-            const timeQuery = {
-              time: time,
-              '0번': ' ',
-              '1번': ' ',
-              '2번': ' ',
-              '3번': ' ',
-            };
             if (documentsArray[i].id === time) {
               timeQuery[
                 documentsArray[i].pianoNum
               ] = `${documentsArray[i].name}(${documentsArray[i].purpose})`;
-              timetableArray.push(timeQuery);
+              timeQuery['is0'] = 1
             }
           }
         });

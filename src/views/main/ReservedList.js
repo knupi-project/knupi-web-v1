@@ -4,6 +4,7 @@ import { useTable } from 'react-table';
 
 const ReservedList = ({ list }) => {
   // 표 columns
+  console.log(list)
   const columns = useMemo(
     () => [
       {
@@ -29,7 +30,9 @@ const ReservedList = ({ list }) => {
     ],
     []
   );
-  const data = useMemo(() => list, [list]);
+  const data = useMemo(() => {
+    return list.filter(item => item['is0'] !== 0); // 'is0' 값이 0이 아닌 요소들만 추출
+  }, [list]);
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });
