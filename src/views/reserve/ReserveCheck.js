@@ -60,7 +60,10 @@ const Reservecheck = () => {
       );
       const reservationData = {
         name: userData.nickname,
+        userId: auth.currentUser.uid,
         createdAt: Date.now(),
+        selectedDate: selectedDate,
+        selectedTime: selectedTime,
         reserveDateTime: `${selectedDate}_${selectedTime}`,
         purpose: purpose,
         pianoNum: `${type.slice(1, 2)}번`,

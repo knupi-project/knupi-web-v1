@@ -1,6 +1,6 @@
 import { useState, useEffect, forwardRef } from 'react';
-import { db } from 'util/firebaseConfig';
-import { collection, getDocs, doc } from 'firebase/firestore';
+import { db, auth } from 'util/firebaseConfig';
+import { collection, getDocs, doc, deleteDoc } from 'firebase/firestore';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'; // css import
 import { ko } from 'date-fns/esm/locale';
@@ -9,6 +9,7 @@ import moment from 'moment';
 import 'moment/locale/ko';
 import ReservedList from 'views/main/ReservedList';
 import { useMediaQuery } from 'react-responsive';
+import ReserveTable from 'views/profile/components/ReserveTable';
 
 const formatDate = (d) => {
   const date = new Date(d);
@@ -37,7 +38,6 @@ function getTimeFromHourMinuteString(hourMinuteString) {
 
   return time;
 }
-
 function getStringFromDate(date) {
   const hours = ('0' + date.getHours()).slice(-2);
   const minutes = ('0' + date.getMinutes()).slice(-2);
@@ -54,9 +54,10 @@ const ReserveStatus = () => {
   const YMD = moment(startDate).format('YYYY년 M월 D일');
   // firebase 예약 데이터
   const [list, setLists] = useState([]);
+  
+  const [timetableArray, setTimetableArray] = useState(list);
 
-  // 날짜 선택할 때 마다 쿼리함. 저번에 얘기 했을 때는 여러번 쿼리 안하자 했는데..
-  useEffect(() => {
+  const getAll = ()=>{
     // 선택한 날짜
     const reservationsRef = doc(db, 'reservations', YMD);
     Promise.all([
@@ -72,40 +73,93 @@ const ReserveStatus = () => {
         // Loop through each query snapshot and add its documents to the array
         querySnapshotArray.forEach((querySnapshot) => {
           querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            // delete data.userId; // userId 필드 삭제
             documentsArray.push({
               id: doc.id,
-              ...doc.data(),
+              ...data,
             });
           });
         });
         
+          
         timeArray.map((time) => {
           const timeQuery = {
             time: time,
-            '0번': ' ',
-            '1번': ' ',
-            '2번': ' ',
-            '3번': ' ',
+            '0번': {
+              value: ' ',
+              isUser: false,
+              YMD: 0,
+              pn: 0,
+              time: time,
+            },
+            '1번': {
+              value: ' ',
+              isUser: false,
+              YMD: 0,
+              pn: 0,
+              time: time,
+            },
+            '2번': {
+              value: ' ',
+              isUser: false,
+              YMD: 0,
+              pn: 0,
+              time: time,
+            },
+            '3번': {
+              value: ' ',
+              isUser: false,
+              YMD: 0,
+              pn: 0,
+              time: time,
+            },
             'is0': 0,
           };
+        
           timetableArray.push(timeQuery);
           for (let i = 0; i < documentsArray.length; i++) {
             if (documentsArray[i].id === time) {
               timeQuery[
                 documentsArray[i].pianoNum
-              ] = `${documentsArray[i].name}(${documentsArray[i].purpose})`;
-              timeQuery['is0'] = 1
+              ].value = `${documentsArray[i].name}(${documentsArray[i].purpose})`;
+              timeQuery['is0'] = 1;
+              if (documentsArray[i].userId === auth.currentUser.uid) {
+                timeQuery[documentsArray[i].pianoNum].isUser = true;
+                timeQuery[documentsArray[i].pianoNum].YMD = documentsArray[i].selectedDate;
+                timeQuery[documentsArray[i].pianoNum].pn = documentsArray[i].pianoNum;
+              }
             }
           }
-        });
 
+        });
+        setTimetableArray(timetableArray)
         setLists(timetableArray);
+        
       })
       .catch((error) => {
         console.log('Error getting documents: ', error);
       });
+    }
+  useEffect(()=>{
+    getAll();
+  }, [list])
+
+  async function handleDeleteClick(docRef) {
+    try {
+      await deleteDoc(docRef);
+      alert("삭제되었습니다.")
+    } catch (error) {
+      console.log('error')
+    }
+  }
+
+  // 날짜 선택할 때 마다 쿼리함. 저번에 얘기 했을 때는 여러번 쿼리 안하자 했는데..
+  useEffect(() => {
+    getAll()
   }, [startDate]);
-  const ShowList = list && <ReservedList list={list} />;
+  
+  const ShowList = list && <ReservedList list={list} onDeleteClick={handleDeleteClick}  />;
 
   const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
     <button className="example-custom-input" onClick={onClick} ref={ref}>

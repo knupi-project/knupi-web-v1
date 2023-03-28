@@ -1,10 +1,16 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import { db } from 'util/firebaseConfig';
 import { useMemo } from 'react';
+import { doc} from 'firebase/firestore';
 import { useTable } from 'react-table';
 
-const ReservedList = ({ list }) => {
+const ReservedList = ({ list , onDeleteClick }) => {
+
+  async function handleDeleteClick(docRef) {
+    onDeleteClick(docRef);
+  }
+
   // 표 columns
-  console.log(list)
   const columns = useMemo(
     () => [
       {
@@ -14,18 +20,71 @@ const ReservedList = ({ list }) => {
       {
         Header: '업라이트 피아노',
         accessor: '0번',
+        Cell: ({ cell }) => {
+          const { value, isUser,YMD, pn, time, } = cell.row.original['0번'];
+          return (
+            <><div className="value_btn">
+              {value}
+              {isUser && <button className="btn_delete"               
+              onClick={() => 
+                handleDeleteClick(doc(db, 'reservations', YMD, pn, time))}>취소</button>}
+              </div>
+            </>
+          );
+        },
       },
       {
         Header: '1번 피아노',
         accessor: '1번',
+        Cell: ({ cell }) => {
+          const { value, isUser,YMD, pn, time, } = cell.row.original['1번'];
+          return (
+            <>
+            <div className="value_btn">
+              {value}
+              {isUser && <button className="btn_delete"               
+              onClick={() => 
+                handleDeleteClick(doc(db, 'reservations', YMD, pn, time))}>취소</button>}
+              </div>
+            </>
+          );
+        },
+        
       },
       {
         Header: '2번 피아노',
         accessor: '2번',
+        Cell: ({ cell }) => {
+          const { value, isUser,YMD, pn, time, } = cell.row.original['2번'];
+          return (
+            <>
+            <div className="value_btn">
+              {value}
+              {isUser && <button className="btn_delete"               
+              onClick={() => 
+                handleDeleteClick(doc(db, 'reservations', YMD, pn, time))}>취소</button>}
+              </div>
+            </>
+          );
+        },
       },
       {
         Header: '3번 피아노',
         accessor: '3번',
+        Cell: ({ cell }) => {
+          const { value, isUser,YMD, pn, time, } = cell.row.original['3번'];
+          return (
+            <>
+            <div className="value_btn">
+              {value}
+              {isUser && <button className="btn_delete" 
+              onClick={() => 
+                handleDeleteClick(doc(db, 'reservations', YMD, pn, time))}
+                >취소</button>}
+              </div>
+            </>
+          );
+        },
       },
     ],
     []

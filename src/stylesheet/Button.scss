@@ -142,3 +142,37 @@ $darkgrey: #525266;
     }
   }
 }
+
+.btn_delete {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  width: 2.3rem;
+  height: 1.3rem;
+
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-left: 4px;
+  background-color: $darkgrey;
+  
+  border-radius: 4px;
+  cursor: pointer;
+
+  @media screen and (max-width: 768px) {
+    width: 2.0rem;
+    height: 0.8rem;
+    font-size: 11px;
+  }
+
+  &:hover {
+    background: lighten($darkgrey, 5%); // 색상 10% 밝게
+  }
+
+  &:active {
+    background: darken($darkgrey, 5%); // 색상 10% 어둡게
+  }
+}
