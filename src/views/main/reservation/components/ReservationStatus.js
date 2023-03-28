@@ -57,93 +57,6 @@ const ReserveStatus = () => {
   
   const [timetableArray, setTimetableArray] = useState(list);
 
-  const getAll = ()=>{
-    // 선택한 날짜
-    const reservationsRef = doc(db, 'reservations', YMD);
-    Promise.all([
-      getDocs(collection(reservationsRef, '0번')),
-      getDocs(collection(reservationsRef, '1번')),
-      getDocs(collection(reservationsRef, '2번')),
-      getDocs(collection(reservationsRef, '3번')),
-    ])
-      .then((querySnapshotArray) => {
-        const documentsArray = [];
-        const timetableArray = [];
-
-        // Loop through each query snapshot and add its documents to the array
-        querySnapshotArray.forEach((querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            // delete data.userId; // userId 필드 삭제
-            documentsArray.push({
-              id: doc.id,
-              ...data,
-            });
-          });
-        });
-        
-          
-        timeArray.map((time) => {
-          const timeQuery = {
-            time: time,
-            '0번': {
-              value: ' ',
-              isUser: false,
-              YMD: 0,
-              pn: 0,
-              time: time,
-            },
-            '1번': {
-              value: ' ',
-              isUser: false,
-              YMD: 0,
-              pn: 0,
-              time: time,
-            },
-            '2번': {
-              value: ' ',
-              isUser: false,
-              YMD: 0,
-              pn: 0,
-              time: time,
-            },
-            '3번': {
-              value: ' ',
-              isUser: false,
-              YMD: 0,
-              pn: 0,
-              time: time,
-            },
-            'is0': 0,
-          };
-        
-          timetableArray.push(timeQuery);
-          for (let i = 0; i < documentsArray.length; i++) {
-            if (documentsArray[i].id === time) {
-              timeQuery[
-                documentsArray[i].pianoNum
-              ].value = `${documentsArray[i].name}(${documentsArray[i].purpose})`;
-              timeQuery['is0'] = 1;
-              if (documentsArray[i].userId === auth.currentUser.uid) {
-                timeQuery[documentsArray[i].pianoNum].isUser = true;
-                timeQuery[documentsArray[i].pianoNum].YMD = documentsArray[i].selectedDate;
-                timeQuery[documentsArray[i].pianoNum].pn = documentsArray[i].pianoNum;
-              }
-            }
-          }
-
-        });
-        setTimetableArray(timetableArray)
-        setLists(timetableArray);
-        
-      })
-      .catch((error) => {
-        console.log('Error getting documents: ', error);
-      });
-    }
-  useEffect(()=>{
-    getAll();
-  }, [list])
 
   async function handleDeleteClick(docRef) {
     try {
@@ -156,7 +69,90 @@ const ReserveStatus = () => {
 
   // 날짜 선택할 때 마다 쿼리함. 저번에 얘기 했을 때는 여러번 쿼리 안하자 했는데..
   useEffect(() => {
-    getAll()
+    
+      // 선택한 날짜
+      const reservationsRef = doc(db, 'reservations', YMD);
+      Promise.all([
+        getDocs(collection(reservationsRef, '0번')),
+        getDocs(collection(reservationsRef, '1번')),
+        getDocs(collection(reservationsRef, '2번')),
+        getDocs(collection(reservationsRef, '3번')),
+      ])
+        .then((querySnapshotArray) => {
+          const documentsArray = [];
+          const timetableArray = [];
+  
+          // Loop through each query snapshot and add its documents to the array
+          querySnapshotArray.forEach((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+              const data = doc.data();
+              // delete data.userId; // userId 필드 삭제
+              documentsArray.push({
+                id: doc.id,
+                ...data,
+              });
+            });
+          });
+          
+            
+          timeArray.map((time) => {
+            const timeQuery = {
+              time: time,
+              '0번': {
+                value: ' ',
+                isUser: false,
+                YMD: 0,
+                pn: 0,
+                time: time,
+              },
+              '1번': {
+                value: ' ',
+                isUser: false,
+                YMD: 0,
+                pn: 0,
+                time: time,
+              },
+              '2번': {
+                value: ' ',
+                isUser: false,
+                YMD: 0,
+                pn: 0,
+                time: time,
+              },
+              '3번': {
+                value: ' ',
+                isUser: false,
+                YMD: 0,
+                pn: 0,
+                time: time,
+              },
+              'is0': 0,
+            };
+          
+            timetableArray.push(timeQuery);
+            for (let i = 0; i < documentsArray.length; i++) {
+              if (documentsArray[i].id === time) {
+                timeQuery[
+                  documentsArray[i].pianoNum
+                ].value = `${documentsArray[i].name}(${documentsArray[i].purpose})`;
+                timeQuery['is0'] = 1;
+                if (documentsArray[i].userId === auth.currentUser.uid) {
+                  timeQuery[documentsArray[i].pianoNum].isUser = true;
+                  timeQuery[documentsArray[i].pianoNum].YMD = documentsArray[i].selectedDate;
+                  timeQuery[documentsArray[i].pianoNum].pn = documentsArray[i].pianoNum;
+                }
+              }
+            }
+  
+          });
+          setTimetableArray(timetableArray)
+          setLists(timetableArray);
+          
+        })
+        .catch((error) => {
+          console.log('Error getting documents: ', error);
+        });
+      
   }, [startDate]);
   
   const ShowList = list && <ReservedList list={list} onDeleteClick={handleDeleteClick}  />;
