@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import { doc} from 'firebase/firestore';
 import { useTable } from 'react-table';
 
-const ReservedList = ({ list , onDeleteClick }) => {
+const ReservedList = ({list , onDeleteClick,  }) => {
 
   async function handleDeleteClick(docRef) {
     onDeleteClick(docRef);
@@ -21,13 +21,13 @@ const ReservedList = ({ list , onDeleteClick }) => {
         Header: '업라이트 피아노',
         accessor: '0번',
         Cell: ({ cell }) => {
-          const { value, isUser,YMD, pn, time, } = cell.row.original['0번'];
+          const { value, isUser, YMD, pn, time, isPastDate} = cell.row.original['0번'];
           return (
             <><div className="value_btn">
               {value}
-              {isUser && <button className="btn_delete"               
+              {isUser && !isPastDate && (<button className="btn_delete"               
               onClick={() => 
-                handleDeleteClick(doc(db, 'reservations', YMD, pn, time))}>취소</button>}
+                handleDeleteClick(doc(db, 'reservations', YMD, pn, time))}>취소</button>)}
               </div>
             </>
           );
@@ -37,14 +37,14 @@ const ReservedList = ({ list , onDeleteClick }) => {
         Header: '1번 피아노',
         accessor: '1번',
         Cell: ({ cell }) => {
-          const { value, isUser,YMD, pn, time, } = cell.row.original['1번'];
+          const { value, isUser,YMD, pn, time, isPastDate} = cell.row.original['1번'];
           return (
             <>
             <div className="value_btn">
               {value}
-              {isUser && <button className="btn_delete"               
+              {isUser && !isPastDate && (<button className="btn_delete"               
               onClick={() => 
-                handleDeleteClick(doc(db, 'reservations', YMD, pn, time))}>취소</button>}
+                handleDeleteClick(doc(db, 'reservations', YMD, pn, time))}>취소</button>)}
               </div>
             </>
           );
@@ -55,14 +55,14 @@ const ReservedList = ({ list , onDeleteClick }) => {
         Header: '2번 피아노',
         accessor: '2번',
         Cell: ({ cell }) => {
-          const { value, isUser,YMD, pn, time, } = cell.row.original['2번'];
+          const { value, isUser,YMD, pn, time, isPastDate} = cell.row.original['2번'];
           return (
             <>
             <div className="value_btn">
               {value}
-              {isUser && <button className="btn_delete"               
+              {isUser && !isPastDate && (<button className="btn_delete"               
               onClick={() => 
-                handleDeleteClick(doc(db, 'reservations', YMD, pn, time))}>취소</button>}
+                handleDeleteClick(doc(db, 'reservations', YMD, pn, time))}>취소</button>)}
               </div>
             </>
           );
@@ -72,15 +72,15 @@ const ReservedList = ({ list , onDeleteClick }) => {
         Header: '3번 피아노',
         accessor: '3번',
         Cell: ({ cell }) => {
-          const { value, isUser,YMD, pn, time, } = cell.row.original['3번'];
+          const { value, isUser,YMD, pn, time, isPastDate} = cell.row.original['3번'];
           return (
             <>
             <div className="value_btn">
               {value}
-              {isUser && <button className="btn_delete" 
+              {isUser && !isPastDate && (<button className="btn_delete" 
               onClick={() => 
                 handleDeleteClick(doc(db, 'reservations', YMD, pn, time))}
-                >취소</button>}
+                >취소</button>)}
               </div>
             </>
           );

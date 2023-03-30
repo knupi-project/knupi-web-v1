@@ -29,7 +29,7 @@
 .reserve_container {
   display: flex;
   justify-content: center;
-  margin-bottom: 7%;
+  margin-bottom: 4%;
   // 달력
 
   .react-datepicker-wrapper {
@@ -232,10 +232,11 @@
 }
 
 .example-custom-input {
-  background-color: seashell;
+  background-color: rgb(146, 142, 142);
   border-radius: 3px;
   border: 0px;
-  color: black;
+  color: white;
+  font-weight: 600;
   width: 35%;
   height: 130%;
 }

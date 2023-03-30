@@ -69,7 +69,11 @@ const ReserveStatus = () => {
 
   // 날짜 선택할 때 마다 쿼리함. 저번에 얘기 했을 때는 여러번 쿼리 안하자 했는데..
   useEffect(() => {
-    
+    const today_real = new Date();
+    const today = new Date(today_real.getTime());
+    today.setDate(today.getDate() - 1);
+    const isPastDate = startDate < today;
+
       // 선택한 날짜
       const reservationsRef = doc(db, 'reservations', YMD);
       Promise.all([
@@ -104,6 +108,7 @@ const ReserveStatus = () => {
                 YMD: 0,
                 pn: 0,
                 time: time,
+                isPastDate: isPastDate,
               },
               '1번': {
                 value: ' ',
@@ -111,6 +116,7 @@ const ReserveStatus = () => {
                 YMD: 0,
                 pn: 0,
                 time: time,
+                isPastDate: isPastDate,
               },
               '2번': {
                 value: ' ',
@@ -118,6 +124,7 @@ const ReserveStatus = () => {
                 YMD: 0,
                 pn: 0,
                 time: time,
+                isPastDate: isPastDate,
               },
               '3번': {
                 value: ' ',
@@ -125,6 +132,7 @@ const ReserveStatus = () => {
                 YMD: 0,
                 pn: 0,
                 time: time,
+                isPastDate: isPastDate,
               },
               'is0': 0,
             };
@@ -155,7 +163,7 @@ const ReserveStatus = () => {
       
   }, [startDate]);
   
-  const ShowList = list && <ReservedList list={list} onDeleteClick={handleDeleteClick}  />;
+  const ShowList = list && <ReservedList selectedDay={startDate} list={list} onDeleteClick={handleDeleteClick}  />;
 
   const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
     <button className="example-custom-input" onClick={onClick} ref={ref}>

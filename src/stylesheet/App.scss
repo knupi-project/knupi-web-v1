@@ -141,6 +141,28 @@ body {
         color: black;
       }
     }
+    .home__main__btn_mobile {
+      height: 45px;
+      width: 180px;
+      border: 1px solid black;
+      border-radius: 5px;
+      background-color: #000000bb;
+      font-size: 1.0rem;
+      letter-spacing: 2px;
+      color: wheat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.4s ease-in-out;
+      margin-top: 5px;
+
+      text-decoration-line: none;
+      text-decoration: none;
+      &:hover {
+        background-color: #00000000;
+        color: black;
+      }
+    }
   }
 }
 
