@@ -14,7 +14,9 @@ import { useDispatch } from 'react-redux';
 import { setLogIn } from 'util/reducer/loginSlice';
 import SignInButton from 'views/auth/components/SignInButton';
 
-setPersistence(auth, browserLocalPersistence); // 세션 유지 시 로그인 유지
+(async () => {
+  await setPersistence(auth, browserLocalPersistence);
+})();
 const provider = new GoogleAuthProvider(); // 구글 로그인 공급자 생성
 
 const SignIn = () => {
