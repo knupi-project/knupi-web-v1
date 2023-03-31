@@ -53,7 +53,7 @@ const TimeArray = ({ startDate, type, reserveArray }) => {
 
     return timeArray;
   }
-  const timeArray = getTimeArray('09:00', '22:30', 30);
+  const timeArray = getTimeArray('09:00', '23:59', 30);
 
   const today = new Date();
   if (startDate.getDate() == today.getDate()) {
