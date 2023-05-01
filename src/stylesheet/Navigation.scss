@@ -63,7 +63,7 @@ $nav-max-width: 840px;
 
   #nav__togleBtn {
     display: none;
-    width: 34%;
+    // width: 34%;
     @media screen and (max-width: $nav-max-width) {
       display: flex;
       flex-direction: row;

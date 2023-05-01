@@ -86,7 +86,7 @@ $darkgrey: #525266;
   font-size: 14px;
   font-weight: bold;
   color: #ffffff;
-
+  transition-duration: 0.4s;
   background-color: $darkgrey;
   margin-bottom: 16px;
   border-radius: 4px;
@@ -98,6 +98,12 @@ $darkgrey: #525266;
 
   &:active {
     background: darken($darkgrey, 5%); // 색상 10% 어둡게
+  }
+
+  &:disabled {
+    background-color: #e9ecef;
+    color: #adb5bd;
+    cursor: not-allowed;
   }
 }
 
@@ -158,7 +164,7 @@ $darkgrey: #525266;
   color: #ffffff;
   margin-left: 4px;
   background-color: $darkgrey;
-  
+
   border-radius: 4px;
   cursor: pointer;
 

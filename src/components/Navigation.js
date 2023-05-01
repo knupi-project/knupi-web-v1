@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import Dropdown from 'components/UI/Dropdown';
 import { Link, useLocation } from 'react-router-dom';
 import { auth } from 'util/firebaseConfig';
-import 'stylesheet/Navigation.scss';
 import NavBarOffcanvas from './navigation/NavBarOffcanvas';
 import { useMediaQuery } from 'react-responsive';
+import 'stylesheet/Navigation.scss';
 
 const Navigation = () => {
   const isDesktopOrMobile = useMediaQuery({ query: '(max-width:768px)' });

@@ -10,24 +10,21 @@ import {
 import { doc, getDoc } from 'firebase/firestore';
 import { db, auth } from 'util/firebaseConfig';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setLogIn } from 'util/reducer/loginSlice';
+// import { useDispatch } from 'react-redux';
+// import { setLogIn } from 'util/reducer/loginSlice';
 import SignInButton from 'views/auth/components/SignInButton';
-
-(async () => {
-  await setPersistence(auth, browserLocalPersistence);
-})();
-const provider = new GoogleAuthProvider(); // 구글 로그인 공급자 생성
 
 const SignIn = () => {
   const [authError, setAuthError] = useState(false);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const authHandler = async () => {
     try {
+      setPersistence(auth, browserLocalPersistence); // 세션 유지 시 로그인 유지
+      const signInProvider = new GoogleAuthProvider(); // 구글 로그인 공급자 생성
       //인증정보 가지고오기
-      const userCredential = await signInWithPopup(auth, provider); // 팝업창으로 구글 로그인
+      const userCredential = await signInWithPopup(auth, signInProvider); // 팝업창으로 구글 로그인
       //인증정보 바탕으로 DB 회원정보 쿼리
       const docRef = doc(db, 'users', userCredential.user.uid);
       const docSnap = await getDoc(docRef);
@@ -36,9 +33,10 @@ const SignIn = () => {
         throw new Error('회원 정보가 없습니다. 회원가입 후 이용해주세요.');
       }
       setAuthError(null);
-      dispatch(setLogIn());
+      // dispatch(setLogIn());
       navigate('/knupi-web-v1');
     } catch (error) {
+      alert(`로그인 중에 문제가 발생했습니다. \n메세지 : ${error.message}`);
       setAuthError(error.message);
       signOut(auth);
     }

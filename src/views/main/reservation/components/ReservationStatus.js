@@ -54,16 +54,15 @@ const ReserveStatus = () => {
   const YMD = moment(startDate).format('YYYY년 M월 D일');
   // firebase 예약 데이터
   const [list, setLists] = useState([]);
-  
-  const [timetableArray, setTimetableArray] = useState(list);
 
+  const [timetableArray, setTimetableArray] = useState(list);
 
   async function handleDeleteClick(docRef) {
     try {
       await deleteDoc(docRef);
-      alert("삭제되었습니다.")
+      alert('삭제되었습니다.');
     } catch (error) {
-      console.log('error')
+      console.log('error');
     }
   }
 
@@ -74,96 +73,100 @@ const ReserveStatus = () => {
     today.setDate(today.getDate() - 1);
     const isPastDate = startDate < today;
 
-      // 선택한 날짜
-      const reservationsRef = doc(db, 'reservations', YMD);
-      Promise.all([
-        getDocs(collection(reservationsRef, '0번')),
-        getDocs(collection(reservationsRef, '1번')),
-        getDocs(collection(reservationsRef, '2번')),
-        getDocs(collection(reservationsRef, '3번')),
-      ])
-        .then((querySnapshotArray) => {
-          const documentsArray = [];
-          const timetableArray = [];
-  
-          // Loop through each query snapshot and add its documents to the array
-          querySnapshotArray.forEach((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-              const data = doc.data();
-              // delete data.userId; // userId 필드 삭제
-              documentsArray.push({
-                id: doc.id,
-                ...data,
-              });
+    // 선택한 날짜
+    const reservationsRef = doc(db, 'reservations', YMD);
+    Promise.all([
+      getDocs(collection(reservationsRef, '0번')),
+      getDocs(collection(reservationsRef, '1번')),
+      getDocs(collection(reservationsRef, '2번')),
+      getDocs(collection(reservationsRef, '3번')),
+    ])
+      .then((querySnapshotArray) => {
+        const documentsArray = [];
+        const timetableArray = [];
+
+        // Loop through each query snapshot and add its documents to the array
+        querySnapshotArray.forEach((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            // delete data.userId; // userId 필드 삭제
+            documentsArray.push({
+              id: doc.id,
+              ...data,
             });
           });
-          
-            
-          timeArray.map((time) => {
-            const timeQuery = {
+        });
+
+        timeArray.map((time) => {
+          const timeQuery = {
+            time: time,
+            '0번': {
+              value: ' ',
+              isUser: false,
+              YMD: 0,
+              pn: 0,
               time: time,
-              '0번': {
-                value: ' ',
-                isUser: false,
-                YMD: 0,
-                pn: 0,
-                time: time,
-                isPastDate: isPastDate,
-              },
-              '1번': {
-                value: ' ',
-                isUser: false,
-                YMD: 0,
-                pn: 0,
-                time: time,
-                isPastDate: isPastDate,
-              },
-              '2번': {
-                value: ' ',
-                isUser: false,
-                YMD: 0,
-                pn: 0,
-                time: time,
-                isPastDate: isPastDate,
-              },
-              '3번': {
-                value: ' ',
-                isUser: false,
-                YMD: 0,
-                pn: 0,
-                time: time,
-                isPastDate: isPastDate,
-              },
-              'is0': 0,
-            };
-          
-            timetableArray.push(timeQuery);
-            for (let i = 0; i < documentsArray.length; i++) {
-              if (documentsArray[i].id === time) {
-                timeQuery[
-                  documentsArray[i].pianoNum
-                ].value = `${documentsArray[i].name}(${documentsArray[i].purpose})`;
-                timeQuery['is0'] = 1;
-                if (documentsArray[i].userId === auth.currentUser.uid) {
-                  timeQuery[documentsArray[i].pianoNum].isUser = true;
-                  timeQuery[documentsArray[i].pianoNum].YMD = documentsArray[i].selectedDate;
-                  timeQuery[documentsArray[i].pianoNum].pn = documentsArray[i].pianoNum;
-                }
+              isPastDate: isPastDate,
+            },
+            '1번': {
+              value: ' ',
+              isUser: false,
+              YMD: 0,
+              pn: 0,
+              time: time,
+              isPastDate: isPastDate,
+            },
+            '2번': {
+              value: ' ',
+              isUser: false,
+              YMD: 0,
+              pn: 0,
+              time: time,
+              isPastDate: isPastDate,
+            },
+            '3번': {
+              value: ' ',
+              isUser: false,
+              YMD: 0,
+              pn: 0,
+              time: time,
+              isPastDate: isPastDate,
+            },
+            is0: 0,
+          };
+
+          timetableArray.push(timeQuery);
+          for (let i = 0; i < documentsArray.length; i++) {
+            if (documentsArray[i].id === time) {
+              timeQuery[
+                documentsArray[i].pianoNum
+              ].value = `${documentsArray[i].name}(${documentsArray[i].purpose})`;
+              timeQuery['is0'] = 1;
+              if (documentsArray[i].userId === auth.currentUser.uid) {
+                timeQuery[documentsArray[i].pianoNum].isUser = true;
+                timeQuery[documentsArray[i].pianoNum].YMD =
+                  documentsArray[i].selectedDate;
+                timeQuery[documentsArray[i].pianoNum].pn =
+                  documentsArray[i].pianoNum;
               }
             }
-  
-          });
-          setTimetableArray(timetableArray)
-          setLists(timetableArray);
-          
-        })
-        .catch((error) => {
-          console.log('Error getting documents: ', error);
+          }
         });
-      
+        setTimetableArray(timetableArray);
+        setLists(timetableArray);
+      })
+      .catch((error) => {
+        console.log('Error getting documents: ', error);
+      });
   }, [startDate]);
-  
-  const ShowList = list && <ReservedList selectedDay={startDate} list={list} onDeleteClick={handleDeleteClick}  />;
+
+  const ShowList = list && (
+    <ReservedList
+      selectedDay={startDate}
+      list={list}
+      onDeleteClick={handleDeleteClick}
+    />
+  );
 
   const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
     <button className="example-custom-input" onClick={onClick} ref={ref}>
