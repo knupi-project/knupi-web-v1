@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/knupi-web-v1/static/css/main.f4825ede.css",
-    "main.js": "/knupi-web-v1/static/js/main.ad72761b.js",
+    "main.css": "/knupi-web-v1/static/css/main.683428ba.css",
+    "main.js": "/knupi-web-v1/static/js/main.3910e363.js",
     "static/media/Main 1.png": "/knupi-web-v1/static/media/Main 1.2abcef858078cdbd3b89.png",
     "static/media/reservation_mid.png": "/knupi-web-v1/static/media/reservation_mid.a2d0db2129f0236e9044.png",
     "index.html": "/knupi-web-v1/index.html",
-    "main.f4825ede.css.map": "/knupi-web-v1/static/css/main.f4825ede.css.map",
-    "main.ad72761b.js.map": "/knupi-web-v1/static/js/main.ad72761b.js.map"
+    "main.683428ba.css.map": "/knupi-web-v1/static/css/main.683428ba.css.map",
+    "main.3910e363.js.map": "/knupi-web-v1/static/js/main.3910e363.js.map"
   },
   "entrypoints": [
-    "static/css/main.f4825ede.css",
-    "static/js/main.ad72761b.js"
+    "static/css/main.683428ba.css",
+    "static/js/main.3910e363.js"
   ]
 }
