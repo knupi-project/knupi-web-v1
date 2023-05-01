@@ -19,7 +19,7 @@ function NavBarOffcanvas({ loginUser }) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   const logOutHandler = async () => {
-    console.log('setLogout');
+    // console.log('setLogout');
     dispatch(setLogout());
     await signOut(auth);
     navigate('/');
