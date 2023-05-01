@@ -45,7 +45,15 @@ function getStringFromDate(date) {
 
   return timeStr;
 }
-const timeArray = getTimeArray('09:00', '22:30', 30);
+
+// 23:30 까지 리스트에 들어가므로 24:00 으로 수정
+const timeArray = getTimeArray('09:00', '24:00', 30);
+
+function getIndexFromTime(time) {
+  const [hour, min] = time.split(':');
+  const index = (hour - 9) * 2 + (min >= '30' ? 1 : 0);
+  return index;
+}
 
 const ReserveStatus = () => {
   const isDesktopOrMobile = useMediaQuery({ query: '(max-width:768px)' });
@@ -57,18 +65,18 @@ const ReserveStatus = () => {
   
   const [timetableArray, setTimetableArray] = useState(list);
 
-
   async function handleDeleteClick(docRef) {
     try {
       await deleteDoc(docRef);
       alert("삭제되었습니다.")
+      queryfunction()     // queryfunction => 달력에 선택된 날짜 쿼리해오기
     } catch (error) {
       console.log('error')
     }
   }
 
-  // 날짜 선택할 때 마다 쿼리함. 저번에 얘기 했을 때는 여러번 쿼리 안하자 했는데..
-  useEffect(() => {
+  // useeffect 내의 코드를 queryfunction으로 빼내서 useeffect 안에 넣음
+  const queryfunction = () => {
     const today_real = new Date();
     const today = new Date(today_real.getTime());
     today.setDate(today.getDate() - 1);
@@ -138,30 +146,33 @@ const ReserveStatus = () => {
             };
           
             timetableArray.push(timeQuery);
-            for (let i = 0; i < documentsArray.length; i++) {
-              if (documentsArray[i].id === time) {
-                timeQuery[
-                  documentsArray[i].pianoNum
-                ].value = `${documentsArray[i].name}(${documentsArray[i].purpose})`;
-                timeQuery['is0'] = 1;
-                if (documentsArray[i].userId === auth.currentUser.uid) {
-                  timeQuery[documentsArray[i].pianoNum].isUser = true;
-                  timeQuery[documentsArray[i].pianoNum].YMD = documentsArray[i].selectedDate;
-                  timeQuery[documentsArray[i].pianoNum].pn = documentsArray[i].pianoNum;
-                }
-              }
-            }
-  
           });
+          
+          // documentsArray만 for문 돌려서 인덱싱으로 배열 내 요소 삭제
+          for (let i = 0; i < documentsArray.length; i++) {  
+          timetableArray[getIndexFromTime(documentsArray[i].id)][documentsArray[i].pianoNum].value
+          = `${documentsArray[i].name}(${documentsArray[i].purpose})`
+          timetableArray[getIndexFromTime(documentsArray[i].id)]['is0'] = 1;
+            
+          if (documentsArray[i].userId === auth.currentUser.uid) {
+            timetableArray[getIndexFromTime(documentsArray[i].id)][documentsArray[i].pianoNum].isUser = true;
+            timetableArray[getIndexFromTime(documentsArray[i].id)][documentsArray[i].pianoNum].YMD = documentsArray[i].selectedDate;
+            timetableArray[getIndexFromTime(documentsArray[i].id)][documentsArray[i].pianoNum].pn = documentsArray[i].pianoNum;
+            }
+          }
+
           setTimetableArray(timetableArray)
           setLists(timetableArray);
-          
         })
         .catch((error) => {
           console.log('Error getting documents: ', error);
         });
-      
+  }
+
+  useEffect(() => {
+    queryfunction()  
   }, [startDate]);
+
   
   const ShowList = list && <ReservedList selectedDay={startDate} list={list} onDeleteClick={handleDeleteClick}  />;
 
