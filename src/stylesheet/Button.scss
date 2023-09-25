@@ -86,7 +86,7 @@ $darkgrey: #525266;
   font-size: 14px;
   font-weight: bold;
   color: #ffffff;
-
+  transition-duration: 0.4s;
   background-color: $darkgrey;
   margin-bottom: 16px;
   border-radius: 4px;
@@ -98,6 +98,12 @@ $darkgrey: #525266;
 
   &:active {
     background: darken($darkgrey, 5%); // 색상 10% 어둡게
+  }
+
+  &:disabled {
+    background-color: #e9ecef;
+    color: #adb5bd;
+    cursor: not-allowed;
   }
 }
 
@@ -140,5 +146,39 @@ $darkgrey: #525266;
       width: 2.856rem * 0.7;
       height: 2.5rem * 0.7;
     }
+  }
+}
+
+.btn_delete {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  width: 2.3rem;
+  height: 1.3rem;
+
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-left: 4px;
+  background-color: $darkgrey;
+
+  border-radius: 4px;
+  cursor: pointer;
+
+  @media screen and (max-width: 768px) {
+    width: 2.5rem;
+    height: 1.4rem;
+    font-size: 10px;
+  }
+
+  &:hover {
+    background: lighten($darkgrey, 5%); // 색상 10% 밝게
+  }
+
+  &:active {
+    background: darken($darkgrey, 5%); // 색상 10% 어둡게
   }
 }

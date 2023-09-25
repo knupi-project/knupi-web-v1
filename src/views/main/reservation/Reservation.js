@@ -30,8 +30,8 @@ const Reservation = () => {
     <div className="reservation">
       <div className="reservation_mid">
         <div className="reservation_mid-text">
-          <span className="reservation_mid-title">Reservation</span>
-          <span className="reservation_mid-subtitle">피아노 예약</span>
+          <div className="reservation_mid-title">Reservation</div>
+          <div className="reservation_mid-subtitle">피아노 예약</div>
         </div>
       </div>
       <div className="reservation_main">

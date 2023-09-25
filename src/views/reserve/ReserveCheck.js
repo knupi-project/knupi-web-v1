@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-
 import { useNavigate, useParams } from 'react-router-dom';
 import { db, auth } from 'util/firebaseConfig';
 import { getDoc, doc, collection, setDoc } from 'firebase/firestore';
@@ -30,7 +29,7 @@ const Reservecheck = () => {
     if (purpose === 0) {
       setPurpose('멘토링');
     } else {
-      setPurpose('개인 연습');
+      setPurpose('연습');
     }
   }, [purpose]);
 
@@ -61,7 +60,10 @@ const Reservecheck = () => {
       );
       const reservationData = {
         name: userData.nickname,
+        userId: auth.currentUser.uid,
         createdAt: Date.now(),
+        selectedDate: selectedDate,
+        selectedTime: selectedTime,
         reserveDateTime: `${selectedDate}_${selectedTime}`,
         purpose: purpose,
         pianoNum: `${type.slice(1, 2)}번`,

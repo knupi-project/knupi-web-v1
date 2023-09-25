@@ -2,17 +2,17 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from 'util/firebaseConfig';
 import { signOut } from 'firebase/auth';
-import { useDispatch } from 'react-redux';
-import { setLogout } from 'util/reducer/loginSlice';
+// import { useDispatch } from 'react-redux';
+// import { setLogout } from 'util/reducer/loginSlice';
 import 'stylesheet/Dropdown.scss';
 
 const Dropdown = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const logOutHandler = async () => {
-    console.log('setLogout');
-    dispatch(setLogout());
+    // console.log('setLogout');
+    // dispatch(setLogout());
     await signOut(auth);
     navigate('/');
   };

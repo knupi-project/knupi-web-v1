@@ -2,9 +2,13 @@ import React, { useEffect } from 'react';
 import Dropdown from 'components/UI/Dropdown';
 import { Link, useLocation } from 'react-router-dom';
 import { auth } from 'util/firebaseConfig';
+import NavBarOffcanvas from './navigation/NavBarOffcanvas';
+import { useMediaQuery } from 'react-responsive';
 import 'stylesheet/Navigation.scss';
 
 const Navigation = () => {
+  const isDesktopOrMobile = useMediaQuery({ query: '(max-width:768px)' });
+
   const loginUser = auth.currentUser;
   const { pathname } = useLocation();
 
@@ -32,8 +36,10 @@ const Navigation = () => {
   }, [pathname]);
 
   return (
-    <div className="nav">
-      <div className="nav__row">
+    <div className="nav__custom">
+      <NavBarOffcanvas loginUser={loginUser} />
+
+      <div className="nav__row" id="nav__hide">
         <Link
           id="nav__home"
           to="/knupi-web-v1/app/home"
@@ -79,13 +85,13 @@ const Navigation = () => {
           alt="logo-signsin-title"
         />
       </Link>
-
       <div className="nav__row">
+        {/* login */}
         {!loginUser ? (
           <Link
             to="/knupi-web-v1/auth/signin"
-            id="nav__reservation"
             className="nav__link"
+            id="nav__reservation"
             onClick={() => {
               window.alert(
                 '로그인이 필요한 서비스입니다. 로그인 페이지로 이동합니다.'
@@ -103,15 +109,19 @@ const Navigation = () => {
           >
             Reservation
           </Link>
-        )}
+        )}{' '}
+        {/* usermenu */}
         {!loginUser ? (
-          <Link to="/knupi-web-v1/auth/signin" className="nav__usermenu nav__link">
+          <Link
+            to="/knupi-web-v1/auth/signin"
+            className="nav__usermenu nav__link"
+          >
             <img
               className="user-login-icon"
               src={process.env.PUBLIC_URL + '/img/user-icon.png'}
               alt="user-login-icon"
             />
-            <span>로그인</span>
+            <span style={{ fontSize: '1.2rem' }}>로그인</span>
           </Link>
         ) : (
           <div

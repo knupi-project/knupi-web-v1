@@ -1,14 +1,43 @@
+/* fonts*/
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&display=swap');
 
+/* bootstraps */
+@import '~bootstrap/scss/bootstrap';
+
+/* media query for font sizes */
+
+@media all and (min-width: 800px) {
+  html {
+    font-size: 19px;
+  }
+}
+
+@media all and (max-width: 799px) and (min-width: 550px) {
+  html {
+    font-size: 2.6vw;
+  }
+}
+
+@media all and (max-width: 549px) and (min-width: 340px) {
+  html {
+    font-size: 3.9vw;
+  }
+}
+
+@media all and (max-width: 339px) and (min-width: 340px) {
+  html {
+    font-size: 13px;
+  }
+}
+
 html {
   padding: 0px;
   margin: 0px;
   font-family: 'Noto Serif', 'Noto Serif KR', serif;
-  font-size: 18px;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
@@ -29,6 +58,7 @@ body {
   margin: 0;
 
   width: 100vw;
+  min-width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -38,16 +68,18 @@ body {
 // HOME
 .home {
   background-color: #fff;
-  padding: 0;
-  margin: 0;
-  width: 100vw;
+  padding: 0px;
+  margin: 0px;
+  margin-top: 140px;
+
+  width: 100%;
   height: auto;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: 'Frank Ruhl Libre', serif;
-  margin-top: 140px;
 
   img {
     width: 100%;
@@ -62,10 +94,9 @@ body {
     justify-content: center;
 
     width: 100%;
-
-    min-height: 500px;
-    height: 100vh;
-
+    height: 85vw;
+    min-height: 780px;
+    max-height: 1200px;
     background-image: url('../../public/img/Main\ 1.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -110,16 +141,40 @@ body {
         color: black;
       }
     }
+    .home__main__btn_mobile {
+      height: 45px;
+      width: 180px;
+      border: 1px solid black;
+      border-radius: 5px;
+      background-color: #000000bb;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      color: wheat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.4s ease-in-out;
+      margin-top: 5px;
+
+      text-decoration-line: none;
+      text-decoration: none;
+      &:hover {
+        background-color: #00000000;
+        color: black;
+      }
+    }
   }
 }
 
 .reservation {
-  display: flex;
-  width: 100vw;
-  padding: 0;
-  margin: 0;
+  padding: 0px;
+  margin: 0px;
   margin-top: 140px;
 
+  width: 100%;
+  height: auto;
+
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -132,10 +187,13 @@ body {
     background-image: url('../../public/img/reservation_mid.png');
     background-repeat: no-repeat;
     background-size: cover;
+
     width: 100%;
-    height: 80vh;
-    min-height: 500px;
-    max-height: 740px;
+    min-width: 340px;
+    height: 40vw;
+    min-height: 300px;
+    // max-height: 800px;
+
     .reservation_mid-text {
       display: flex;
       flex-direction: column;
@@ -146,7 +204,7 @@ body {
     }
 
     .reservation_mid-title {
-      font-size: 3rem;
+      font-size: 2.3rem;
       font-family: 'Frank Ruhl Libre', serif;
       font-weight: 550;
       padding: 25px;
@@ -155,6 +213,7 @@ body {
 
     .reservation_mid-subtitle {
       font-family: 'Noto Sans KR', sans-serif;
+      text-align: center;
       margin-top: 30px;
       font-size: 1.5rem;
       color: black;
@@ -211,16 +270,22 @@ body {
     align-items: center;
     border-bottom: 1px solid rgb(0, 0, 0);
 
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
     p {
       text-align: center;
     }
     .reservation_main_title {
-      font-size: 2rem;
+      font-size: 1.3rem;
       margin: 10px 0px;
+      @media screen and (max-width: 768px) {
+        font-size: 1.25rem;
+      }
     }
 
     .reservation_main_subtitle {
-      font-size: 1.7rem;
+      font-size: 1.3rem;
       color: rgb(0, 0, 0);
       opacity: 50%;
       margin: 10px 0px 20px 0px;
@@ -231,19 +296,31 @@ body {
     display: flex;
     justify-content: center;
     margin: 35px 0px;
+    width: 100%;
     box-sizing: border-box;
   }
 
   .reservation_main_box {
-    width: 624px;
+    width: 600px;
     display: flex;
     justify-content: center;
     margin-left: -194px;
     margin-right: 85px;
+    @media screen and (max-width: 768px) {
+      width: 390px;
+      margin: 0px 0 150px 0 !important;
+    }
+  }
+
+  .reservation_main_calendar {
+    @media screen and (max-width: 768px) {
+      overflow: auto;
+      margin: 3rem 0 7rem 0;
+    }
   }
 
   #reservation_main_box_title {
-    font-size: 25px;
+    font-size: 1rem;
     font-weight: 500;
     margin: 20px 0px 50px -15px;
   }
@@ -258,6 +335,9 @@ body {
     width: 80%;
     margin: 40px 0px;
 
+    @media screen and (max-width: 768px) {
+      margin: 20px 0px;
+    }
     .piano_card {
       width: 45%;
       min-width: 340px;
@@ -274,6 +354,15 @@ body {
       display: flex;
       flex-direction: column;
 
+      @media screen and (max-width: 768px) {
+        margin: 20px 10px 10px 10px;
+        height: 25vh;
+        min-height: 230px;
+        max-height: 500px;
+        padding: 20px 40px 20px 40px;
+        border-top: 20px solid black;
+      }
+
       .piano_card_title {
         font-size: 1.5rem;
         font-weight: 700;
@@ -285,6 +374,9 @@ body {
         opacity: 70%;
 
         margin: 20px 0px;
+        @media screen and (max-width: 768px) {
+          margin: 10px 0px;
+        }
       }
 
       .piano_card_subtitle {
@@ -301,6 +393,9 @@ body {
 
       .piano_card_btn {
         margin: 40px 0px;
+        @media screen and (max-width: 768px) {
+          margin: 20px 0px 10px 0px;
+        }
       }
 
       .piano_card_container {
@@ -317,10 +412,9 @@ body {
   }
 }
 
-// home
+// reserve page
 .home {
   font-family: 'Noto Sans KR', sans-serif;
-
   .reserve_home {
     margin: 100px 0px;
 
@@ -458,80 +552,113 @@ body {
       cursor: pointer;
     }
   }
-  //체크페이지
+}
 
-  .home_check {
-    margin-top: 90px;
-    width: 760px;
-    padding: 0px 50px;
-    border-left: 2px solid #dbdbdb;
-    height: 500px;
-  }
-  #home_check_title {
-    margin: 0px 0px 20px 0px;
-    font-size: 25px;
-    font-weight: 600;
-  }
-  #home_check_subtitle {
-    margin: 50px 0px;
-    line-height: 10px;
-    font-size: 21px;
-    font-weight: 400;
-  }
-  #checkbox_div {
-    display: flex;
-    height: 60px;
-    align-items: center;
-  }
-  input[type='checkbox'] {
-    width: 25px;
-    height: 25px;
-    border-radius: 20%;
-    background: #d9d9d9;
-    appearance: none;
-    cursor: pointer;
-    transition: background 0.2s;
-    margin: 0px 20px;
-  }
-  input[type='checkbox']:checked {
-    background: #646464;
-    border: none;
-  }
-  .reserve_button_div {
+//체크페이지
+
+.home_check {
+  margin-top: 90px;
+  width: 71%;
+  padding: 0px 50px;
+  border-left: 2px solid #dbdbdb;
+  height: 500px;
+  @media screen and (max-width: 768px) {
+    border-left: 0px solid #dbdbdb;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
-    align-items: flex-end;
   }
-  .reserve_button_err_on {
-    visibility: visible;
-    font-weight: 600;
-    opacity: 100;
-    color: tomato;
-    transition: all 0.3s ease-in-out;
+}
+#home_check_title {
+  @media screen and (max-width: 768px) {
+    width: 500px;
+    text-align: center;
   }
+  margin: 0px 0px 20px 0px;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+#home_check_subtitle {
+  width: 500px;
+  @media screen and (max-width: 768px) {
+    width: 500px;
+    text-align: center;
+  }
+  margin: 50px 0px;
+  line-height: 10px;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+#checkbox_div {
+  display: flex;
 
-  .reserve_button_err_off {
-    visibility: hidden;
-    font-weight: 600;
-    opacity: 0;
-    transition: all 0.3s ease-in-out;
+  height: 60px;
+  align-items: center;
+  @media screen and (max-width: 768px) {
+    width: 10rem;
+    justify-content: center;
   }
+}
+input[type='checkbox'] {
+  @media screen and (max-width: 768px) {
+    width: 7.3rem;
+    height: 1.5rem;
+  }
+  width: 25px;
+  height: 25px;
+  border-radius: 20%;
+  background: #d9d9d9;
+  appearance: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin: 0px 20px;
+}
+input[type='checkbox']:checked {
+  background: #646464;
+  border: none;
+}
+.reserve_button_div {
+  @media screen and (max-width: 768px) {
+    align-items: center;
+  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+.reserve_button_err_on {
+  visibility: visible;
+  font-weight: 600;
+  opacity: 100;
+  color: tomato;
+  transition: all 0.3s ease-in-out;
+}
 
-  .home_check_reserve {
-    margin: 0px 0px !important;
-    height: 60px;
-    width: 200px;
-    border-radius: 15px;
-    border: none;
-    background: #d9d9d9;
-  }
-  .home_check_reserve:active {
-    background: #646464;
-    color: white;
+.reserve_button_err_off {
+  visibility: hidden;
+  font-weight: 600;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.home_check_reserve {
+  margin: 0px 0px !important;
+  height: 60px;
+  width: 200px;
+  border-radius: 15px;
+  border: none;
+  background: #d9d9d9;
+  @media screen and (max-width: 768px) {
+    width: 30px;
   }
 }
 
+.home_check_reserve:active {
+  background: #646464;
+  color: white;
+}
 // sign
 .sign {
   font-family: 'Noto Sans KR', sans-serif;
@@ -681,50 +808,103 @@ body {
   margin-top: 40px;
 }
 
-//about
-
-.about {
+//about,contact
+.about,
+.contact {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  margin: 50px 0px;
-}
-
-.logo_duck {
-  width: 400px;
-  margin: 30px 0px;
-}
-
-.about_title,
-.contact_title {
-  font-weight: 600;
-  font-size: 35px;
-  margin-top: 200px;
-}
-
-.about_sub_title {
-  font-weight: 500;
-  font-size: 25px;
-  margin-top: 100px;
-}
-
-.about_main {
-  font-size: 23px;
-  line-height: 45px;
-}
-
-.contact_sub_title {
-  font-weight: 500;
-  font-size: 20px;
-  margin-top: 0px;
-  line-height: 50px;
-}
-
-#contact {
-  padding-top: 50px;
-  height: 75vh;
-}
-
-.about_main {
-  width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  margin-top: 180px;
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 50px;
+  }
+  .about_title,
+  .contact_title {
+    font-weight: 600;
+    font-size: 2rem;
+  }
+
+  .contact_sub_title {
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 0px;
+    line-height: 50px;
+    @media screen and (max-width: 768px) {
+      font-size: 13px;
+    }
+  }
+
+  #contact {
+    padding-top: 50px;
+    height: 75vh;
+  }
+
+  .about_main {
+    padding: 0px 30px;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 1rem;
+    line-height: 45px;
+
+    .about_logo_duck {
+      min-width: 162 * 2px;
+      max-width: 162 * 2.5px;
+      min-height: 216 * 2px;
+      max-height: 216 * 2.5px;
+      width: 16.2 * 2vw;
+      height: 21.6 * 2vw;
+      margin: 30px 20px;
+    }
+
+    .about_main_explain {
+      width: 100%;
+      min-width: 300px;
+      max-width: 800px;
+      height: fit-content;
+    }
+    b {
+      font-size: 1.3rem;
+    }
+
+    .about_article {
+      width: auto;
+      height: fit-content;
+      margin: 30px 0px;
+      font-size: 1rem;
+      line-height: 45px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .about_article_title {
+        font-weight: 700;
+        font-size: 2rem;
+        margin-top: 50px;
+      }
+      .about_article_sub_title {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 100%;
+        align-items: center;
+        font-weight: 700;
+        font-size: 25px;
+        margin-top: 30px;
+      }
+      .about_article_main {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 100%;
+      }
+    }
+  }
 }
