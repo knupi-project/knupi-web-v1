@@ -6,6 +6,7 @@ import App from './App';
 
 import 'stylesheet/App.scss';
 import 'stylesheet/Profile.scss';
+import 'stylesheet/Reactive.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

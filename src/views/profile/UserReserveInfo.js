@@ -36,12 +36,12 @@ const UserReserve = () => {
       <div className="msg">내 예약 일정을 확인, 취소합니다.</div>
       <div className="msg">현재시각 : {currentTime}</div>
       <div className="menu__title">예약현황</div>
-      {reserveList.length === 0 && (
+      {/* {reserveList.length === 0 && (
         <div className="menu__content none">
           <div className="msg">현재 예약 현황이 없습니다.</div>
           <Link to="/knupi-web-v1/app/reservation">예약하기</Link>
         </div>
-      )}
+      )} */}
       {reserveList.length === 0 && (
         <div className="menu__content exists">
           <ReserveTable></ReserveTable>

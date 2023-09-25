@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, forwardRef } from 'react';
 import { db } from 'util/firebaseConfig';
 import { useParams } from 'react-router-dom';
 import { collection, getDocs, doc } from 'firebase/firestore';
@@ -10,8 +10,10 @@ import { getMonth, getDate, addDays } from 'date-fns';
 import moment from 'moment';
 import 'moment/locale/ko';
 import TimeArray from './components/TimeArray';
+import { useMediaQuery } from 'react-responsive';
 
 const ReservePage = () => {
+  const isDesktopOrMobile = useMediaQuery({ query: '(max-width:768px)' });
   // 달력
   const [startDate, setStartDate] = useState(new Date()); // 달력 날짜 변경 시 기준점이 되는 날짜
   const formatDate = (d) => {
@@ -43,18 +45,99 @@ const ReservePage = () => {
   }, [reserveArray]);
   const { type } = useParams();
 
+  const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
+    <button className="example-custom-input" onClick={onClick} ref={ref}>
+      {value}
+    </button>
+  ));
+
   return (
     <>
-      <div className="home_date" id="home_box">
-        <p className="home_date_title" id="home__title">
-          1. 날짜 선택
-        </p>
-        <div className="home_date_calendar">
-          <div className="hasCalendar">
+      {isDesktopOrMobile !== true ? (
+        <>
+          <div className="home_date" id="home_box">
+            <p className="home_date_title" id="home__title">
+              1. 날짜 선택
+            </p>
+            <div className="home_date_calendar">
+              <div className="hasCalendar">
+                <DatePicker
+                  className="input-datepicker" // class name
+                  inline // 달력 화면에 바로 나오도록 설정
+                  locale={ko} // 한국어 설정
+                  dateFormat="yyyy-MM-dd" // 데이터 포맷
+                  popperModifiers={{
+                    // 모바일 web 환경에서 화면을 벗어나지 않도록 하는 설정
+                    preventOverflow: {
+                      enabled: true,
+                    },
+                  }}
+                  minDate={new Date()} // 과거 날짜는 선택할 수 없게 disable
+                  maxDate={addDays(new Date(), 13)} // 오늘로부터 13일까지 날짜 선택 가능
+                  onChange={(date) => setStartDate(date)} // 바뀐 날짜로 저장
+                  renderCustomHeader={({
+                    date,
+                    decreaseMonth,
+                    increaseMonth,
+                  }) => (
+                    <div className="datepickerHeader">
+                      <div>
+                        <img
+                          onClick={decreaseMonth}
+                          alt="달력 왼쪽 화살표"
+                          src={process.env.PUBLIC_URL + '/img/back.png'}
+                          className="h-6"
+                        />
+                      </div>
+                      <div> {formatDate(date)}</div>
+                      <div>
+                        <img
+                          onClick={increaseMonth}
+                          alt="달력 오른쪽 화살표"
+                          src={process.env.PUBLIC_URL + '/img/back.png'}
+                          className="h-6"
+                          id="h-6_reverse"
+                        />
+                      </div>
+                    </div>
+                  )}
+                  dayClassName={(d) =>
+                    getDate(d) === getDate(startDate) &&
+                    getMonth(d) === getMonth(startDate)
+                      ? 'normal-day selected-day'
+                      : 'normal-day'
+                  }
+                />
+              </div>
+            </div>
+          </div>
+          <div className="home_time" id="home_box">
+            <div className="home_time_text">
+              <p className="home_time_title" id="home__title">
+                2. 시간 선택
+              </p>
+              <p className="home_time_subtitle">
+                {moment(startDate).format('M월 D일 dddd')}
+              </p>
+            </div>
+
+            <div className="home_time_container">
+              <TimeArray
+                startDate={startDate}
+                type={type}
+                reserveArray={reserveArray}
+              />
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="reserve_container">
             <DatePicker
               className="input-datepicker" // class name
-              inline // 달력 화면에 바로 나오도록 설정
               locale={ko} // 한국어 설정
+              customInput={<ExampleCustomInput />}
+              selected={startDate}
               dateFormat="yyyy-MM-dd" // 데이터 포맷
               popperModifiers={{
                 // 모바일 web 환경에서 화면을 벗어나지 않도록 하는 설정
@@ -67,16 +150,18 @@ const ReservePage = () => {
               onChange={(date) => setStartDate(date)} // 바뀐 날짜로 저장
               renderCustomHeader={({ date, decreaseMonth, increaseMonth }) => (
                 <div className="datepickerHeader">
-                  <div onClick={decreaseMonth}>
+                  <div>
                     <img
+                      onClick={decreaseMonth}
                       alt="달력 왼쪽 화살표"
                       src={process.env.PUBLIC_URL + '/img/back.png'}
                       className="h-6"
                     />
                   </div>
                   <div> {formatDate(date)}</div>
-                  <div onClick={increaseMonth}>
+                  <div>
                     <img
+                      onClick={increaseMonth}
                       alt="달력 오른쪽 화살표"
                       src={process.env.PUBLIC_URL + '/img/back.png'}
                       className="h-6"
@@ -93,26 +178,15 @@ const ReservePage = () => {
               }
             />
           </div>
-        </div>
-      </div>
-      <div className="home_time" id="home_box">
-        <div className="home_time_text">
-          <p className="home_time_title" id="home__title">
-            2. 시간 선택
-          </p>
-          <p className="home_time_subtitle">
-            {moment(startDate).format('M월 D일 dddd')}
-          </p>
-        </div>
-
-        <div className="home_time_container">
-          <TimeArray
-            startDate={startDate}
-            type={type}
-            reserveArray={reserveArray}
-          />
-        </div>
-      </div>
+          <div className="reserve_time_container">
+            <TimeArray
+              startDate={startDate}
+              type={type}
+              reserveArray={reserveArray}
+            />
+          </div>
+        </>
+      )}
     </>
   );
 };
