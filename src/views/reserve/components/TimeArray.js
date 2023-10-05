@@ -53,11 +53,12 @@ const TimeArray = ({ startDate, type, reserveArray }) => {
 
     return timeArray;
   }
-  const timeArray = getTimeArray('09:00', '23:59', 30);
+  const timeArray = getTimeArray('09:00', '24:00', 30);
 
   const today = new Date();
   if (startDate.getDate() === today.getDate()) {
-    while (getIndexFromTime(timeArray[0]) <= getIndexFromTime(new Date())) {
+    console.log(timeArray)
+    while (getIndexFromTime(timeArray[0]) < getIndexFromTime(new Date())) {
       timeArray.splice(0, 1);
     }
   }
