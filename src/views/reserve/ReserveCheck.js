@@ -24,15 +24,6 @@ const Reservecheck = () => {
   // 사용 목적 체크박스 state
   const [purpose, setPurpose] = useState('');
 
-  // purpose값 string으로 바꾸기
-  useEffect(() => {
-    if (purpose === 0) {
-      setPurpose('멘토링');
-    } else {
-      setPurpose('연습');
-    }
-  }, [purpose]);
-
   // 체크박스 1개만 체크 가능 & 체크한 값을 저장
   const checkOnlyOne = (checkThis) => {
     const checkboxes = document.getElementsByName('checkbox');
@@ -43,13 +34,13 @@ const Reservecheck = () => {
     }
     if (checkboxes[0].checked === true) {
       handlecheck(true);
-      setPurpose(0);
+      setPurpose('멘토링');
     } else if (checkboxes[1].checked === true) {
       handlecheck(true);
-      setPurpose(1);
+      setPurpose('연습');
     }
   };
-
+  
   // submit
   const formSubmitHandler = async (event) => {
     event.preventDefault();
