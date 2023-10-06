@@ -57,7 +57,6 @@ const TimeArray = ({ startDate, type, reserveArray }) => {
 
   const today = new Date();
   if (startDate.getDate() === today.getDate()) {
-    console.log(timeArray)
     while (getIndexFromTime(timeArray[0]) < getIndexFromTime(new Date())) {
       timeArray.splice(0, 1);
     }

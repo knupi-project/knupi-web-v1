@@ -41,7 +41,6 @@ const ReservePage = () => {
     setTimeArray();
   }, [startDate]);
   useEffect(() => {
-    console.log(reserveArray);
   }, [reserveArray]);
   const { type } = useParams();
 
