@@ -47,31 +47,17 @@ const ReserveExec = () => {
               <div className="piano_card" key={index}>
                 <span className="piano_card_title">{element.name}</span>
                 <span className="piano_card_time">🕑 진행 시간 : 30분</span>
-                <span className="piano_card_subtitle">
-                  {element.name} 예약하기
-                </span>
                 <div className="piano_card_btn">
                   {loginUser && (
                     <div className="piano_card_container">
                       <Link
                         className="piano_card_link"
-                        style={{
-                          textDecoration: 'none',
-                          color: 'black',
-                          fontSize: '20px',
-                          fontWeight: '600',
-                        }}
                         to={`/knupi-web-v1/app/reserve/page:${index}`}
                         onClick={() => {
                           window.scrollTo({ top: 0, behavior: 'smooth' });
                         }}
                       >
                         예약하기
-                        <img
-                          className="piano_card_go"
-                          src={process.env.PUBLIC_URL + '/img/back.png'}
-                          alt="img"
-                        />
                       </Link>
                     </div>
                   )}
