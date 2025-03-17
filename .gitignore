@@ -70,7 +70,7 @@ typings/
 
 # dotenv environment variables file
 .DS_Store
-/.env
+.env
 .env.test
 .env.local
 .env.development.local
