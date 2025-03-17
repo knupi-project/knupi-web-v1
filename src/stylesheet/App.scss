@@ -811,13 +811,12 @@ input[type='checkbox']:checked {
 //about,contact
 .about,
 .contact {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 180px;
-  height: 30rem;
 
   @media screen and (max-width: 768px) {
     margin-bottom: 50px;
@@ -828,62 +827,15 @@ input[type='checkbox']:checked {
     font-size: 2rem;
   }
 
-  .about_box_div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1em;
-
+  .contact_sub_title {
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 0px;
+    line-height: 50px;
     @media screen and (max-width: 768px) {
-      flex-direction: column;
+      font-size: 13px;
     }
   }
-
-  .about_box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 2em 3em;
-
-    @media screen and (max-width: 768px) {
-      margin: 0em 5em;
-    }
-
-    .contact_source {
-      font-weight: 600;
-      font-size: 1em;
-      margin-top: 0px;
-      line-height: 50px;
-      @media screen and (max-width: 768px) {
-        font-size: 13px;
-      }
-    }
-  
-    .contact_item {
-      font-weight: 400;
-      font-size: 1em;
-      margin-top: 0px;
-      line-height: 50px;
-      @media screen and (max-width: 768px) {
-        font-size: 13px;
-      }
-    }
-
-    .contact_item_link {
-      font-weight: 400;
-      color:slategrey;
-      font-size: 20px;
-      margin-top: 0px;
-      text-decoration:none;
-      line-height: 50px;
-      @media screen and (max-width: 768px) {
-        font-size: 13px;
-      }
-    }
-  }
-  
 
   #contact {
     padding-top: 50px;
