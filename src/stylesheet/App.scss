@@ -325,92 +325,122 @@ body {
     margin: 20px 0px 50px -15px;
   }
 
-  $piano-border-color: #000000;
+  $piano-card-background: white;
+  $piano-border-color: rgb(155, 155, 155);
+  $piano-hover-color: black;
+  $piano-text-color: #333;
+  $piano-btn-bg: #d5dddf;
+  $piano-btn-hover: #a4bdc3;
+  $piano-btn-text: white;
+
   .piano_card_box {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    width: 80%;
-    margin: 40px 0px;
+    width: 90%;
+    margin: 2.5rem auto;
 
     @media screen and (max-width: 768px) {
-      margin: 20px 0px;
+      margin: 1.5rem auto;
     }
+
     .piano_card {
       width: 45%;
-      min-width: 340px;
-      max-width: 500px;
-      height: 50vh;
-      min-height: 340px;
-      max-height: 500px;
-
-      border: 2px solid $piano-border-color;
-      border-top: 40px solid $piano-border-color;
-      padding: 40px;
-      margin: 40px 10px;
+      min-width: 22rem;
+      max-width: 32rem;
+      height: 12rem;
+      border-radius: 0.75rem;
+      background: #fff;
+      border: 0.125rem solid $piano-border-color;
+      border-top: 2.5rem solid $piano-border-color;
+      padding: 1.5rem;
+      margin: 1.5rem;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
+      transition: all 0.3s ease-in-out;
 
       @media screen and (max-width: 768px) {
-        margin: 20px 10px 10px 10px;
-        height: 25vh;
-        min-height: 230px;
-        max-height: 500px;
-        padding: 20px 40px 20px 40px;
-        border-top: 20px solid black;
+        height: 8.5rem;
+        margin: 1rem;
+        padding: 1.5rem;
+        border-top: 1.5rem solid $piano-border-color;
       }
 
       .piano_card_title {
         font-size: 1.5rem;
-        font-weight: 700;
+        font-weight: bold;
+        color: $piano-text-color;
       }
 
       .piano_card_time {
         font-size: 1rem;
-        color: rgb(0, 0, 0);
-        opacity: 70%;
+        color: #5c5c5c;
+        opacity: 0.8;
+        margin: 1rem 0;
 
-        margin: 20px 0px;
         @media screen and (max-width: 768px) {
-          margin: 10px 0px;
+          margin: 0.5rem 0;
         }
       }
 
       .piano_card_subtitle {
-        font-size: 0.8rem;
-        font-weight: 700;
-      }
-
-      .piano_card_bar {
-        margin-top: 150px;
-        font-size: 1.5rem;
-        font-weight: 700;
-        border-top: 4px solid rgb(0, 0, 0);
+        font-size: 1rem;
+        font-weight: 600;
+        color: $piano-text-color;
       }
 
       .piano_card_btn {
-        margin: 40px 0px;
-        @media screen and (max-width: 768px) {
-          margin: 20px 0px 10px 0px;
+        text-align: center;
+        margin-top: 1.5rem;
+        padding: 0.75rem 1.5rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+        background: $piano-btn-bg;
+        color: $piano-btn-text;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        height: 0;
+        transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out;
+
+        &:hover {
+          background: $piano-btn-hover;
         }
       }
 
-      .piano_card_container {
-        display: flex;
-        justify-content: flex-start;
+      .piano_card_link {
+        text-decoration:none;
+        color:black;
+        font-size: 1em;
+        font-weight: 600;
       }
 
-      .piano_card_go {
-        width: 30px;
-        margin: 0px 0px -5px 10px !important;
-        transform: scaleX(-1);
+      &:hover {
+        height: 17rem;
+        background-color: $piano-card-background;
+        border-top: 2.5rem solid $piano-hover-color;
+        border-color: $piano-hover-color;
+        transform: translateY(-5px);
+        padding: 2rem;
+
+        @media screen and (max-width: 768px) {
+          height: 15rem;
+        }
+
+        .piano_card_btn {
+          opacity: 1;
+          visibility: visible;
+          height: auto;
+        }
       }
     }
   }
 }
+
 
 // reserve page
 .home {
@@ -825,15 +855,63 @@ input[type='checkbox']:checked {
   .contact_title {
     font-weight: 600;
     font-size: 2rem;
+
+    @media screen and (max-width: 768px) {
+      font-size: 1.5rem;
+    }
   }
 
-  .contact_sub_title {
-    font-weight: 500;
-    font-size: 20px;
-    margin-top: 0px;
-    line-height: 50px;
+  .contact_box_div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1em;
+  }
+
+  .contact_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2em 3em;
+    width: 14em;
+
     @media screen and (max-width: 768px) {
-      font-size: 13px;
+      margin: 0em 2em;
+      width: 10em;
+    }
+
+    .contact_source {
+      font-weight: 600;
+      font-size: 1em;
+      margin-top: 0px;
+      line-height: 50px;
+      @media screen and (max-width: 768px) {
+        font-size: 13px;
+      }
+    }
+  
+    .contact_item {
+      font-weight: 400;
+      font-size: 1em;
+      margin-top: 0px;
+      line-height: 50px;
+      @media screen and (max-width: 768px) {
+        font-size: 13px;
+      }
+    }
+
+    .contact_item_link {
+      font-weight: 400;
+      color:slategrey;
+      font-size: 20px;
+      margin-top: 0px;
+      text-decoration:none;
+      line-height: 50px;
+      @media screen and (max-width: 768px) {
+        font-size: 13px;
+      }
     }
   }
 
