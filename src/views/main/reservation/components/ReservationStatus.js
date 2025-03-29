@@ -230,7 +230,7 @@ const ReserveStatus = () => {
                       increaseMonth,
                     }) => (
                       <div className="datepickerHeader">
-                        <div>
+                        <div style={{fontSize: '5em'}}>
                           <img
                             onClick={decreaseMonth}
                             alt="backbutton"
@@ -288,18 +288,19 @@ const ReserveStatus = () => {
               onChange={(date) => setStartDate(date)} // 바뀐 날짜로 저장
               renderCustomHeader={({ date, decreaseMonth, increaseMonth }) => (
                 <div className="datepickerHeader">
-                  <div>
+                  <div style={{width:'5em'}} 
+                       onClick={decreaseMonth}>
                     <img
-                      onClick={decreaseMonth}
                       alt="달력 왼쪽 화살표"
                       src={process.env.PUBLIC_URL + '/img/back.png'}
                       className="h-6"
                     />
                   </div>
-                  <div> {formatDate(date)}</div>
-                  <div>
+                  <div style={{margin: "0 1.1em"}}>
+                    {formatDate(date)}</div>
+                  <div style={{width:'5em'}} 
+                       onClick={increaseMonth}>
                     <img
-                      onClick={increaseMonth}
                       alt="달력 오른쪽 화살표"
                       src={process.env.PUBLIC_URL + '/img/back.png'}
                       className="h-6"
