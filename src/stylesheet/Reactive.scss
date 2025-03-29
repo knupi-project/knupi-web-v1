@@ -1,3 +1,5 @@
+$nav-max-width: 840px;
+
 .reserve_div {
   display: flex;
   flex-direction: column;
@@ -7,6 +9,9 @@
   height: 700px;
   width: 390px;
   padding: 0px 10px;
+  @media screen and (max-width: $nav-max-width) {
+    margin-top: 8em;
+  }
   .reserve_textBox {
     display: flex;
     flex-direction: column;
@@ -30,135 +35,142 @@
   display: flex;
   justify-content: center;
   margin-bottom: 4%;
-  // 달력
+  /* 기본적인 테이블 레이아웃 */
+.react-datepicker-wrapper {
+  display: flex;
+  justify-content: center;
+}
 
-  .react-datepicker-wrapper {
-    display: flex;
-    justify-content: center;
-  }
+.react-datepicker {
+  font-size: 1rem; /* 기본 폰트 크기 */
+  border: 1px solid #888888;
+  height: auto; /* 370px을 em으로 변환 */
+  padding-bottom: 0.4em;
+  width: 22rem;  /* 350px을 em으로 변환 */
+}
 
-  .react-datepicker {
-    font-size: 0.8rem !important;
-    border: 1px solid #888888;
-    height: 370px !important;
-    width: 350px !important;
-  }
-  .react-datepicker__month-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .react-datepicker__month {
-    width: 330px !important;
-    height: 250px !important;
-    display: flex;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-  }
-  .react-datepicker__input-container {
-    width: 350px;
-    display: flex;
-    justify-content: center;
-  }
-  .input-datepicker {
-    width: 200px;
-    height: 35px;
-    text-align: center;
-    font-size: 20px;
-    margin-bottom: 20px;
-    background-color: #bed6f0c2;
-    border-color: #c3ced2;
-    color: #2d2f2d;
-    border-radius: 10px;
-  }
-  .react-datepicker__week {
-    width: 330px !important;
-    height: 50px !important;
-    margin-left: -15px;
-  }
+.react-datepicker__month-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .react-datepicker__current-month {
-    font-size: 1.5rem !important;
-    font-weight: 500 !important;
-  }
+.react-datepicker__month {
+  width: 20.625rem; /* 330px을 em으로 변환 */
+  height: 17rem; /* 250px을 em으로 변환 */
+  display: flex;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
 
-  .react-datepicker__navigation {
-    top: 13px !important;
-  }
+.react-datepicker__input-container {
+  width: 22rem; /* 350px을 em으로 변환 */
+  display: flex;
+  justify-content: center;
+}
 
-  .react-datepicker__day-name,
-  .react-datepicker__day {
-    margin: 0.8rem 10px !important;
-  }
-  .react-datepicker__day-name {
-    color: black;
-    font-weight: 700;
-    margin: 0px 9px !important;
-  }
+.input-datepicker {
+  width: 12.5rem; /* 200px을 em으로 변환 */
+  height: 2.1875rem; /* 35px을 em으로 변환 */
+  text-align: center;
+  font-size: 1.25rem; /* 20px을 em으로 변환 */
+  margin-bottom: 1.25rem; /* 20px을 em으로 변환 */
+  background-color: #bed6f0c2;
+  border-color: #c3ced2;
+  color: #2d2f2d;
+  border-radius: 0.625rem; /* 10px을 em으로 변환 */
+}
 
-  .react-datepicker__day--disabled {
-    color: #c5c3c3 !important;
-  }
+.react-datepicker__week {
+  width: 20.625rem; /* 330px을 em으로 변환 */
+  height: 3.125rem; /* 50px을 em으로 변환 */
+}
 
-  .react-datepicker__header,
-  .react-datepicker__header--custom {
-    width: 345px;
-    padding-top: 6px !important;
-    border-bottom: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center !important;
-    align-items: center !important;
-  }
+.react-datepicker__current-month {
+  font-size: 1.25rem; /* 1.5rem을 em으로 변환 */
+  font-weight: 500 !important;
+}
 
-  .normal-day {
-    background: white !important;
-    line-height: 1.2;
-    text-align: center;
-    margin: 5px 4.6px !important;
-    height: 40px;
-    width: 40px;
-  }
+.react-datepicker__navigation {
+  top: 1.125rem; /* 13px을 em으로 변환 */
+}
 
-  .normal-day:hover {
-    background: #f6f8fc !important;
-    border-radius: 0px;
-  }
+.react-datepicker__day-name,
+.react-datepicker__day {
+  margin: 0.5rem 0.625rem !important; /* 0.8rem 10px을 em으로 변환 */
+}
 
-  .selected-day,
-  .selected-day:focus {
-    background: rgba(0, 0, 0, 0.137) !important;
-    color: black !important;
-    border-radius: 0px;
-    height: 40px;
-    width: 40px;
-  }
+.react-datepicker__day-name {
+  color: black;
+  font-weight: 700;
+}
 
-  .datepickerHeader {
-    padding: 15px 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: black;
-  }
+.react-datepicker__day--disabled {
+  color: #c5c3c3 !important;
+}
 
-  .h-6 {
-    width: 20% !important;
-    height: auto !important;
-    cursor: pointer;
-    filter: invert(30%);
-  }
+.react-datepicker__header {
+  width: 21.5625rem; /* 345px을 em으로 변환 */
+  padding-top: 0.375rem; /* 6px을 em으로 변환 */
+  border-bottom: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center !important;
+  align-items: center !important;
+}
 
-  #h-6_reverse {
-    transform: scaleX(-1);
-  }
+.datepickerHeader_date {
+  width: auto !important;
+}
 
-  .hasCalendar {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-  }
+.normal-day {
+  background: white !important;
+  line-height: 1.2;
+  text-align: center;
+  margin: 0.3125rem 0.2875rem !important; /* 5px 4.6px을 em으로 변환 */
+  height: 2.5rem; /* 40px을 em으로 변환 */
+  width: 2.5rem; /* 40px을 em으로 변환 */
+}
+
+.normal-day:hover {
+  background: #f6f8fc !important;
+  border-radius: 0px;
+}
+
+.selected-day,
+.selected-day:focus {
+  background: rgba(0, 0, 0, 0.137) !important;
+  color: black !important;
+  border-radius: 0px;
+  height: 2.5rem; /* 40px을 em으로 변환 */
+  width: 2.5rem; /* 40px을 em으로 변환 */
+}
+
+.datepickerHeader {
+  padding: 1rem 0px; /* 15px을 em으로 변환 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.h-6 {
+  width: 20% !important;
+  height: auto !important;
+  cursor: pointer;
+  filter: invert(30%);
+}
+
+#h-6_reverse {
+  transform: scaleX(-1);
+}
+
+.hasCalendar {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem; /* 40px을 em으로 변환 */
+}
 }
 
 .reserve_time_container {
@@ -233,7 +245,7 @@
 }
 
 .example-custom-input {
-  background-color: rgb(146, 142, 142);
+  background-color: #6c7a89;
   border-radius: 3px;
   border: 0px;
   color: white;
@@ -257,7 +269,7 @@
   font-weight: bold;
   font-size: 1rem;
   @media screen and (max-width: 768px) {
-    font-size: 0.5rem;
+    font-size: 0.55rem;
   }
 }
 
@@ -268,7 +280,8 @@
   line-height: 1.3rem;
   border-bottom: solid 1px gray;
   @media screen and (max-width: 768px) {
-    font-size: 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 600;
   }
 }
 

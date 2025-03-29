@@ -151,7 +151,7 @@ const ReserveStatus = () => {
         for (let i = 0; i < documentsArray.length; i++) {
           timetableArray[getIndexFromTime(documentsArray[i].id)][
             documentsArray[i].pianoNum
-          ].value = `${documentsArray[i].name}(${documentsArray[i].purpose})`;
+          ].value = `${documentsArray[i].name}`;
           timetableArray[getIndexFromTime(documentsArray[i].id)]['is0'] = 1;
 
           if (documentsArray[i].userId === auth.currentUser.uid) {
