@@ -40,18 +40,19 @@ const ReserveExec = () => {
         <p className="reservation_main_title">피아노 종류를 선택해주세요</p>
         <p className="reservation_main_subtitle">Choose the Piano</p>
       </div>
+      <span className="piano_card_time">🕑 30 min</span>
       <div className="piano_card_box">
         {piano &&
           piano.pianoList.map((element, index) => {
             return (
               <div className="piano_card" key={index}>
                 <span className="piano_card_title">{element.name}</span>
-                <span className="piano_card_time">🕑 진행 시간 : 30분</span>
-                <div className="piano_card_btn">
+                <span className="piano_card_where">
+                  🎹{element.iswhere === 0 ? " 청룡관 102호" : " 청룡관 103호"}
+                </span>
                   {loginUser && (
-                    <div className="piano_card_container">
                       <Link
-                        className="piano_card_link"
+                        className="piano_card_btn"
                         to={`/knupi-web-v1/app/reserve/page:${index}`}
                         onClick={() => {
                           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -59,7 +60,6 @@ const ReserveExec = () => {
                       >
                         예약하기
                       </Link>
-                    </div>
                   )}
                   {!loginUser && (
                     <Link
@@ -72,7 +72,6 @@ const ReserveExec = () => {
                     </Link>
                   )}
                 </div>
-              </div>
             );
           })}
         {!piano && <Loader />}
