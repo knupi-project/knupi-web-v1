@@ -1,3 +1,5 @@
+$nav-max-width: 840px;
+
 .footer {
   display: flex;
   flex-direction: row;
@@ -8,6 +10,11 @@
 
   background-color: #6e5f5042;
   color: black;
+
+  @media screen and (max-width: $nav-max-width) {
+    background: #d6e3e2;
+    height: 20%;
+  }
 
   font-family: 'Noto Sans KR';
   text-align: center;
@@ -76,11 +83,26 @@
     p {
       margin: 0px;
     }
-    .footer_name_title {
-      font-weight: 800;
-      font-size: 1em;
-      margin-bottom: 10px;
+
+    .fotter_logotitle {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      .footer_logo_duck {
+        width: 3.2rem;
+        height: auto;
+      }
+
+      .footer_name_title {
+        font-weight: 800;
+        font-size: 1em;
+        margin-top: 0.7rem;
+      }
     }
+
+   
     .footer_name_copyright {
       font-size: 0.8em;
       font-weight: 400;

@@ -11,7 +11,10 @@ const Home = () => {
         <span className="home__main__title">KNUPI</span>
         <span className="home__main__subtitle">KNU PIANO CLUB</span>
         <img className="home__main__noticeImg" src={process.env.PUBLIC_URL + '/notice/piano_concert_250402.jpg'}/>
-        <span className="home__main__noticeText">The 4th KNUPI piano concert</span>
+        <span className="home__main__noticeText1">The 4th KNUPI piano concert</span>
+        <span className="home__main__noticeText2">25.04.02 19:00</span>
+        <span className="home__main__noticeText2">대구 문화센터 어울림홀</span>
+
         {loginUser ? (
           <>
             <span className="home__main__explainbtn">피아노 예약하기</span>

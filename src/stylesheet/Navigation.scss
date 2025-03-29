@@ -3,17 +3,29 @@ $usermenu-width: 116px;
 $menu-font-size: 1.35rem;
 $nav-max-width: 840px;
 
+.offcanvas__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
 #offcanvas__nav__title {
   font-size: 2rem;
+  font-family: 'Frank Ruhl Libre', serif;
   text-align: center;
   text-decoration-line: none;
   text-decoration: none;
-  color: #424141;
+  font-weight: bold;
+  color: #333;
   margin: 0px;
   padding: 0px;
 }
 #offcanvas__nav__link {
   font-size: 1.6rem;
+  font-family: 'Frank Ruhl Libre', serif;
+  transition: color 0.3s ease, transform 0.2s ease;
+  font-weight: 500;
   text-align: center;
   text-decoration-line: none;
   text-decoration: none;
@@ -23,6 +35,7 @@ $nav-max-width: 840px;
   &:hover,
   &:focus {
     background-color: $hover-color;
+    color: black;
   }
 }
 
@@ -32,7 +45,7 @@ $nav-max-width: 840px;
   align-items: center;
   flex-wrap: nowrap;
   justify-content: space-around;
-  background-color: #f6f9fb;
+  background-color: rgba(246, 249, 251);
   border-bottom: 1px solid #e5e5e5;
 
   height: 10vh;
@@ -51,6 +64,7 @@ $nav-max-width: 840px;
     height: 7vh;
     min-height: 70px;
     padding: 0px 30px;
+    background-color: rgba(246, 249, 251, 0.92);
   }
 
   #nav__hide,
@@ -125,8 +139,7 @@ $nav-max-width: 840px;
   }
 
   .nav__link {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: $menu-font-size;
     font-weight: 350;
     cursor: pointer;

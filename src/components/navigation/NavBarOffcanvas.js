@@ -58,18 +58,10 @@ function NavBarOffcanvas({ loginUser }) {
         >
           <Offcanvas.Header closeButton>
             <Offcanvas.Title id="offcanvas__nav__title">
-              KNU KNUPI{' '}
+              KNUPI{' '}
             </Offcanvas.Title>
           </Offcanvas.Header>
-          <Offcanvas.Body
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              textDecoration: 'none',
-              textDecorationLine: 'None',
-              color: '#424141',
-            }}
-          >
+          <Offcanvas.Body className="offcanvas__body">
             <Link
               to="/knupi-web-v1/app/home"
               className="nav__link"
