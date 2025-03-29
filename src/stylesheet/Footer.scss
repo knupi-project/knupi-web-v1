@@ -13,6 +13,7 @@ $nav-max-width: 840px;
 
   @media screen and (max-width: $nav-max-width) {
     background: #d6e3e2;
+    height: 20%;
   }
 
   font-family: 'Noto Sans KR';
@@ -78,9 +79,6 @@ $nav-max-width: 840px;
     max-width: 600px;
     color: #0000008e;
     font-size: calc(17px + 0.5vw);
-    @media screen and (max-width: $nav-max-width) {
-      height: 60vw;
-    }
 
     p {
       margin: 0px;
