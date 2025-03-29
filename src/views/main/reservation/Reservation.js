@@ -28,12 +28,6 @@ const Reservation = () => {
 
   return (
     <div className="reservation">
-      <div className="reservation_mid">
-        <div className="reservation_mid-text">
-          <div className="reservation_mid-title">Reservation</div>
-          <div className="reservation_mid-subtitle">피아노 예약</div>
-        </div>
-      </div>
       <div className="reservation_main">
         <div className="reservation_main_top-button">
           <button className="selected" id="button-0" onClick={pageHandler}>

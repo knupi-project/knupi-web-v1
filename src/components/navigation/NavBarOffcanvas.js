@@ -32,24 +32,21 @@ function NavBarOffcanvas({ loginUser }) {
           variant="outline-secondary"
           onClick={handleShow}
           style={{
-            // border: 'none',
-            height: '49px',
-            width: '58px',
+            border: 'none',
+            height: '2rem',
+            width: '2rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="1.1rem"
-            height="1.1rem"
-            fill="currentColor"
+          <img
+            width="25em"
+            height="25em"
             className="bi bi-chevron-down"
+            src={process.env.PUBLIC_URL + '/img/menu_mobile.svg'}
             viewBox="0 0 16 16"
-          >
-            <path
-              fillRule="evenodd"
-              d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-            />
-          </svg>
+          />
         </Button>
         <Offcanvas
           placement="top"
@@ -151,10 +148,12 @@ function NavBarOffcanvas({ loginUser }) {
       <div className="mobileLogo">
         <Link to="/knupi-web-v1/app/home" onClick={navLinkClickHandler}>
           <img
-            src={process.env.PUBLIC_URL + '/img/logo1.png'}
-            width="160"
-            height="56"
-            alt="logo-signsin-title"
+            src={process.env.PUBLIC_URL + '/img/pianoimg.svg'}
+            className='mobileLogoPiano'
+          />
+          <img
+            src={process.env.PUBLIC_URL + '/img/logo_test2.svg'}
+            className='mobileLogoImg'
           />
         </Link>
       </div>

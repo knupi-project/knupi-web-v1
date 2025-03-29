@@ -48,7 +48,9 @@ $nav-max-width: 840px;
 
   @media screen and (max-width: $nav-max-width) {
     justify-content: space-between;
-    padding: 0px 40px;
+    height: 7vh;
+    min-height: 70px;
+    padding: 0px 30px;
   }
 
   #nav__hide,
@@ -179,13 +181,28 @@ $nav-max-width: 840px;
   height: 38px;
   border-radius: 50%;
   overflow: hidden;
+  @media screen and (max-width: $nav-max-width) {
+    width: 2em;
+    border-radius: 20%;
+  }
 }
 
 .mobileLogo {
   display: none;
   @media screen and (max-width: $nav-max-width) {
     display: flex;
+    justify-content: center;
+    align-items: center;
   }
+}
+
+.mobileLogoPiano {
+  width: 1.7em;
+  margin-right: 0.5em;
+}
+
+.mobileLogoImg {
+  width: 4.5em;
 }
 
 .mobileMyifo {
