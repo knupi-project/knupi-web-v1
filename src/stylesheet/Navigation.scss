@@ -183,6 +183,7 @@ $nav-max-width: 840px;
   overflow: hidden;
   @media screen and (max-width: $nav-max-width) {
     width: 2em;
+    height: 2em;
     border-radius: 20%;
   }
 }
