@@ -12,7 +12,7 @@ $nav-max-width: 840px;
   color: black;
 
   @media screen and (max-width: $nav-max-width) {
-    background: #d6e3e2;
+    background: linear-gradient(to bottom, #fdf5e6, #f3f0eb); /* 위쪽 배경색에서 footer 색으로 부드럽게 */
     height: 20%;
   }
 
